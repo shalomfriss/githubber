@@ -6,11 +6,10 @@ target 'GitHubber' do
   use_frameworks!
 	
   # Pods for GitHubber
-	target 'GitHubber' go
-		pod 'RxSwift',    '~> 4.0'
-		pod 'RxCocoa',    '~> 4.0'
-		pod 'RealmSwift'
-	end
+	pod 'RxSwift', '~> 4.0'
+	pod 'RxCocoa', '~> 4.0'
+	pod 'RealmSwift'
+	pod "Apollo"
 	
   target 'GitHubberTests' do
     inherit! :search_paths
@@ -18,6 +17,7 @@ target 'GitHubber' do
 	pod 'RxBlocking', '~> 4.0'
 	pod 'RxTest',     '~> 4.0'
 	pod 'RealmSwift'
+	pod "Apollo"
   end
 
   target 'GitHubberUITests' do
@@ -26,6 +26,7 @@ target 'GitHubber' do
 	pod 'RxBlocking', '~> 4.0'
 	pod 'RxTest',     '~> 4.0'
 	pod 'RealmSwift'	
+	pod "Apollo"
   end
 
 end
