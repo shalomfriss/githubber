@@ -19,12 +19,27 @@
 		CE206780206481930083E825 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = CE20677F206481930083E825 /* schema.json */; };
 		CE206781206481930083E825 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = CE20677F206481930083E825 /* schema.json */; };
 		CE206782206481930083E825 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = CE20677F206481930083E825 /* schema.json */; };
-		CE2067CA20648F5F0083E825 /* ViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067C920648F5F0083E825 /* ViewController.graphql */; };
-		CE2067CB20648F5F0083E825 /* ViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067C920648F5F0083E825 /* ViewController.graphql */; };
-		CE2067CC20648F5F0083E825 /* ViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067C920648F5F0083E825 /* ViewController.graphql */; };
 		CE2067CE206492B10083E825 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067CD206492B00083E825 /* API.swift */; };
 		CE2067CF206492B10083E825 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067CD206492B00083E825 /* API.swift */; };
 		CE2067D0206492B10083E825 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067CD206492B00083E825 /* API.swift */; };
+		CE2067D22066EF580083E825 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067D12066EF580083E825 /* Config.swift */; };
+		CE2067D32066EF580083E825 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067D12066EF580083E825 /* Config.swift */; };
+		CE2067D42066EF590083E825 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067D12066EF580083E825 /* Config.swift */; };
+		CE2067D62066EFEA0083E825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067D52066EFEA0083E825 /* DataManager.swift */; };
+		CE2067D72066EFEA0083E825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067D52066EFEA0083E825 /* DataManager.swift */; };
+		CE2067D82066EFEA0083E825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067D52066EFEA0083E825 /* DataManager.swift */; };
+		CE2067DC2066F1900083E825 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067DB2066F1900083E825 /* Errors.swift */; };
+		CE2067DD2066F1900083E825 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067DB2066F1900083E825 /* Errors.swift */; };
+		CE2067DE2066F1900083E825 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067DB2066F1900083E825 /* Errors.swift */; };
+		CE2067E220671D530083E825 /* RepoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067E120671D530083E825 /* RepoVO.swift */; };
+		CE2067E320671D530083E825 /* RepoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067E120671D530083E825 /* RepoVO.swift */; };
+		CE2067E420671D530083E825 /* RepoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067E120671D530083E825 /* RepoVO.swift */; };
+		CE2067EA20686CB30083E825 /* Repos.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067E920686CB30083E825 /* Repos.graphql */; };
+		CE2067EB20686CB30083E825 /* Repos.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067E920686CB30083E825 /* Repos.graphql */; };
+		CE2067EC20686CB30083E825 /* Repos.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067E920686CB30083E825 /* Repos.graphql */; };
+		CE2067EE206925CE0083E825 /* RepoListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067ED206925CE0083E825 /* RepoListing.swift */; };
+		CE2067EF206925CE0083E825 /* RepoListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067ED206925CE0083E825 /* RepoListing.swift */; };
+		CE2067F0206925CE0083E825 /* RepoListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2067ED206925CE0083E825 /* RepoListing.swift */; };
 		FC988A03E6208E186B311AFA /* Pods_GitHubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD769F407C83483F663EC7A /* Pods_GitHubber.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,8 +81,13 @@
 		CE206767206344590083E825 /* GitHubberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubberUITests.swift; sourceTree = "<group>"; };
 		CE206769206344590083E825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE20677F206481930083E825 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		CE2067C920648F5F0083E825 /* ViewController.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewController.graphql; sourceTree = "<group>"; };
 		CE2067CD206492B00083E825 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CE2067D12066EF580083E825 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		CE2067D52066EFEA0083E825 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CE2067DB2066F1900083E825 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		CE2067E120671D530083E825 /* RepoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoVO.swift; sourceTree = "<group>"; };
+		CE2067E920686CB30083E825 /* Repos.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Repos.graphql; sourceTree = "<group>"; };
+		CE2067ED206925CE0083E825 /* RepoListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListing.swift; sourceTree = "<group>"; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF30FDC28D542EA3305FA291 /* Pods-GitHubberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F423F51F0AEE147179C8C765 /* Pods-GitHubberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,11 +169,15 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
+				CE2067E020671D400083E825 /* vo */,
+				CE2067DA2066F1840083E825 /* constants */,
+				CE2067D92066EFED0083E825 /* utils */,
 				CE2067CD206492B00083E825 /* API.swift */,
 				CE20677F206481930083E825 /* schema.json */,
 				CE206747206344590083E825 /* AppDelegate.swift */,
 				CE206749206344590083E825 /* ViewController.swift */,
-				CE2067C920648F5F0083E825 /* ViewController.graphql */,
+				CE2067ED206925CE0083E825 /* RepoListing.swift */,
+				CE2067E920686CB30083E825 /* Repos.graphql */,
 				CE20674B206344590083E825 /* Main.storyboard */,
 				CE20674E206344590083E825 /* Assets.xcassets */,
 				CE206750206344590083E825 /* LaunchScreen.storyboard */,
@@ -178,6 +202,32 @@
 				CE206769206344590083E825 /* Info.plist */,
 			);
 			path = GitHubberUITests;
+			sourceTree = "<group>";
+		};
+		CE2067D92066EFED0083E825 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE2067D52066EFEA0083E825 /* DataManager.swift */,
+			);
+			name = utils;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CE2067DA2066F1840083E825 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				CE2067D12066EF580083E825 /* Config.swift */,
+				CE2067DB2066F1900083E825 /* Errors.swift */,
+			);
+			path = constants;
+			sourceTree = "<group>";
+		};
+		CE2067E020671D400083E825 /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				CE2067E120671D530083E825 /* RepoVO.swift */,
+			);
+			path = vo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +351,7 @@
 				CE206752206344590083E825 /* LaunchScreen.storyboard in Resources */,
 				CE20674F206344590083E825 /* Assets.xcassets in Resources */,
 				CE20674D206344590083E825 /* Main.storyboard in Resources */,
-				CE2067CA20648F5F0083E825 /* ViewController.graphql in Resources */,
+				CE2067EA20686CB30083E825 /* Repos.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,8 +359,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE2067CB20648F5F0083E825 /* ViewController.graphql in Resources */,
 				CE206781206481930083E825 /* schema.json in Resources */,
+				CE2067EB20686CB30083E825 /* Repos.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +368,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE2067CC20648F5F0083E825 /* ViewController.graphql in Resources */,
 				CE206782206481930083E825 /* schema.json in Resources */,
+				CE2067EC20686CB30083E825 /* Repos.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,8 +577,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2067E220671D530083E825 /* RepoVO.swift in Sources */,
 				CE20674A206344590083E825 /* ViewController.swift in Sources */,
+				CE2067D62066EFEA0083E825 /* DataManager.swift in Sources */,
+				CE2067D22066EF580083E825 /* Config.swift in Sources */,
+				CE2067EE206925CE0083E825 /* RepoListing.swift in Sources */,
 				CE2067CE206492B10083E825 /* API.swift in Sources */,
+				CE2067DC2066F1900083E825 /* Errors.swift in Sources */,
 				CE206748206344590083E825 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +593,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE2067CF206492B10083E825 /* API.swift in Sources */,
+				CE2067DD2066F1900083E825 /* Errors.swift in Sources */,
+				CE2067D72066EFEA0083E825 /* DataManager.swift in Sources */,
+				CE2067EF206925CE0083E825 /* RepoListing.swift in Sources */,
+				CE2067E320671D530083E825 /* RepoVO.swift in Sources */,
+				CE2067D32066EF580083E825 /* Config.swift in Sources */,
 				CE20675D206344590083E825 /* GitHubberTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +607,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE2067D0206492B10083E825 /* API.swift in Sources */,
+				CE2067DE2066F1900083E825 /* Errors.swift in Sources */,
+				CE2067D82066EFEA0083E825 /* DataManager.swift in Sources */,
+				CE2067F0206925CE0083E825 /* RepoListing.swift in Sources */,
+				CE2067E420671D530083E825 /* RepoVO.swift in Sources */,
+				CE2067D42066EF590083E825 /* Config.swift in Sources */,
 				CE206768206344590083E825 /* GitHubberUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
