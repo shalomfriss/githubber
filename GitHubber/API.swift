@@ -4,7 +4,7 @@ import Apollo
 
 public final class ReposQuery: GraphQLQuery {
   public static let operationString =
-    "query Repos($user: String!) {\n  repositoryOwner(login: $user) {\n    __typename\n    repositories(first: 10, isFork: false, privacy: PUBLIC, orderBy: {field: CREATED_AT, direction: DESC}) {\n      __typename\n      edges {\n        __typename\n        node {\n          __typename\n          ...RepoDetails\n        }\n      }\n    }\n  }\n}"
+    "query Repos($user: String!) {\n  repositoryOwner(login: $user) {\n    __typename\n    repositories(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {\n      __typename\n      edges {\n        __typename\n        node {\n          __typename\n          ...RepoDetails\n        }\n      }\n    }\n  }\n}"
 
   public static var requestString: String { return operationString.appending(RepoDetails.fragmentString) }
 
@@ -50,7 +50,7 @@ public final class ReposQuery: GraphQLQuery {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("repositories", arguments: ["first": 10, "isFork": false, "privacy": "PUBLIC", "orderBy": ["field": "CREATED_AT", "direction": "DESC"]], type: .nonNull(.object(Repository.selections))),
+        GraphQLField("repositories", arguments: ["first": 100, "orderBy": ["field": "CREATED_AT", "direction": "DESC"]], type: .nonNull(.object(Repository.selections))),
       ]
 
       public var snapshot: Snapshot

@@ -21,8 +21,9 @@ class RepoDetailsViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTableView()
         
+        
+        self.setupTableView()
         self.reposTable?.rx.setDelegate(self).disposed(by: self.disposeBag)
     }
     
@@ -39,15 +40,23 @@ class RepoDetailsViewController:UIViewController {
                         forks: element.forks, updated: element.updatedAt)
         }.disposed(by: self.disposeBag)
         
-        
     }
-    
     
 }
 
 extension RepoDetailsViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 135
+            return 115
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath)
+    {
+        let itemCount = DataManager.instance.languageRepos.value.count - 1
+        let color = (CGFloat(indexPath.row) / CGFloat(itemCount)) * 0.5
+        
+        cell.backgroundColor = UIColor(red: 0.5, green: 0.5 + color, blue: 1, alpha: 0.5)
+       
     }
 }
 

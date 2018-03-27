@@ -22,6 +22,8 @@ class RepoListingViewController:UIViewController {
     //MARK:- UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.hidesBackButton = false
         self.setupTableView()
         self.setupTapHandler()
     }

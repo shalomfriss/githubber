@@ -16,7 +16,7 @@ fragment RepoDetails on Repository {
 
 query Repos($user: String!){
     repositoryOwner(login:$user) {
-        repositories(first: 10, isFork: false, privacy: PUBLIC, orderBy: { field: CREATED_AT, direction: DESC }) {
+        repositories(first: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
             edges {
                 node {
                     ...RepoDetails

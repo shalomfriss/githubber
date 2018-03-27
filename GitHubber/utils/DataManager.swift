@@ -56,6 +56,9 @@ class DataManager {
     */
     func getRepos(owner:String) {
         
+       
+        
+        Alerter.showPreloader()
         var res:[String:[RepoVO]] = [:]
         
         self.apollo?.fetch(query: ReposQuery(user: owner)){ [weak self] result, error
@@ -98,7 +101,9 @@ class DataManager {
             //Sort by number of repos
             let sortedDict = res.sorted(by: {$0.value.count > $1.value.count})
             
+            
             //Create an array we can actually work with
+            self?.repositories.value.removeAll()
             for(lang, rep) in sortedDict {
                 print("\(lang) - \(rep.count)")
                 let entry = RepoEntry()
@@ -107,6 +112,7 @@ class DataManager {
                 self?.repositories.value.append(entry)
             }
             
+            Alerter.hidePreloader()
             /*
             //Test
             for x in DataManager.instance.repositories.value {

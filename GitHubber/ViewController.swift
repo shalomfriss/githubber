@@ -19,10 +19,13 @@ class ViewController: UIViewController {
         
         //Preloader should go here
         guard let val = self.searchField?.text else { return }
+        
+        performSegue(withIdentifier: "repoListing", sender: sender)
+        
         let dm = DataManager.instance
         dm.getRepos(owner: val)
         
-        performSegue(withIdentifier: "repoListing", sender: sender)
+        
     }
     
     //MARK:- UIViewController methods
