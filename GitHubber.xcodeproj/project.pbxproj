@@ -37,9 +37,9 @@
 		CE46675820692D3C00FB8BFC /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675420692D3C00FB8BFC /* Errors.swift */; };
 		CE46675920692D3C00FB8BFC /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675420692D3C00FB8BFC /* Errors.swift */; };
 		CE46675A20692D3C00FB8BFC /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675420692D3C00FB8BFC /* Errors.swift */; };
-		CE46675C2069C6B900FB8BFC /* RepoListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListing.swift */; };
-		CE46675D2069C6B900FB8BFC /* RepoListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListing.swift */; };
-		CE46675E2069C6B900FB8BFC /* RepoListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListing.swift */; };
+		CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */; };
+		CE46675D2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */; };
+		CE46675E2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */; };
 		CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675F2069C7E300FB8BFC /* AppModel.swift */; };
 		CE4667612069C7E300FB8BFC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675F2069C7E300FB8BFC /* AppModel.swift */; };
 		CE4667622069C7E300FB8BFC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675F2069C7E300FB8BFC /* AppModel.swift */; };
@@ -52,6 +52,12 @@
 		CE46676D2069F74700FB8BFC /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46676C2069F74700FB8BFC /* Alerter.swift */; };
 		CE46676E2069F74700FB8BFC /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46676C2069F74700FB8BFC /* Alerter.swift */; };
 		CE46676F2069F74700FB8BFC /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46676C2069F74700FB8BFC /* Alerter.swift */; };
+		CE466771206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */; };
+		CE466772206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */; };
+		CE466773206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */; };
+		CE466775206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */; };
+		CE466776206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */; };
+		CE466777206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */; };
 		FC988A03E6208E186B311AFA /* Pods_GitHubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD769F407C83483F663EC7A /* Pods_GitHubber.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,11 +105,13 @@
 		CE46674E20692D2B00FB8BFC /* RepoVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoVO.swift; path = GitHubber/vo/RepoVO.swift; sourceTree = SOURCE_ROOT; };
 		CE46675320692D3C00FB8BFC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = GitHubber/constants/Config.swift; sourceTree = SOURCE_ROOT; };
 		CE46675420692D3C00FB8BFC /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = GitHubber/constants/Errors.swift; sourceTree = SOURCE_ROOT; };
-		CE46675B2069C6B900FB8BFC /* RepoListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListing.swift; sourceTree = "<group>"; };
+		CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListingViewController.swift; sourceTree = "<group>"; };
 		CE46675F2069C7E300FB8BFC /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		CE4667642069C87600FB8BFC /* RepoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableCell.swift; sourceTree = "<group>"; };
 		CE4667682069ED4600FB8BFC /* RepoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntry.swift; path = GitHubber/views/RepoEntry.swift; sourceTree = SOURCE_ROOT; };
 		CE46676C2069F74700FB8BFC /* Alerter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alerter.swift; path = GitHubber/utils/Alerter.swift; sourceTree = SOURCE_ROOT; };
+		CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
+		CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsTableCell.swift; sourceTree = "<group>"; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF30FDC28D542EA3305FA291 /* Pods-GitHubberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F423F51F0AEE147179C8C765 /* Pods-GitHubberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +201,8 @@
 				CE20677F206481930083E825 /* schema.json */,
 				CE206747206344590083E825 /* AppDelegate.swift */,
 				CE206749206344590083E825 /* ViewController.swift */,
-				CE46675B2069C6B900FB8BFC /* RepoListing.swift */,
+				CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */,
+				CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */,
 				CE2067FD20692C870083E825 /* Repos.graphql */,
 				CE20674B206344590083E825 /* Main.storyboard */,
 				CE20674E206344590083E825 /* Assets.xcassets */,
@@ -256,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				CE4667642069C87600FB8BFC /* RepoTableCell.swift */,
+				CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -612,11 +622,13 @@
 				CE46674A20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE2067CE206492B10083E825 /* API.swift in Sources */,
 				CE46674F20692D2B00FB8BFC /* RepoVO.swift in Sources */,
+				CE466771206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
 				CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */,
-				CE46675C2069C6B900FB8BFC /* RepoListing.swift in Sources */,
+				CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE4667692069ED4600FB8BFC /* RepoEntry.swift in Sources */,
 				CE206748206344590083E825 /* AppDelegate.swift in Sources */,
 				CE46675520692D3C00FB8BFC /* Config.swift in Sources */,
+				CE466775206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */,
 				CE46675820692D3C00FB8BFC /* Errors.swift in Sources */,
 				CE46676D2069F74700FB8BFC /* Alerter.swift in Sources */,
 			);
@@ -626,13 +638,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE466772206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
+				CE466776206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */,
 				CE46676A2069ED4600FB8BFC /* RepoEntry.swift in Sources */,
 				CE2067CF206492B10083E825 /* API.swift in Sources */,
 				CE4667662069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE46674B20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE46675620692D3C00FB8BFC /* Config.swift in Sources */,
 				CE4667612069C7E300FB8BFC /* AppModel.swift in Sources */,
-				CE46675D2069C6B900FB8BFC /* RepoListing.swift in Sources */,
+				CE46675D2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE46675020692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE46676E2069F74700FB8BFC /* Alerter.swift in Sources */,
 				CE46675920692D3C00FB8BFC /* Errors.swift in Sources */,
@@ -644,13 +658,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE466773206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
+				CE466777206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */,
 				CE46676B2069ED4600FB8BFC /* RepoEntry.swift in Sources */,
 				CE2067D0206492B10083E825 /* API.swift in Sources */,
 				CE4667672069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE46674C20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE46675720692D3C00FB8BFC /* Config.swift in Sources */,
 				CE4667622069C7E300FB8BFC /* AppModel.swift in Sources */,
-				CE46675E2069C6B900FB8BFC /* RepoListing.swift in Sources */,
+				CE46675E2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE46675120692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE46676F2069F74700FB8BFC /* Alerter.swift in Sources */,
 				CE46675A20692D3C00FB8BFC /* Errors.swift in Sources */,

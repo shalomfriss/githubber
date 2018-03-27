@@ -11,19 +11,25 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RepoListing:UIViewController {
+class RepoListingViewController:UIViewController {
     
     @IBOutlet weak var repoTable:UITableView?
     
     let reps = DataManager.instance.repositories.asObservable()
     let disposeBag = DisposeBag()
     
+    
+    //MARK:- UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
         self.setupTapHandler()
     }
     
+    //MARK:- Setup methods
+    /**
+        Setup the table view using rx swift. This is a more succinct way of expressing how the table will function
+    */
     private func setupTableView() {
         
         guard self.repoTable != nil else { return }
@@ -36,22 +42,31 @@ class RepoListing:UIViewController {
         
     }
     
+    /**
+        Setup the tap handlers of the table
+    */
     private func setupTapHandler() {
         guard self.repoTable != nil else { return }
         
+        
         self.repoTable!
             .rx
-            .modelSelected(RepoEntry.self) //1
-            .subscribe(onNext: { //2
+            .modelSelected(RepoEntry.self)
+            .subscribe(onNext: {
                 repoEntry in
                 
                 print(repoEntry.language)
                 print(repoEntry.repos)
+                DataManager.instance.languageRepos.value = repoEntry.repos
+                
                 if let selectedRowIndexPath = self.repoTable?.indexPathForSelectedRow {
                     self.repoTable?.deselectRow(at: selectedRowIndexPath, animated: true)
-                } //4
+                }
+                
+                self.performSegue(withIdentifier: "repoDetails", sender: nil)
+                
             })
-            .addDisposableTo(disposeBag) //5
+            .disposed(by: self.disposeBag)
     }
     
 }

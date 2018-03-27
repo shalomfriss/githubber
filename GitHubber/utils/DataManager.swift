@@ -16,28 +16,21 @@ import RxCocoa
  */
 class DataManager {
     
-    private static var _instance:DataManager = DataManager(123) //the instance
-    
+    //MARK:- Apollo related
     private var apollo: ApolloClient?   //The Apollo client
     private let disposeBag = DisposeBag()   //RXSwift dispose bag
+    public var repositories:Variable<[RepoEntry]> = Variable([])    //the main repo container
+    public var languageRepos:Variable<[RepoVO]> = Variable([])      //One of the arrays in repositories
     
-    public var repositories:Variable<[RepoEntry]> = Variable([])
-    
-    private var _repos:Variable<[(key:String, value:[RepoVO])]> = Variable([]) //Repo container
-    public var repos:Variable<[(key:String, value:[RepoVO])]> {
-        get {
-            return self._repos
-        }
-    }
-    
-    //Singleton method
+    //MARK:- Singleton related
+    private static var _instance:DataManager = DataManager(123) //the instance
     public static var instance:DataManager {
         get {
             return _instance
         }
     }
     
-    
+    //MARK:- Initialization
     init() {
         assertionFailure("Cannot instantiate DataManager directly use DataManager.instance")
     }
@@ -46,7 +39,6 @@ class DataManager {
         if(check != 123) {
             assertionFailure("Cannot instantiate DataManager directly use DataManager.instance")
         }
-        self.setupReposReaction()
         
         self.apollo = {
             let configuration = URLSessionConfiguration.default
@@ -56,14 +48,12 @@ class DataManager {
         }()
     }
     
-    func setupReposReaction() {
-        self._repos.asObservable().subscribe(onNext: {
-            rps in
-            //print("ADDING ******")
-            //print(rps)
-        }).disposed(by: self.disposeBag)
-    }
     
+    //MARK:- API
+    /**
+        Get the repos of the mentioned owner
+        @param owner:String - A string describing the owner
+    */
     func getRepos(owner:String) {
         
         var res:[String:[RepoVO]] = [:]
@@ -117,15 +107,15 @@ class DataManager {
                 self?.repositories.value.append(entry)
             }
             
+            /*
             //Test
             for x in DataManager.instance.repositories.value {
                 print(x.language)
                 print(x.count)
                 print(x.repos)
             }
-            
+            */
         }
-        
         
     }
 }

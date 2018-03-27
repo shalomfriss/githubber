@@ -45,23 +45,23 @@
                     <connections>
                         <outlet property="searchButton" destination="u94-4g-eph" id="MBo-zq-5or"/>
                         <outlet property="searchField" destination="qcx-P3-mOA" id="xdW-AG-Zfd"/>
-                        <segue destination="FKP-7m-1wS" kind="show" identifier="repoListing" id="veV-DI-Ap2"/>
+                        <segue destination="v3b-0h-e5n" kind="show" identifier="repoListing" id="kdK-GN-Nn7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="125"/>
+            <point key="canvasLocation" x="274" y="125"/>
         </scene>
-        <!--Repo Listing-->
+        <!--Repo Listing View Controller-->
         <scene sceneID="dQk-zl-g44">
             <objects>
-                <viewController id="FKP-7m-1wS" customClass="RepoListing" customModule="GitHubber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FKP-7m-1wS" customClass="RepoListingViewController" customModule="GitHubber" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4q-qw-6mH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-n4-Zaa">
-                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-n4-Zaa">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repoTableCell" id="pX4-VF-jrB" customClass="RepoTableCell" customModule="GitHubber" customModuleProvider="target">
@@ -98,19 +98,125 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ty6-n4-Zaa" firstAttribute="trailing" secondItem="cDj-3U-VTM" secondAttribute="trailing" id="1N3-xZ-GF5"/>
+                            <constraint firstItem="ty6-n4-Zaa" firstAttribute="top" secondItem="cDj-3U-VTM" secondAttribute="top" id="3Fz-Ma-9su"/>
                             <constraint firstItem="ty6-n4-Zaa" firstAttribute="bottom" secondItem="cDj-3U-VTM" secondAttribute="bottom" id="GFb-aj-hIU"/>
                             <constraint firstItem="ty6-n4-Zaa" firstAttribute="top" secondItem="N4q-qw-6mH" secondAttribute="topMargin" constant="20" id="Ina-mI-6y6"/>
                             <constraint firstItem="ty6-n4-Zaa" firstAttribute="leading" secondItem="cDj-3U-VTM" secondAttribute="leading" id="ZNq-Kd-4SK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cDj-3U-VTM"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hAj-Kp-qgB"/>
                     <connections>
                         <outlet property="repoTable" destination="ty6-n4-Zaa" id="Whq-uy-LZ6"/>
+                        <segue destination="IuV-xj-dMS" kind="show" identifier="repoDetails" id="vMS-fP-AQT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFw-eD-uyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810.39999999999998" y="124.58770614692655"/>
+            <point key="canvasLocation" x="1952.8" y="124.58770614692655"/>
+        </scene>
+        <!--Repo Details View Controller-->
+        <scene sceneID="417-17-0do">
+            <objects>
+                <viewController id="IuV-xj-dMS" customClass="RepoDetailsViewController" customModule="GitHubber" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aU9-hg-vL7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zxb-c0-MqW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repoDetailsTableCell" rowHeight="135" id="BlA-l4-nPj" customClass="RepoDetailsTableCell" customModule="GitHubber" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BlA-l4-nPj" id="k5X-Ve-A5C">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOV-kR-1rO">
+                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBm-Bh-qLr">
+                                                    <rect key="frame" x="15" y="40" width="345" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8E-xf-rDM">
+                                                    <rect key="frame" x="15" y="69" width="145" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGc-di-0Au">
+                                                    <rect key="frame" x="15" y="98" width="345" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFG-Wp-4ZR">
+                                                    <rect key="frame" x="179" y="69" width="155" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="forks" destination="FFG-Wp-4ZR" id="UPQ-ka-nxy"/>
+                                            <outlet property="repoDescription" destination="QBm-Bh-qLr" id="l3V-6A-K4h"/>
+                                            <outlet property="repoName" destination="DOV-kR-1rO" id="mns-gO-Uvj"/>
+                                            <outlet property="stars" destination="h8E-xf-rDM" id="LDC-UO-YJV"/>
+                                            <outlet property="updated" destination="oGc-di-0Au" id="x3a-ED-rnV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zxb-c0-MqW" firstAttribute="trailing" secondItem="m6c-fV-pNB" secondAttribute="trailing" id="Mfh-B4-iih"/>
+                            <constraint firstItem="zxb-c0-MqW" firstAttribute="leading" secondItem="m6c-fV-pNB" secondAttribute="leading" id="aUo-cR-MZv"/>
+                            <constraint firstItem="zxb-c0-MqW" firstAttribute="top" secondItem="m6c-fV-pNB" secondAttribute="top" id="gEe-eu-Ae0"/>
+                            <constraint firstItem="zxb-c0-MqW" firstAttribute="bottom" secondItem="m6c-fV-pNB" secondAttribute="bottom" id="j1e-wd-alC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m6c-fV-pNB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AjS-li-dZR"/>
+                    <connections>
+                        <outlet property="reposTable" destination="zxb-c0-MqW" id="Zf6-DW-U3O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLL-AL-ed0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2752.8000000000002" y="124.58770614692655"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BT9-6h-FLv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v3b-0h-e5n" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eiW-of-yeG">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FKP-7m-1wS" kind="relationship" relationship="rootViewController" id="pDh-9P-gZJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naF-O7-G7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1044" y="125"/>
         </scene>
     </scenes>
     <resources>
