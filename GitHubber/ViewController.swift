@@ -20,18 +20,26 @@ class ViewController: UIViewController {
         //Preloader should go here
         guard let val = self.searchField?.text else { return }
         
-        performSegue(withIdentifier: "repoListing", sender: sender)
+        self.searchField?.text = ""
+        
+        
         
         let dm = DataManager.instance
+        dm.reset()
         dm.getRepos(owner: val)
         
-        
+    }
+    
+    @objc func loadingComplete() {
+        performSegue(withIdentifier: "repoListing", sender: nil)
     }
     
     //MARK:- UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
         /*
         if let value = ProcessInfo.processInfo.environment["github_token"] {
@@ -42,15 +50,8 @@ class ViewController: UIViewController {
         }
         */
         
-        //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style:UIBarButtonItemStyle.plain, target:nil, action: nil)
-        
-        print("Loading repos")
-        
-        
-        
     }
     
-   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
