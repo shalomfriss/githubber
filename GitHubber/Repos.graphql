@@ -22,37 +22,6 @@ query Repos($user: String!){
                     ...RepoDetails
                 }
             }
-            pageInfo {
-                endCursor
-                hasNextPage
-            }
         }
     }
 }
-
-query ReposContinue($user: String!, $cursor:String!){
-    repositoryOwner(login:$user) {
-        repositories(first: 100, after: $cursor, orderBy: { field: CREATED_AT, direction: DESC }) {
-            edges {
-                node {
-                    ...RepoDetails
-                }
-            }
-            pageInfo {
-                endCursor
-                hasNextPage
-            }
-        }
-    }
-}
-
-
-
-query RepoCount($user: String!) {
-    repositoryOwner(login:$user) {
-        repositories{
-            totalCount
-        }
-    }
-}
-
