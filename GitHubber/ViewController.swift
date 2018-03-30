@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
     
@@ -14,15 +15,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchField:UITextField?
     @IBOutlet weak var searchButton:UIButton?
     
+    var notificationToken: NotificationToken!
+    var realm: Realm!
+    
     @IBAction func searchButtonClicked(sender:UIButton) {
-        
         
         //Preloader should go here
         guard let val = self.searchField?.text else { return }
         
         self.searchField?.text = ""
-        
-        
         
         let dm = DataManager.instance
         dm.reset()
@@ -41,7 +42,13 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
+        let realm = try! Realm()
+        let repoEntries = realm.objects(RepoEntryList.self)
+        print("REALM")
+        print(repoEntries)
+        
         Alerter.getGithubToken()
+        
         
         /*
         if let value = ProcessInfo.processInfo.environment["github_token"] {
@@ -54,11 +61,15 @@ class ViewController: UIViewController {
         
     }
     
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    deinit {
+        notificationToken.invalidate()
+    }
 
 }
 

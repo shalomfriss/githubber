@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-class RepoEntry {
-    public var language:String = ""
-    public var repos = [RepoVO]()
-    public var count:Int {
+
+class RepoEntry: Object {
+    @objc dynamic var language:String = ""
+    var repos = List<RepoVO>()//[RepoVO]()
+    @objc dynamic public var count:Int {
         get {
             return repos.count
         }

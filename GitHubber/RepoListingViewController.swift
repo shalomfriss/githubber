@@ -57,9 +57,10 @@ class RepoListingViewController:UIViewController {
             .subscribe(onNext: {
                 repoEntry in
                 
-                print(repoEntry.language)
-                print(repoEntry.repos)
-                DataManager.instance.languageRepos.value = repoEntry.repos
+                //print(repoEntry.language)
+                //print(repoEntry.repos)
+                DataManager.instance.languageRepos.value.removeAll()
+                DataManager.instance.languageRepos.value.append(contentsOf: repoEntry.repos)// = repoEntry.repos
                 
                 if let selectedRowIndexPath = self.repoTable?.indexPathForSelectedRow {
                     self.repoTable?.deselectRow(at: selectedRowIndexPath, animated: true)

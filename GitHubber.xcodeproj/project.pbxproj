@@ -56,6 +56,11 @@
 		CE466776206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */; };
 		CE466777206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */; };
 		CE46677B206C8C7E00FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
+		CE46677F206CA3C100FB8BFC /* NetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677E206CA3C100FB8BFC /* NetTest.swift */; };
+		CE466781206CA69500FB8BFC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE466780206CA69500FB8BFC /* SystemConfiguration.framework */; };
+		CE466783206DC87400FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
+		CE466784206DC87400FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
+		CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466785206DD0C800FB8BFC /* RepoEntryList.swift */; };
 		FC988A03E6208E186B311AFA /* Pods_GitHubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD769F407C83483F663EC7A /* Pods_GitHubber.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,7 +114,10 @@
 		CE46676C2069F74700FB8BFC /* Alerter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alerter.swift; path = GitHubber/utils/Alerter.swift; sourceTree = SOURCE_ROOT; };
 		CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsTableCell.swift; sourceTree = "<group>"; };
-		CE46677A206C8C7E00FB8BFC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = GitHubber/utils/Extensions.swift; sourceTree = SOURCE_ROOT; };
+		CE46677A206C8C7E00FB8BFC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "GitHubber/New Group2/Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		CE46677E206CA3C100FB8BFC /* NetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetTest.swift; path = GitHubber/utils/NetTest.swift; sourceTree = SOURCE_ROOT; };
+		CE466780206CA69500FB8BFC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CE466785206DD0C800FB8BFC /* RepoEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntryList.swift; path = GitHubber/utils/RepoEntryList.swift; sourceTree = SOURCE_ROOT; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF30FDC28D542EA3305FA291 /* Pods-GitHubberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F423F51F0AEE147179C8C765 /* Pods-GitHubberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE466781206CA69500FB8BFC /* SystemConfiguration.framework in Frameworks */,
 				FC988A03E6208E186B311AFA /* Pods_GitHubber.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +155,7 @@
 		5354FD120015C98D17F95AD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE466780206CA69500FB8BFC /* SystemConfiguration.framework */,
 				7DD769F407C83483F663EC7A /* Pods_GitHubber.framework */,
 				74DDFF51455B62D7282BB5F4 /* Pods_GitHubberTests.framework */,
 				190810D04457F33BB7CC4D93 /* Pods_GitHubberUITests.framework */,
@@ -191,6 +201,7 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
+				CE466782206CAB5C00FB8BFC /* models */,
 				CE4667632069C85400FB8BFC /* views */,
 				CE46675220692D3100FB8BFC /* constants */,
 				CE46674D20692D2000FB8BFC /* vo */,
@@ -234,7 +245,7 @@
 			children = (
 				CE46674920692D1D00FB8BFC /* DataManager.swift */,
 				CE46676C2069F74700FB8BFC /* Alerter.swift */,
-				CE46677A206C8C7E00FB8BFC /* Extensions.swift */,
+				CE46677E206CA3C100FB8BFC /* NetTest.swift */,
 			);
 			name = utils;
 			path = "New Group";
@@ -245,6 +256,7 @@
 			children = (
 				CE46674E20692D2B00FB8BFC /* RepoVO.swift */,
 				CE4667682069ED4600FB8BFC /* RepoEntry.swift */,
+				CE466785206DD0C800FB8BFC /* RepoEntryList.swift */,
 			);
 			name = vo;
 			path = "New Group1";
@@ -253,6 +265,7 @@
 		CE46675220692D3100FB8BFC /* constants */ = {
 			isa = PBXGroup;
 			children = (
+				CE46677A206C8C7E00FB8BFC /* Extensions.swift */,
 				CE46675320692D3C00FB8BFC /* Config.swift */,
 			);
 			name = constants;
@@ -266,6 +279,13 @@
 				CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		CE466782206CAB5C00FB8BFC /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,6 +637,8 @@
 			files = (
 				CE4667652069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE20674A206344590083E825 /* ViewController.swift in Sources */,
+				CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */,
+				CE46677F206CA3C100FB8BFC /* NetTest.swift in Sources */,
 				CE46674A20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE2067CE206492B10083E825 /* API.swift in Sources */,
 				CE46674F20692D2B00FB8BFC /* RepoVO.swift in Sources */,
@@ -644,6 +666,7 @@
 				CE46674B20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE46675620692D3C00FB8BFC /* Config.swift in Sources */,
 				CE4667612069C7E300FB8BFC /* AppModel.swift in Sources */,
+				CE466783206DC87400FB8BFC /* Extensions.swift in Sources */,
 				CE46675D2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE46675020692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE46676E2069F74700FB8BFC /* Alerter.swift in Sources */,
@@ -663,6 +686,7 @@
 				CE46674C20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE46675720692D3C00FB8BFC /* Config.swift in Sources */,
 				CE4667622069C7E300FB8BFC /* AppModel.swift in Sources */,
+				CE466784206DC87400FB8BFC /* Extensions.swift in Sources */,
 				CE46675E2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE46675120692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE46676F2069F74700FB8BFC /* Alerter.swift in Sources */,

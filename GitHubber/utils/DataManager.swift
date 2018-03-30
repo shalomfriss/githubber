@@ -10,6 +10,7 @@ import Foundation
 import Apollo
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 /**
     DataManager handles retrieving data from Github
@@ -34,6 +35,8 @@ class DataManager {
             return _instance
         }
     }
+    
+    private var currentOwner:String = ""
     
     //MARK:- Initialization
     init() {
@@ -92,6 +95,8 @@ class DataManager {
     func getRepos(owner:String) {
         
         print("Get repos")
+        self.currentOwner = owner
+        
         Alerter.showPreloader()
        self.apollo?.fetch(query:  ReposQuery(user: owner)) { [weak self] result, error
             in
@@ -116,7 +121,7 @@ class DataManager {
                 //Representation and also is self-documenting
                 let repovo = RepoVO()
                 repovo.name = repo.name
-                repovo.description = repo.description ?? ""
+                repovo.desc = repo.description ?? ""
                 repovo.primaryLanguage = repo.primaryLanguage?.name ?? "Unknown"
                 repovo.forks = repo.forks.totalCount
                 repovo.stargazers = repo.stargazers.totalCount
@@ -179,7 +184,7 @@ class DataManager {
                 //Representation and also is self-documenting
                 let repovo = RepoVO()
                 repovo.name = repo.name
-                repovo.description = repo.description ?? ""
+                repovo.desc = repo.description ?? ""
                 repovo.primaryLanguage = repo.primaryLanguage?.name ?? "Unknown"
                 repovo.forks = repo.forks.totalCount
                 repovo.stargazers = repo.stargazers.totalCount
@@ -228,14 +233,36 @@ class DataManager {
         //Sort by number of repos
         let sortedDict = self.tempRepos.sorted(by: {$0.value.count > $1.value.count})
         
+        let repoEntries:RepoEntryList = RepoEntryList()
+        repoEntries.username = self.currentOwner
+        
         //Create an array we can actually work with
         self.repositories.value.removeAll()
         for(lang, rep) in sortedDict {
             let entry = RepoEntry()
             entry.language = lang
-            entry.repos = rep
+            entry.repos.append(objectsIn: rep)
+            repoEntries.repoEntries.append(entry)
             self.repositories.value.append(entry)
         }
+        
+        
+        let realm = try! Realm()
+        let reps = realm.objects(RepoEntryList.self).filter({$0.username == self.currentOwner})
+        if(reps.count > 0) {
+            let entries = reps.first
+
+            try! realm.write {
+                entries!.repoEntries = repoEntries.repoEntries
+            }
+        }
+        else {
+            try! realm.write {
+                realm.add(repoEntries)
+            }
+        }
+        
+        
     }
     
 }

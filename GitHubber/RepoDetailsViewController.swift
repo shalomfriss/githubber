@@ -36,7 +36,7 @@ class RepoDetailsViewController:UIViewController {
             (row: Int, element: RepoVO, cell: RepoDetailsTableCell) in
             
             
-            cell.config(name: element.name, desc: element.description, stars: element.stargazers,
+            cell.config(name: element.name, desc: element.desc, stars: element.stargazers,
                         forks: element.forks, updated: element.updatedAt)
         }.disposed(by: self.disposeBag)
         
