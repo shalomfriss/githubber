@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ViewController: UIViewController {
     
@@ -15,8 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchField:UITextField?
     @IBOutlet weak var searchButton:UIButton?
     
-    var notificationToken: NotificationToken!
-    var realm: Realm!
+    
     
     @IBAction func searchButtonClicked(sender:UIButton) {
         
@@ -42,13 +40,7 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
-        let connected = NetTest.isConnectedToNetwork()
-        print("CONNECTED: \(connected)")
-        
-        let realm = try! Realm()
-        let repoEntries = realm.objects(RepoEntryList.self)
-        print("REALM")
-        print(repoEntries)
+       
         
         Alerter.getGithubToken()
         
@@ -70,9 +62,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    deinit {
-        notificationToken.invalidate()
-    }
-
+    
 }
 

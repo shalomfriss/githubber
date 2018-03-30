@@ -87,12 +87,32 @@ class DataManager {
         }
     }
     
+    func restoreFromCache(owner:String) {
+        let realm = try! Realm()
+        let reps = realm.objects(RepoEntryList.self).filter({$0.username == owner})
+        if(reps.count > 0) {
+            let entries = reps.first
+            
+            self.repositories.value.removeAll()
+            for rep in entries!.repoEntries {
+                self.repositories.value.append(rep)
+            }
+            
+        }
+    }
     
     /**
         Get the repos of the mentioned owner
         @param owner:String - A string describing the owner
     */
     func getRepos(owner:String) {
+        let connected = NetTest.isConnectedToNetwork()
+        print("CONNECTED: \(connected)")
+        if(connected == false) {
+            self.restoreFromCache(owner: owner)
+            NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
+            return
+        }
         
         print("Get repos")
         self.currentOwner = owner
