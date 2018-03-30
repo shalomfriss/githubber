@@ -9,9 +9,9 @@
 import Foundation
 import SystemConfiguration
 
-public class Reachability {
+public class NetTest {
     
-    func isConnectedToNetwork() -> Bool {
+    static func isConnectedToNetwork() -> Bool {
         
         guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com") else { return false }
         
@@ -34,7 +34,7 @@ public class Reachability {
         return isReachable
     }
     
-    func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+    static func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
         let isReachable = flags.contains(.reachable)
         let needsConnection = flags.contains(.connectionRequired)
         let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)

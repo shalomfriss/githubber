@@ -42,6 +42,9 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
+        let connected = NetTest.isConnectedToNetwork()
+        print("CONNECTED: \(connected)")
+        
         let realm = try! Realm()
         let repoEntries = realm.objects(RepoEntryList.self)
         print("REALM")
