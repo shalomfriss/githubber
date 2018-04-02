@@ -19,38 +19,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u94-4g-eph">
-                                <rect key="frame" x="163" y="457" width="48" height="30"/>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="searchButtonClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REu-W1-cSR"/>
-                                </connections>
-                            </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="dBn-qR-oDF">
-                                <rect key="frame" x="115" y="273" width="145" height="121"/>
+                                <rect key="frame" x="115" y="171" width="145" height="121"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="145" id="g6k-jE-HPT"/>
-                                    <constraint firstAttribute="height" constant="121" id="v47-q1-FyI"/>
+                                    <constraint firstAttribute="width" constant="145" id="MMs-5d-iga"/>
+                                    <constraint firstAttribute="height" constant="121" id="zVq-Xr-HCg"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qcx-P3-mOA">
-                                <rect key="frame" x="37" y="419" width="300" height="30"/>
+                                <rect key="frame" x="37" y="317" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="3by-yd-aIb"/>
+                                    <constraint firstAttribute="width" constant="300" id="eTF-i6-cna"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u94-4g-eph">
+                                <rect key="frame" x="144" y="355" width="86" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="j4y-OA-O8i"/>
+                                </constraints>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchButtonClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REu-W1-cSR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dBn-qR-oDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N7a-Mt-3IK"/>
-                            <constraint firstItem="u94-4g-eph" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PKy-DX-I2U"/>
-                            <constraint firstItem="u94-4g-eph" firstAttribute="top" secondItem="qcx-P3-mOA" secondAttribute="bottom" constant="8" id="WRZ-1g-qJC"/>
-                            <constraint firstItem="dBn-qR-oDF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aYR-X3-5yJ"/>
-                            <constraint firstItem="qcx-P3-mOA" firstAttribute="top" secondItem="dBn-qR-oDF" secondAttribute="bottom" constant="25" id="dmH-BW-HHo"/>
-                            <constraint firstItem="qcx-P3-mOA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rRY-jf-Nei"/>
+                            <constraint firstItem="u94-4g-eph" firstAttribute="centerX" secondItem="dBn-qR-oDF" secondAttribute="centerX" id="25C-v3-Eds"/>
+                            <constraint firstItem="u94-4g-eph" firstAttribute="top" secondItem="qcx-P3-mOA" secondAttribute="bottom" constant="8" id="4Nl-fN-T06"/>
+                            <constraint firstItem="u94-4g-eph" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8ka-3a-EFj"/>
+                            <constraint firstItem="dBn-qR-oDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KED-ds-0vO"/>
+                            <constraint firstItem="dBn-qR-oDF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="107" id="PoG-TU-0Py"/>
+                            <constraint firstItem="qcx-P3-mOA" firstAttribute="centerX" secondItem="dBn-qR-oDF" secondAttribute="centerX" id="UHp-yW-Crd"/>
+                            <constraint firstItem="qcx-P3-mOA" firstAttribute="top" secondItem="dBn-qR-oDF" secondAttribute="bottom" constant="25" id="Vsv-i2-3OQ"/>
+                            <constraint firstItem="qcx-P3-mOA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hYC-Q9-O8N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -63,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1004" y="124"/>
+            <point key="canvasLocation" x="1004" y="123.68815592203899"/>
         </scene>
         <!--Repo Listing View Controller-->
         <scene sceneID="dQk-zl-g44">

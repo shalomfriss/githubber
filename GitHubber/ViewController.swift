@@ -14,14 +14,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchField:UITextField?
     @IBOutlet weak var searchButton:UIButton?
     
-    
+    var searchFieldDelegate:ACTextField = ACTextField()
     
     @IBAction func searchButtonClicked(sender:UIButton) {
+        
+        self.searchField?.resignFirstResponder()
         
         //Preloader should go here
         guard let val = self.searchField?.text else { return }
         
         self.searchField?.text = ""
+        
+        //"type:user in:login"
         
         let dm = DataManager.instance
         dm.reset()
@@ -40,22 +44,20 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
-       
-        
-        Alerter.getGithubToken()
-        
-        
-        /*
-        if let value = ProcessInfo.processInfo.environment["github_token"] {
-            print("Github - \(value)")
+        if(Config.GITHUB_TOKEN == "") {
+            Alerter.getGithubToken()
         }
-        else {
-            print("No env token")
-        }
-        */
+        
+        self.searchField?.delegate = self.searchFieldDelegate
+        self.searchFieldDelegate.textField = self.searchField
+        NotificationCenter.default.addObserver(self, selector: #selector(self.possibilitiesUpdated), name: NSNotification.Name(rawValue: "possibilitiesUpdated"), object: nil)
+        
         
     }
     
+    @objc func possibilitiesUpdated(notfication: NSNotification) {
+        self.searchFieldDelegate.possibilitiesUpdated(notfication: notfication)
+    }
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

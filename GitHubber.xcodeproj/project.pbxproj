@@ -61,6 +61,10 @@
 		CE466783206DC87400FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
 		CE466784206DC87400FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
 		CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466785206DD0C800FB8BFC /* RepoEntryList.swift */; };
+		CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90C4ED20701C4E002EF033 /* ACTextField.swift */; };
+		CE90C4F02071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
+		CE90C4F12071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
+		CE90C4F22071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
 		FC988A03E6208E186B311AFA /* Pods_GitHubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD769F407C83483F663EC7A /* Pods_GitHubber.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +122,8 @@
 		CE46677E206CA3C100FB8BFC /* NetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetTest.swift; path = GitHubber/utils/NetTest.swift; sourceTree = SOURCE_ROOT; };
 		CE466780206CA69500FB8BFC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE466785206DD0C800FB8BFC /* RepoEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntryList.swift; path = GitHubber/utils/RepoEntryList.swift; sourceTree = SOURCE_ROOT; };
+		CE90C4ED20701C4E002EF033 /* ACTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACTextField.swift; sourceTree = "<group>"; };
+		CE90C4EF2071DD7F002EF033 /* users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.graphql; sourceTree = "<group>"; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF30FDC28D542EA3305FA291 /* Pods-GitHubberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F423F51F0AEE147179C8C765 /* Pods-GitHubberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,7 +207,7 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
-				CE466782206CAB5C00FB8BFC /* models */,
+				CE90C4EC20701C41002EF033 /* components */,
 				CE4667632069C85400FB8BFC /* views */,
 				CE46675220692D3100FB8BFC /* constants */,
 				CE46674D20692D2000FB8BFC /* vo */,
@@ -213,6 +219,7 @@
 				CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */,
 				CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */,
 				CE2067FD20692C870083E825 /* Repos.graphql */,
+				CE90C4EF2071DD7F002EF033 /* users.graphql */,
 				CE20674B206344590083E825 /* Main.storyboard */,
 				CE20674E206344590083E825 /* Assets.xcassets */,
 				CE206750206344590083E825 /* LaunchScreen.storyboard */,
@@ -281,11 +288,12 @@
 			path = views;
 			sourceTree = "<group>";
 		};
-		CE466782206CAB5C00FB8BFC /* models */ = {
+		CE90C4EC20701C41002EF033 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				CE90C4ED20701C4E002EF033 /* ACTextField.swift */,
 			);
-			path = models;
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE90C4F02071DD80002EF033 /* users.graphql in Resources */,
 				CE206780206481930083E825 /* schema.json in Resources */,
 				CE206752206344590083E825 /* LaunchScreen.storyboard in Resources */,
 				CE2067FE20692C870083E825 /* Repos.graphql in Resources */,
@@ -417,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE90C4F12071DD80002EF033 /* users.graphql in Resources */,
 				CE206781206481930083E825 /* schema.json in Resources */,
 				CE2067FF20692C870083E825 /* Repos.graphql in Resources */,
 			);
@@ -426,6 +436,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE90C4F22071DD80002EF033 /* users.graphql in Resources */,
 				CE206782206481930083E825 /* schema.json in Resources */,
 				CE20680020692C870083E825 /* Repos.graphql in Resources */,
 			);
@@ -644,6 +655,7 @@
 				CE46674F20692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE466771206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
 				CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */,
+				CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */,
 				CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE4667692069ED4600FB8BFC /* RepoEntry.swift in Sources */,
 				CE206748206344590083E825 /* AppDelegate.swift in Sources */,

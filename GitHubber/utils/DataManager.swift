@@ -101,6 +101,7 @@ class DataManager {
         }
     }
     
+    
     /**
         Get the repos of the mentioned owner
         @param owner:String - A string describing the owner
@@ -283,6 +284,27 @@ class DataManager {
         }
         
         
+    }
+    
+    func getUsernameSuggestion(substring:String, complete:@escaping (String?) -> Void) {
+        //Had to be created this way according to Github
+        let qString = "type:user \(substring) in:login"
+        
+        self.apollo?.fetch(query:  UserNameQuery(queryString: qString)) { [weak self] result, error
+            in
+            
+            if(error != nil)
+            {
+                Alerter.hidePreloader()
+                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                return
+            }
+            
+            let _ = self
+            
+            let name = result?.data?.search.edges?.first??.node?.asUser?.login
+            complete(name)
+        }
     }
     
 }
