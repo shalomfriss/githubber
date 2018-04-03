@@ -33,7 +33,8 @@ class ACTextField:NSObject, UITextFieldDelegate {
         
         var subString = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string) // 2
         subString = formatSubstring(subString: subString)
-        /*
+        
+        
         weak var _self = self
         DataManager.instance.getUsernameSuggestion(substring: subString, complete: {(temp:String?) in
             
@@ -41,29 +42,22 @@ class ACTextField:NSObject, UITextFieldDelegate {
             self.autoCompletionPossibilities = [name]
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "possibilitiesUpdated"), object: nil, userInfo: ["value": subString])
             
-            
-         
-            if subString.count == 0 {
-                self.resetValues()
-            } else {
-                self.searchAutocompleteEntriesWIthSubstring(substring: subString)
-            }
- 
-            
         })
-         */
+        
+        /*
         if subString.count == 0 {
             self.resetValues()
         } else {
             self.searchAutocompleteEntriesWIthSubstring(substring: subString)
         }
+        */
         
         return true
     }
     
     
     public func possibilitiesUpdated(notfication: NSNotification) {
-        var subString = notfication.userInfo?["value"] as! String
+        let subString = notfication.userInfo?["value"] as! String
         if subString.count == 0 {
             self.resetValues()
         } else {
@@ -78,8 +72,6 @@ class ACTextField:NSObject, UITextFieldDelegate {
     }
     
     
-    
-    
     func resetValues() {
         autoCompleteCharacterCount = 0
         textField.text = ""
@@ -88,13 +80,15 @@ class ACTextField:NSObject, UITextFieldDelegate {
     func searchAutocompleteEntriesWIthSubstring(substring: String) {
         
         let userQuery = substring
-        let suggestions = getAutocompleteSuggestions(userText: substring)
-        
+        //var suggestions = getAutocompleteSuggestions(userText: substring)
+        let suggestions = self.autoCompletionPossibilities
         if suggestions.count > 0 {
             timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in
+                
                 let autocompleteResult = self.formatAutocompleteResult(substring: substring, possibleMatches: suggestions)
                 self.putColourFormattedTextInTextField(autocompleteResult: autocompleteResult, userQuery : userQuery)
                 self.moveCaretToEndOfUserQueryPosition(userQuery: userQuery)
+                
             })
         } else {
             timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in //7
