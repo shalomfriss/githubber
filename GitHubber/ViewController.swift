@@ -51,7 +51,10 @@ class ViewController: UIViewController {
         self.searchField?.delegate = self.searchFieldDelegate
         self.searchFieldDelegate.textField = self.searchField
         NotificationCenter.default.addObserver(self, selector: #selector(self.possibilitiesUpdated), name: NSNotification.Name(rawValue: "possibilitiesUpdated"), object: nil)
+       
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     

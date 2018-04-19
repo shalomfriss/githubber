@@ -1,0 +1,709 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "data" : [
+    {
+      "idiom" : "universal",
+      "filename" : "amazonwebservices.png",
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "android.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "angularjs.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "apache.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "appcelerator.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "apple-original.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "atom-original.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "babel.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "backbonejs.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "behance.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "bitbucket.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "bootstrap.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "bower.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "c.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "cakephp.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ceylon.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "chrome.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "codeigniter.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "coffeescript.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "confluence.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "couchdb.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "cplusplus.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "csharp.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "css3.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "cucumber.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "d3js.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "debian.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "devicon.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "django.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "docker.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "doctrine.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "dot-net.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "drupal.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "electron.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "elm.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "erlang.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "express.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "facebook.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "firefox.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "foundation.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "gatling.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "gimp.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "git.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "github.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "gitlab.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "go.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "google.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "gradle.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "grunt.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "gulp.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "handlebars.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "heroku.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "html5.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ie10.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "illustrator.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "inkscape.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "intellij.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ionic.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "jasmine.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "java.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "javascript.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "jeet.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "jetbrains.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "jquery.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "krakenjs.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "laravel.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "linkedin.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "linux.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "meteor.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "mocha.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "mongodb.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "moodle.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "mysql.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "nginx.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "nodejs.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "nodewebkit.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "oracle.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "photoshop.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "php.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "phpstorm.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "postgresql.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "protractor.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "pycharm.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "python.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "rails.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "react.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "redhat.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "redis.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ruby.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "rubymine.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "safari.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "sass.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "sequelize.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "sketch.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "slack.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "sourcetree.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ssh.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "stylus.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "swift.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "symfony.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "tomcat.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "travis.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "trello.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "twitter.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "typescript.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ubuntu.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "vagrant.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "vim.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "visualstudio.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "vuejs.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "webpack.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "webstorm.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "windows8.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "wordpress.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "yarn.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "yii.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "zend.png",
+      "unassigned" : true,
+      "universal-type-identifier" : "public.png"
+    }
+  ]
+}

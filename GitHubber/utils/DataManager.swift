@@ -283,7 +283,6 @@ class DataManager {
             }
         }
         
-        
     }
     
     func getUsernameSuggestion(substring:String, complete:@escaping (String?) -> Void) {

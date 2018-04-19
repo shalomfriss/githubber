@@ -16,7 +16,7 @@ class ACTextField:NSObject, UITextFieldDelegate {
     
     var textField: UITextField!
     
-    private var autoCompletionPossibilities = ["Shalomfriss", "Facebook", "Apple"]//[String]()
+    private var autoCompletionPossibilities = ["Shalomfriss", "Facebook", "Apple"]
     public var suggestions:[String] {
         get {
             return autoCompletionPossibilities
@@ -35,11 +35,17 @@ class ACTextField:NSObject, UITextFieldDelegate {
         subString = formatSubstring(subString: subString)
         
         
-        weak var _self = self
+        weak var weakSelf = self
         DataManager.instance.getUsernameSuggestion(substring: subString, complete: {(temp:String?) in
             
             let name:String = temp ?? ""
-            self.autoCompletionPossibilities = [name]
+            if(name == "") {
+                weakSelf?.autoCompletionPossibilities = []
+            }
+            else {
+                weakSelf?.autoCompletionPossibilities = [name]
+            }
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "possibilitiesUpdated"), object: nil, userInfo: ["value": subString])
             
         })
@@ -67,7 +73,7 @@ class ACTextField:NSObject, UITextFieldDelegate {
     
     
     func formatSubstring(subString: String) -> String {
-        let formatted = String(subString.dropLast(autoCompleteCharacterCount)).lowercased().capitalized //5
+        let formatted = String(subString.dropLast(autoCompleteCharacterCount)).lowercased().capitalized
         return formatted
     }
     

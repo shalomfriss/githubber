@@ -61,6 +61,7 @@
 		CE466783206DC87400FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
 		CE466784206DC87400FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
 		CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466785206DD0C800FB8BFC /* RepoEntryList.swift */; };
+		CE50A3A0207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A39F207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift */; };
 		CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90C4ED20701C4E002EF033 /* ACTextField.swift */; };
 		CE90C4F02071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
 		CE90C4F12071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
@@ -122,6 +123,7 @@
 		CE46677E206CA3C100FB8BFC /* NetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetTest.swift; path = GitHubber/utils/NetTest.swift; sourceTree = SOURCE_ROOT; };
 		CE466780206CA69500FB8BFC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE466785206DD0C800FB8BFC /* RepoEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntryList.swift; path = GitHubber/utils/RepoEntryList.swift; sourceTree = SOURCE_ROOT; };
+		CE50A39F207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndyRepoDetailsTableCell.swift; sourceTree = "<group>"; };
 		CE90C4ED20701C4E002EF033 /* ACTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACTextField.swift; sourceTree = "<group>"; };
 		CE90C4EF2071DD7F002EF033 /* users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.graphql; sourceTree = "<group>"; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				CE4667642069C87600FB8BFC /* RepoTableCell.swift */,
 				CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */,
+				CE50A39F207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */,
 				CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */,
 				CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
+				CE50A3A0207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift in Sources */,
 				CE4667692069ED4600FB8BFC /* RepoEntry.swift in Sources */,
 				CE206748206344590083E825 /* AppDelegate.swift in Sources */,
 				CE46675520692D3C00FB8BFC /* Config.swift in Sources */,

@@ -11,17 +11,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/**
+    This is the listing of repositories in a specific language
+*/
 class RepoDetailsViewController:UIViewController {
     
     @IBOutlet weak var reposTable:UITableView?
     
     let repoDetails = DataManager.instance.languageRepos.asObservable()
-    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         self.setupTableView()
         self.reposTable?.rx.setDelegate(self).disposed(by: self.disposeBag)
@@ -35,9 +36,10 @@ class RepoDetailsViewController:UIViewController {
         {
             (row: Int, element: RepoVO, cell: RepoDetailsTableCell) in
             
-            
             cell.config(name: element.name, desc: element.desc, stars: element.stargazers,
                         forks: element.forks, updated: element.updatedAt)
+            
+            cell.repo = element
         }.disposed(by: self.disposeBag)
         
     }
@@ -57,6 +59,11 @@ extension RepoDetailsViewController:UITableViewDelegate {
         
         cell.backgroundColor = UIColor(red: 0.5, green: 0.5 + color, blue: 1, alpha: 0.5)
        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell:RepoDetailsTableCell = self.reposTable?.cellForRow(at: indexPath) as! RepoDetailsTableCell
+        print(cell.repo)
     }
 }
 
