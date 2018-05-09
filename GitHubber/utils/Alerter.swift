@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftKeychainWrapper
 
 class Alerter {
     static var preloaderShowing:Bool = false
@@ -24,6 +25,14 @@ class Alerter {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let textField = alert?.textFields?[0]
                 let token = textField?.text
+                print("Got token")
+                print(token!)
+                let saveSuccessful: Bool = KeychainWrapper.standard.set(token!, forKey: "token")
+                
+                if(saveSuccessful == false) {
+                    Alerter.alert(title: "Error", msg: "Could not save your token locally")
+                    return
+                }
                 if(token != nil) {
                     Config.GITHUB_TOKEN = token!
                 }

@@ -65,6 +65,12 @@
 		CE50A3A22088C86100992FFD /* SingleRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */; };
 		CE50A3A32088C86100992FFD /* SingleRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */; };
 		CE50A3A42088C86100992FFD /* SingleRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */; };
+		CE8ABEDD20A28D0A00DB4E26 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE8ABEDC20A28D0A00DB4E26 /* Settings.bundle */; };
+		CE8ABEDE20A28D0A00DB4E26 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE8ABEDC20A28D0A00DB4E26 /* Settings.bundle */; };
+		CE8ABEDF20A28D0A00DB4E26 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE8ABEDC20A28D0A00DB4E26 /* Settings.bundle */; };
+		CE8ABEE120A28FA100DB4E26 /* SettingsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ABEE020A28FA100DB4E26 /* SettingsUtil.swift */; };
+		CE8ABEE220A28FA100DB4E26 /* SettingsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ABEE020A28FA100DB4E26 /* SettingsUtil.swift */; };
+		CE8ABEE320A28FA100DB4E26 /* SettingsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ABEE020A28FA100DB4E26 /* SettingsUtil.swift */; };
 		CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90C4ED20701C4E002EF033 /* ACTextField.swift */; };
 		CE90C4F02071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
 		CE90C4F12071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
@@ -128,6 +134,8 @@
 		CE466785206DD0C800FB8BFC /* RepoEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntryList.swift; path = GitHubber/utils/RepoEntryList.swift; sourceTree = SOURCE_ROOT; };
 		CE50A39F207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndyRepoDetailsTableCell.swift; sourceTree = "<group>"; };
 		CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoViewController.swift; sourceTree = "<group>"; };
+		CE8ABEDC20A28D0A00DB4E26 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CE8ABEE020A28FA100DB4E26 /* SettingsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsUtil.swift; path = GitHubber/utils/SettingsUtil.swift; sourceTree = SOURCE_ROOT; };
 		CE90C4ED20701C4E002EF033 /* ACTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACTextField.swift; sourceTree = "<group>"; };
 		CE90C4EF2071DD7F002EF033 /* users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.graphql; sourceTree = "<group>"; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +236,7 @@
 				CE2067FD20692C870083E825 /* Repos.graphql */,
 				CE90C4EF2071DD7F002EF033 /* users.graphql */,
 				CE20674B206344590083E825 /* Main.storyboard */,
+				CE8ABEDC20A28D0A00DB4E26 /* Settings.bundle */,
 				CE20674E206344590083E825 /* Assets.xcassets */,
 				CE206750206344590083E825 /* LaunchScreen.storyboard */,
 				CE206753206344590083E825 /* Info.plist */,
@@ -260,6 +269,7 @@
 				CE46674920692D1D00FB8BFC /* DataManager.swift */,
 				CE46676C2069F74700FB8BFC /* Alerter.swift */,
 				CE46677E206CA3C100FB8BFC /* NetTest.swift */,
+				CE8ABEE020A28FA100DB4E26 /* SettingsUtil.swift */,
 			);
 			name = utils;
 			path = "New Group";
@@ -427,6 +437,7 @@
 				CE2067FE20692C870083E825 /* Repos.graphql in Resources */,
 				CE20674F206344590083E825 /* Assets.xcassets in Resources */,
 				CE20674D206344590083E825 /* Main.storyboard in Resources */,
+				CE8ABEDD20A28D0A00DB4E26 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8ABEDE20A28D0A00DB4E26 /* Settings.bundle in Resources */,
 				CE90C4F12071DD80002EF033 /* users.graphql in Resources */,
 				CE206781206481930083E825 /* schema.json in Resources */,
 				CE2067FF20692C870083E825 /* Repos.graphql in Resources */,
@@ -444,6 +456,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8ABEDF20A28D0A00DB4E26 /* Settings.bundle in Resources */,
 				CE90C4F22071DD80002EF033 /* users.graphql in Resources */,
 				CE206782206481930083E825 /* schema.json in Resources */,
 				CE20680020692C870083E825 /* Repos.graphql in Resources */,
@@ -482,6 +495,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
@@ -491,6 +505,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
@@ -526,6 +541,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -534,6 +550,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -599,6 +616,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
@@ -608,6 +626,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
@@ -658,6 +677,7 @@
 				CE4667652069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE20674A206344590083E825 /* ViewController.swift in Sources */,
 				CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */,
+				CE8ABEE120A28FA100DB4E26 /* SettingsUtil.swift in Sources */,
 				CE46677F206CA3C100FB8BFC /* NetTest.swift in Sources */,
 				CE46674A20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE2067CE206492B10083E825 /* API.swift in Sources */,
@@ -694,6 +714,7 @@
 				CE46675020692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE46676E2069F74700FB8BFC /* Alerter.swift in Sources */,
 				CE20675D206344590083E825 /* GitHubberTests.swift in Sources */,
+				CE8ABEE220A28FA100DB4E26 /* SettingsUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +736,7 @@
 				CE46675120692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE46676F2069F74700FB8BFC /* Alerter.swift in Sources */,
 				CE206768206344590083E825 /* GitHubberUITests.swift in Sources */,
+				CE8ABEE320A28FA100DB4E26 /* SettingsUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

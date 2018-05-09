@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class ViewController: UIViewController {
     
     //MARK:- IB outlets and actions
     @IBOutlet weak var searchField:UITextField?
     @IBOutlet weak var searchButton:UIButton?
+    @IBOutlet weak var settingsButton: UIButton!
+    
+    @IBAction func settingsClicked(_ sender: Any) {
+        Alerter.getGithubToken()
+    }
     
     var searchFieldDelegate:ACTextField = ACTextField()
     
@@ -37,6 +43,7 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "repoListing", sender: nil)
     }
     
+    
     //MARK:- UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,8 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
+        let theToken: String? = KeychainWrapper.standard.string(forKey: "token")
+        Config.GITHUB_TOKEN = theToken ?? ""
         if(Config.GITHUB_TOKEN == "") {
             Alerter.getGithubToken()
         }
@@ -53,10 +62,7 @@ class ViewController: UIViewController {
         self.searchFieldDelegate.textField = self.searchField
     }
     
-   
     
-    
-   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

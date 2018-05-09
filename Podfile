@@ -10,6 +10,7 @@ target 'GitHubber' do
 	pod 'RxCocoa', '~> 4.0'
 	pod 'RealmSwift'
 	pod "Apollo"
+	pod 'SwiftKeychainWrapper'
 	
   target 'GitHubberTests' do
     inherit! :search_paths
@@ -18,6 +19,7 @@ target 'GitHubber' do
 	pod 'RxTest',     '~> 4.0'
 	pod 'RealmSwift'
 	pod "Apollo"
+	pod 'SwiftKeychainWrapper'
   end
 
   target 'GitHubberUITests' do
@@ -27,6 +29,7 @@ target 'GitHubber' do
 	pod 'RxTest',     '~> 4.0'
 	pod 'RealmSwift'	
 	pod "Apollo"
+	pod 'SwiftKeychainWrapper'
   end
 
 end

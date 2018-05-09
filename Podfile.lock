@@ -14,6 +14,7 @@ PODS:
   - RxSwift (4.1.2)
   - RxTest (4.1.2):
     - RxSwift (~> 4.0)
+  - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
   - Apollo
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
+  - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   Apollo: 66e0f52289551545adb7ecdd994e713fdbae26eb
@@ -31,7 +33,8 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 1c256a7fa460a33979c3c42d1519a84eceeb8d93
+PODFILE CHECKSUM: 9c8c18337eda38c922f3b6fc01e0e8a10de9aaab
 
 COCOAPODS: 1.4.0

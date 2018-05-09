@@ -45,6 +45,17 @@
                                     <action selector="searchButtonClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REu-W1-cSR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40I-aN-75z">
+                                <rect key="frame" x="291" y="74" width="84" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="QJS-Sa-tte"/>
+                                    <constraint firstAttribute="width" constant="84" id="hfT-MC-V3x"/>
+                                </constraints>
+                                <state key="normal" image="gear"/>
+                                <connections>
+                                    <action selector="settingsClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kmq-Xt-Tmo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -54,8 +65,11 @@
                             <constraint firstItem="dBn-qR-oDF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KED-ds-0vO"/>
                             <constraint firstItem="dBn-qR-oDF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="107" id="PoG-TU-0Py"/>
                             <constraint firstItem="qcx-P3-mOA" firstAttribute="centerX" secondItem="dBn-qR-oDF" secondAttribute="centerX" id="UHp-yW-Crd"/>
+                            <constraint firstItem="40I-aN-75z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="UVj-03-B4v"/>
                             <constraint firstItem="qcx-P3-mOA" firstAttribute="top" secondItem="dBn-qR-oDF" secondAttribute="bottom" constant="25" id="Vsv-i2-3OQ"/>
                             <constraint firstItem="qcx-P3-mOA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hYC-Q9-O8N"/>
+                            <constraint firstItem="40I-aN-75z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jef-Un-1rx"/>
+                            <constraint firstItem="40I-aN-75z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="n01-9v-RV8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -63,6 +77,7 @@
                     <connections>
                         <outlet property="searchButton" destination="u94-4g-eph" id="MBo-zq-5or"/>
                         <outlet property="searchField" destination="qcx-P3-mOA" id="xdW-AG-Zfd"/>
+                        <outlet property="settingsButton" destination="40I-aN-75z" id="Mzd-hd-ktt"/>
                         <segue destination="FKP-7m-1wS" kind="show" identifier="repoListing" id="ldm-rh-B9U"/>
                     </connections>
                 </viewController>
@@ -274,6 +289,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" width="256" height="256"/>
         <image name="github" width="400" height="332"/>
     </resources>
 </document>
