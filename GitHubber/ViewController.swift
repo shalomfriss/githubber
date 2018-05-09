@@ -48,19 +48,14 @@ class ViewController: UIViewController {
             Alerter.getGithubToken()
         }
         
+        
         self.searchField?.delegate = self.searchFieldDelegate
         self.searchFieldDelegate.textField = self.searchField
-        NotificationCenter.default.addObserver(self, selector: #selector(self.possibilitiesUpdated), name: NSNotification.Name(rawValue: "possibilitiesUpdated"), object: nil)
-       
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
     
-    @objc func possibilitiesUpdated(notfication: NSNotification) {
-        self.searchFieldDelegate.possibilitiesUpdated(notfication: notfication)
-    }
+   
+    
+    
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

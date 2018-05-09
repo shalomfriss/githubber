@@ -62,6 +62,9 @@
 		CE466784206DC87400FB8BFC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46677A206C8C7E00FB8BFC /* Extensions.swift */; };
 		CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466785206DD0C800FB8BFC /* RepoEntryList.swift */; };
 		CE50A3A0207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A39F207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift */; };
+		CE50A3A22088C86100992FFD /* SingleRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */; };
+		CE50A3A32088C86100992FFD /* SingleRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */; };
+		CE50A3A42088C86100992FFD /* SingleRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */; };
 		CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90C4ED20701C4E002EF033 /* ACTextField.swift */; };
 		CE90C4F02071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
 		CE90C4F12071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
@@ -124,6 +127,7 @@
 		CE466780206CA69500FB8BFC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE466785206DD0C800FB8BFC /* RepoEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntryList.swift; path = GitHubber/utils/RepoEntryList.swift; sourceTree = SOURCE_ROOT; };
 		CE50A39F207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndyRepoDetailsTableCell.swift; sourceTree = "<group>"; };
+		CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoViewController.swift; sourceTree = "<group>"; };
 		CE90C4ED20701C4E002EF033 /* ACTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACTextField.swift; sourceTree = "<group>"; };
 		CE90C4EF2071DD7F002EF033 /* users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.graphql; sourceTree = "<group>"; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				CE20677F206481930083E825 /* schema.json */,
 				CE206747206344590083E825 /* AppDelegate.swift */,
 				CE206749206344590083E825 /* ViewController.swift */,
+				CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */,
 				CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */,
 				CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */,
 				CE2067FD20692C870083E825 /* Repos.graphql */,
@@ -649,6 +654,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE50A3A22088C86100992FFD /* SingleRepoViewController.swift in Sources */,
 				CE4667652069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE20674A206344590083E825 /* ViewController.swift in Sources */,
 				CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */,
@@ -682,6 +688,7 @@
 				CE46674B20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE46675620692D3C00FB8BFC /* Config.swift in Sources */,
 				CE4667612069C7E300FB8BFC /* AppModel.swift in Sources */,
+				CE50A3A32088C86100992FFD /* SingleRepoViewController.swift in Sources */,
 				CE466783206DC87400FB8BFC /* Extensions.swift in Sources */,
 				CE46675D2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE46675020692D2B00FB8BFC /* RepoVO.swift in Sources */,
@@ -702,6 +709,7 @@
 				CE46674C20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE46675720692D3C00FB8BFC /* Config.swift in Sources */,
 				CE4667622069C7E300FB8BFC /* AppModel.swift in Sources */,
+				CE50A3A42088C86100992FFD /* SingleRepoViewController.swift in Sources */,
 				CE466784206DC87400FB8BFC /* Extensions.swift in Sources */,
 				CE46675E2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE46675120692D2B00FB8BFC /* RepoVO.swift in Sources */,

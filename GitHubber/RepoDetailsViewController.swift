@@ -64,6 +64,7 @@ extension RepoDetailsViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell:RepoDetailsTableCell = self.reposTable?.cellForRow(at: indexPath) as! RepoDetailsTableCell
         print(cell.repo)
+        
     }
 }
 

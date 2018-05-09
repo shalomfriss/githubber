@@ -1767,6 +1767,226 @@ public final class UserNameQuery: GraphQLQuery {
   }
 }
 
+public final class UserNamesQuery: GraphQLQuery {
+  public static let operationString =
+    "query UserNames($queryString: String!) {\n  search(query: $queryString, first: 100, type: USER) {\n    __typename\n    edges {\n      __typename\n      node {\n        __typename\n        ... on User {\n          login\n        }\n      }\n    }\n  }\n}"
+
+  public var queryString: String
+
+  public init(queryString: String) {
+    self.queryString = queryString
+  }
+
+  public var variables: GraphQLMap? {
+    return ["queryString": queryString]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("search", arguments: ["query": GraphQLVariable("queryString"), "first": 100, "type": "USER"], type: .nonNull(.object(Search.selections))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(search: Search) {
+      self.init(snapshot: ["__typename": "Query", "search": search.snapshot])
+    }
+
+    /// Perform a search across resources.
+    public var search: Search {
+      get {
+        return Search(snapshot: snapshot["search"]! as! Snapshot)
+      }
+      set {
+        snapshot.updateValue(newValue.snapshot, forKey: "search")
+      }
+    }
+
+    public struct Search: GraphQLSelectionSet {
+      public static let possibleTypes = ["SearchResultItemConnection"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("edges", type: .list(.object(Edge.selections))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(edges: [Edge?]? = nil) {
+        self.init(snapshot: ["__typename": "SearchResultItemConnection", "edges": edges.flatMap { (value: [Edge?]) -> [Snapshot?] in value.map { (value: Edge?) -> Snapshot? in value.flatMap { (value: Edge) -> Snapshot in value.snapshot } } }])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// A list of edges.
+      public var edges: [Edge?]? {
+        get {
+          return (snapshot["edges"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Edge?] in value.map { (value: Snapshot?) -> Edge? in value.flatMap { (value: Snapshot) -> Edge in Edge(snapshot: value) } } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { (value: [Edge?]) -> [Snapshot?] in value.map { (value: Edge?) -> Snapshot? in value.flatMap { (value: Edge) -> Snapshot in value.snapshot } } }, forKey: "edges")
+        }
+      }
+
+      public struct Edge: GraphQLSelectionSet {
+        public static let possibleTypes = ["SearchResultItemEdge"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("node", type: .object(Node.selections)),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(node: Node? = nil) {
+          self.init(snapshot: ["__typename": "SearchResultItemEdge", "node": node.flatMap { (value: Node) -> Snapshot in value.snapshot }])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// The item at the end of the edge.
+        public var node: Node? {
+          get {
+            return (snapshot["node"] as? Snapshot).flatMap { Node(snapshot: $0) }
+          }
+          set {
+            snapshot.updateValue(newValue?.snapshot, forKey: "node")
+          }
+        }
+
+        public struct Node: GraphQLSelectionSet {
+          public static let possibleTypes = ["Issue", "PullRequest", "Repository", "User", "Organization", "MarketplaceListing"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLTypeCase(
+              variants: ["User": AsUser.selections],
+              default: [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              ]
+            )
+          ]
+
+          public var snapshot: Snapshot
+
+          public init(snapshot: Snapshot) {
+            self.snapshot = snapshot
+          }
+
+          public static func makeIssue() -> Node {
+            return Node(snapshot: ["__typename": "Issue"])
+          }
+
+          public static func makePullRequest() -> Node {
+            return Node(snapshot: ["__typename": "PullRequest"])
+          }
+
+          public static func makeRepository() -> Node {
+            return Node(snapshot: ["__typename": "Repository"])
+          }
+
+          public static func makeOrganization() -> Node {
+            return Node(snapshot: ["__typename": "Organization"])
+          }
+
+          public static func makeMarketplaceListing() -> Node {
+            return Node(snapshot: ["__typename": "MarketplaceListing"])
+          }
+
+          public static func makeUser(login: String) -> Node {
+            return Node(snapshot: ["__typename": "User", "login": login])
+          }
+
+          public var __typename: String {
+            get {
+              return snapshot["__typename"]! as! String
+            }
+            set {
+              snapshot.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var asUser: AsUser? {
+            get {
+              if !AsUser.possibleTypes.contains(__typename) { return nil }
+              return AsUser(snapshot: snapshot)
+            }
+            set {
+              guard let newValue = newValue else { return }
+              snapshot = newValue.snapshot
+            }
+          }
+
+          public struct AsUser: GraphQLSelectionSet {
+            public static let possibleTypes = ["User"]
+
+            public static let selections: [GraphQLSelection] = [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("login", type: .nonNull(.scalar(String.self))),
+            ]
+
+            public var snapshot: Snapshot
+
+            public init(snapshot: Snapshot) {
+              self.snapshot = snapshot
+            }
+
+            public init(login: String) {
+              self.init(snapshot: ["__typename": "User", "login": login])
+            }
+
+            public var __typename: String {
+              get {
+                return snapshot["__typename"]! as! String
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// The username used to login.
+            public var login: String {
+              get {
+                return snapshot["login"]! as! String
+              }
+              set {
+                snapshot.updateValue(newValue, forKey: "login")
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public struct RepoDetails: GraphQLFragment {
   public static let fragmentString =
     "fragment RepoDetails on Repository {\n  __typename\n  name\n  description\n  stargazers {\n    __typename\n    totalCount\n  }\n  forks {\n    __typename\n    totalCount\n  }\n  primaryLanguage {\n    __typename\n    name\n  }\n  updatedAt\n  url\n}"

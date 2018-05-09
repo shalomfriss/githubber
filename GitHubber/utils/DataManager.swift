@@ -285,6 +285,9 @@ class DataManager {
         
     }
     
+    /**
+        Get a single name suggestion
+    */
     func getUsernameSuggestion(substring:String, complete:@escaping (String?) -> Void) {
         //Had to be created this way according to Github
         let qString = "type:user \(substring) in:login"
@@ -301,8 +304,51 @@ class DataManager {
             
             let _ = self
             
+            var theNames = [String]()
+            if let items = result?.data?.search.edges {
+                for var x in  items{
+                    if let aName = x?.node?.asUser?.login {
+                        theNames.append(aName)
+                    }
+                }
+            }
+            
+            
             let name = result?.data?.search.edges?.first??.node?.asUser?.login
             complete(name)
+        }
+    }
+    
+    /**
+     Get multiple name suggestions (first 100)
+    */
+    func getUsernameSuggestions(substring:String, complete:@escaping ([String]) -> Void) {
+        //Had to be created this way according to Github
+        let qString = "type:user \(substring) in:login"
+        
+        print("Getting names")
+        self.apollo?.fetch(query:  UserNamesQuery(queryString: qString)) { [weak self] result, error
+            in
+            
+            if(error != nil)
+            {
+                Alerter.hidePreloader()
+                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                return
+            }
+            
+            let _ = self
+            
+            var theNames = [String]()
+            if let items = result?.data?.search.edges {
+                for var x in  items{
+                    if let aName = x?.node?.asUser?.login {
+                        theNames.append(aName)
+                    }
+                }
+            }
+            
+            complete(theNames)
         }
     }
     

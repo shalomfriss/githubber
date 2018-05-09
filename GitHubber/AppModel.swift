@@ -10,5 +10,3 @@ import Foundation
 
 //Credits
 //http://konpa.github.io/devicon/
-
-

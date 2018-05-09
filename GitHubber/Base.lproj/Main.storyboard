@@ -219,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="2493.5999999999999" y="123.68815592203899"/>
         </scene>
-        <!--View Controller-->
+        <!--Single Repo View Controller-->
         <scene sceneID="Uqm-Jb-X2C">
             <objects>
-                <viewController id="cqo-7m-vvw" sceneMemberID="viewController">
+                <viewController id="cqo-7m-vvw" customClass="SingleRepoViewController" customModule="GitHubber" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pHN-WJ-i5C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,6 +246,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="mZK-l4-yIy"/>
                     </view>
+                    <connections>
+                        <outlet property="repo" destination="UPh-gU-usO" id="fvE-VW-euP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYd-Lf-n3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
