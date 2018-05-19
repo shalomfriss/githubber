@@ -11,6 +11,7 @@ target 'GitHubber' do
 	pod 'RealmSwift'
 	pod "Apollo"
 	pod 'SwiftKeychainWrapper'
+	pod 'Whisper'
 	
   target 'GitHubberTests' do
     inherit! :search_paths
@@ -20,6 +21,7 @@ target 'GitHubber' do
 	pod 'RealmSwift'
 	pod "Apollo"
 	pod 'SwiftKeychainWrapper'
+	pod 'Whisper'
   end
 
   target 'GitHubberUITests' do
@@ -30,6 +32,7 @@ target 'GitHubber' do
 	pod 'RealmSwift'	
 	pod "Apollo"
 	pod 'SwiftKeychainWrapper'
+	pod 'Whisper'
   end
 
 end

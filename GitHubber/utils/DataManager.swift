@@ -37,6 +37,7 @@ class DataManager {
     }
     
     private var currentOwner:String = ""
+    private var tokenIsValid = true
     
     //MARK:- Initialization
     init() {
@@ -54,8 +55,29 @@ class DataManager {
             let url = URL(string: Config.GITHUB_URL)!
             return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
         }()
+        
+        print("CONFIG: \(Config.GITHUB_TOKEN)")
+        
     }
     
+    public func setTokenIsValid(val:Bool) {
+        self.tokenIsValid = val
+    }
+    
+    public func reconfigure() {
+        print("Reconfiguring")
+        print(Config.GITHUB_TOKEN)
+        
+        self.apollo = {
+            let configuration = URLSessionConfiguration.default
+            configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Config.GITHUB_TOKEN)"]
+            let url = URL(string: Config.GITHUB_URL)!
+            return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+        }()
+        
+        self.reset()
+        
+    }
     //MARK:- API
     /**
         Reset everything
@@ -67,6 +89,7 @@ class DataManager {
     
     /**
      Get the total number of repos
+     @param owner:String - The owner who's repos to search
     */
     func getRepoCount(owner:String) {
         
@@ -76,17 +99,23 @@ class DataManager {
             
             if(error != nil)
             {
-                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                self?.tokenError()
                 return
             }
             
             let _ = self
+            self?.tokenSuccess()
+            
             let count = result?.data?.repositoryOwner?.repositories.totalCount ?? 0
             self?.totalRepos = count
             Alerter.hidePreloader()
         }
     }
     
+    /**
+     Restore the owners repos from the cache (realm)
+     @param owner:String - The owner of the repos to restore
+    */
     func restoreFromCache(owner:String) {
         let realm = try! Realm()
         let reps = realm.objects(RepoEntryList.self).filter({$0.username == owner})
@@ -99,6 +128,8 @@ class DataManager {
             }
             
         }
+        
+        NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
     }
     
     
@@ -107,6 +138,7 @@ class DataManager {
         @param owner:String - A string describing the owner
     */
     func getRepos(owner:String) {
+        
         let connected = NetTest.isConnectedToNetwork()
         print("CONNECTED: \(connected)")
         if(connected == false) {
@@ -118,6 +150,11 @@ class DataManager {
         print("Get repos")
         self.currentOwner = owner
         
+        if(self.tokenIsValid == false) {
+            self.restoreFromCache(owner: owner)
+            return
+        }
+        
         Alerter.showPreloader()
        self.apollo?.fetch(query:  ReposQuery(user: owner)) { [weak self] result, error
             in
@@ -125,16 +162,13 @@ class DataManager {
             if(error != nil)
             {
                 Alerter.hidePreloader()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
-                })
-                
+                self?.tokenError()
                 return
             }
-            
         
             let _ = self
+            self?.tokenSuccess()
+        
             result?.data?.repositoryOwner?.repositories.edges?.forEach { edge in
                 guard let repo = edge?.node else { return }
                 
@@ -193,11 +227,13 @@ class DataManager {
             if(error != nil)
             {
                 Alerter.hidePreloader()
-                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                self?.tokenError()
                 return
             }
             
             let _ = self
+            self?.tokenSuccess()
+            
             result?.data?.repositoryOwner?.repositories.edges?.forEach { edge in
                 guard let repo = edge?.node else { return }
                 
@@ -236,9 +272,7 @@ class DataManager {
                 self?.sortRepos()
                 NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
             }
-            
         }
-        
     }
     
     /**
@@ -297,12 +331,14 @@ class DataManager {
             
             if(error != nil)
             {
+                
                 Alerter.hidePreloader()
-                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                self?.tokenError()
                 return
             }
             
             let _ = self
+            self?.tokenSuccess()
             
             var theNames = [String]()
             if let items = result?.data?.search.edges {
@@ -333,11 +369,18 @@ class DataManager {
             if(error != nil)
             {
                 Alerter.hidePreloader()
-                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                
+                let err = error! as! GraphQLHTTPResponseError
+                //print(err.errorDescription)
+                //print(err.response.statusCode)
+                if(err.response.statusCode == 401) {
+                    self?.tokenError()
+                }
                 return
             }
             
             let _ = self
+            self?.tokenSuccess()
             
             var theNames = [String]()
             if let items = result?.data?.search.edges {
@@ -349,6 +392,44 @@ class DataManager {
             }
             
             complete(theNames)
+        }
+    }
+    
+    private func tokenError() {
+        if(self.tokenIsValid == false){
+            return
+        }
+        
+        self.setTokenIsValid(val: false)
+        Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+    }
+    
+    private func tokenSuccess() {
+        self.setTokenIsValid(val: true)
+    }
+    
+    
+    
+    /*******/
+    /**
+     Get multiple name suggestions (first 100)
+     */
+    func checkToken(complete:@escaping (Bool) -> Void) {
+        //Had to be created this way according to Github
+        let qString = "type:user facebook in:login"
+
+        print("Getting names")
+        self.apollo?.fetch(query:  UserNamesQuery(queryString: qString)) { [weak self] result, error
+            in
+            print(result)
+            print(error)
+            if(error != nil)
+            {
+                complete(false)
+                return
+            }
+            
+            complete(true)
         }
     }
     

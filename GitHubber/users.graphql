@@ -12,7 +12,7 @@ query UserName($queryString: String!){
 
 
 query UserNames($queryString: String!){
-    search(query: $queryString, first: 100, type: USER) {
+    search(query: $queryString, first: 10, type: USER) {
         edges {
             node {
                 ... on User {

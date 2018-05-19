@@ -1769,7 +1769,7 @@ public final class UserNameQuery: GraphQLQuery {
 
 public final class UserNamesQuery: GraphQLQuery {
   public static let operationString =
-    "query UserNames($queryString: String!) {\n  search(query: $queryString, first: 100, type: USER) {\n    __typename\n    edges {\n      __typename\n      node {\n        __typename\n        ... on User {\n          login\n        }\n      }\n    }\n  }\n}"
+    "query UserNames($queryString: String!) {\n  search(query: $queryString, first: 10, type: USER) {\n    __typename\n    edges {\n      __typename\n      node {\n        __typename\n        ... on User {\n          login\n        }\n      }\n    }\n  }\n}"
 
   public var queryString: String
 
@@ -1785,7 +1785,7 @@ public final class UserNamesQuery: GraphQLQuery {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("search", arguments: ["query": GraphQLVariable("queryString"), "first": 100, "type": "USER"], type: .nonNull(.object(Search.selections))),
+      GraphQLField("search", arguments: ["query": GraphQLVariable("queryString"), "first": 10, "type": "USER"], type: .nonNull(.object(Search.selections))),
     ]
 
     public var snapshot: Snapshot
