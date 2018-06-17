@@ -21,6 +21,7 @@ public class NetTest {
         if !isNetworkReachable(with: flags) {
             return false
         }
+        
         let isReachable: Bool = flags.contains(.reachable)
         
         #if os(iOS)

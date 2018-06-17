@@ -221,6 +221,9 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
+				CE77036320AFBE1A0024D854 /* models */,
+				CE77036220AFBDCE0024D854 /* graphql */,
+				CE77036120AFBDA80024D854 /* controllers */,
 				CE90C4EC20701C41002EF033 /* components */,
 				CE4667632069C85400FB8BFC /* views */,
 				CE46675220692D3100FB8BFC /* constants */,
@@ -229,18 +232,11 @@
 				CE2067CD206492B00083E825 /* API.swift */,
 				CE20677F206481930083E825 /* schema.json */,
 				CE206747206344590083E825 /* AppDelegate.swift */,
-				CE206749206344590083E825 /* ViewController.swift */,
-				CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */,
-				CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */,
-				CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */,
-				CE2067FD20692C870083E825 /* Repos.graphql */,
-				CE90C4EF2071DD7F002EF033 /* users.graphql */,
 				CE20674B206344590083E825 /* Main.storyboard */,
 				CE8ABEDC20A28D0A00DB4E26 /* Settings.bundle */,
 				CE20674E206344590083E825 /* Assets.xcassets */,
 				CE206750206344590083E825 /* LaunchScreen.storyboard */,
 				CE206753206344590083E825 /* Info.plist */,
-				CE46675F2069C7E300FB8BFC /* AppModel.swift */,
 			);
 			path = GitHubber;
 			sourceTree = "<group>";
@@ -304,6 +300,34 @@
 				CE50A39F207ECA6C00992FFD /* IndyRepoDetailsTableCell.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		CE77036120AFBDA80024D854 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE206749206344590083E825 /* ViewController.swift */,
+				CE50A3A12088C86100992FFD /* SingleRepoViewController.swift */,
+				CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */,
+				CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		CE77036220AFBDCE0024D854 /* graphql */ = {
+			isa = PBXGroup;
+			children = (
+				CE2067FD20692C870083E825 /* Repos.graphql */,
+				CE90C4EF2071DD7F002EF033 /* users.graphql */,
+			);
+			path = graphql;
+			sourceTree = "<group>";
+		};
+		CE77036320AFBE1A0024D854 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				CE46675F2069C7E300FB8BFC /* AppModel.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		CE90C4EC20701C41002EF033 /* components */ = {

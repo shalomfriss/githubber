@@ -362,7 +362,6 @@ class DataManager {
         //Had to be created this way according to Github
         let qString = "type:user \(substring) in:login"
         
-        print("Getting names")
         self.apollo?.fetch(query:  UserNamesQuery(queryString: qString)) { [weak self] result, error
             in
             
@@ -418,7 +417,6 @@ class DataManager {
         //Had to be created this way according to Github
         let qString = "type:user facebook in:login"
 
-        print("Getting names")
         self.apollo?.fetch(query:  UserNamesQuery(queryString: qString)) { [weak self] result, error
             in
             print(result)

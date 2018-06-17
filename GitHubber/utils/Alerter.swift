@@ -65,8 +65,6 @@ class Alerter {
                 Alerter.alert = nil
                 
                 complete()
-                
-                
             }))
             
             topController.present(Alerter.alert, animated: true, completion: nil)
