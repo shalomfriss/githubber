@@ -11,6 +11,8 @@ import SystemConfiguration
 
 public class NetTest {
     
+    let sites = ["www.google.com", "yahoo.com"]
+    
     static func isConnectedToNetwork() -> Bool {
         
         guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com") else { return false }
