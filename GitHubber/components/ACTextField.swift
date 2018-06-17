@@ -17,8 +17,24 @@ class ACTextField:NSObject, UITextFieldDelegate {
     
     //MARK:- Properties
     //The text field
-    var textField: UITextField!
-    
+    private var _textField: UITextField!
+    public var textField:UITextField! {
+        get {
+            return _textField
+        }
+        set {
+            if(_textField != nil) {
+                _textField.gestureRecognizers?.forEach(_textField.removeGestureRecognizer)
+            }
+            _textField = newValue
+            
+            //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+            //_textField.addGestureRecognizer(tapGestureRecognizer)
+            
+            //let longTapGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+            //_textField.addGestureRecognizer(longTapGestureRecognizer)
+        }
+    }
     //The number of characters that were added
     private var autoCompleteCharacterCount = 0
     
@@ -38,11 +54,54 @@ class ACTextField:NSObject, UITextFieldDelegate {
         }
     }
     
+    override init() {
+        super.init()
+        
+        
+        print("INIT")
+        
+    }
     
+    @objc func tapped(sender: UITapGestureRecognizer)
+    {
+        
+        if(self.autoCompleteCharacterCount > 0){
+            textField.typingAttributes = [String:Any]()
+            let tx = textField.text
+            textField.text = tx
+            self.currentText = tx ?? ""
+            
+        }
+        
+    }
     
+    @objc func longPressed(sender: UILongPressGestureRecognizer)
+    {
+        
+    }
+    
+    private func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print("return pressed")
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    public func getSearchTerm() -> String {
+        return self.currentText
+    }
     /************************************************************************/
     /************************************************************************/
     //MARK:- TextField
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.typingAttributes = [String:Any]()
+        let tx = textField.text
+        textField.text = tx
+        self.currentText = tx ?? ""
+        self.resetAll()
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         //Replace the characters that need replacing

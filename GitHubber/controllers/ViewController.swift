@@ -35,13 +35,16 @@ class ViewController: UIViewController {
         //Preloader should go here
         
         //Uh, the search field should be there
-        guard let val = self.searchField?.text else { return }
+        
+        let searchTerm = self.searchFieldDelegate.getSearchTerm()
+        
+        
         self.searchField?.text = ""
         
         //Reset and get some repos
         let dm = DataManager.instance
         dm.reset()
-        dm.getRepos(owner: val)
+        dm.getRepos(owner: searchTerm)
         
     }
     
