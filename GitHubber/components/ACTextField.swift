@@ -38,6 +38,8 @@ class ACTextField:NSObject, UITextFieldDelegate {
         }
     }
     
+    
+    
     /************************************************************************/
     /************************************************************************/
     //MARK:- TextField
@@ -47,14 +49,21 @@ class ACTextField:NSObject, UITextFieldDelegate {
         let subString1 = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string)
         print("Updated text: \(subString1)")
         
+        
         //format the substring by dropping the autocomplete characters
         let subString = formatSubstring(subString: subString1)  //what's actually typed
         if(subString1 == "") {
+            textField.text = ""
             return true
         }
         
         self.currentText = subString
-        print("formatted text: \(subString)")
+        print("formatted text: x\(subString)x")
+        if(self.currentText.count == 0) {
+            self.resetAll()
+            textField.text = ""
+            return true
+        }
         
         weak var weakSelf = self
         DataManager.instance.getUsernameSuggestions(substring: self.currentText, complete: {(temp:[String]) in
@@ -108,6 +117,11 @@ class ACTextField:NSObject, UITextFieldDelegate {
     */
     func resetValues() {
         autoCompleteCharacterCount = 0
+    }
+    
+    func resetAll() {
+        autoCompleteCharacterCount = 0
+        self.autocompletePossibilities = [String]()
     }
     
     /************************************************************************/
