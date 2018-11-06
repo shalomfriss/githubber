@@ -56,3 +56,33 @@ query RepoCount($user: String!) {
     }
 }
 
+
+query RepoComments($repoName:String!, $owner:String!) {
+    repository(name: $repoName, owner: $owner) {
+        ref(qualifiedName: "master") {
+            target {
+                ... on Commit {
+                    id
+                    history(first: 5) {
+                        pageInfo {
+                            hasNextPage
+                            endCursor
+                        }
+                        edges {
+                            node {
+                                messageHeadline
+                                oid
+                                message
+                                author {
+                                    name
+                                    email
+                                    date
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>github_url</key>
+	<string>https://api.github.com/graphql</string>
+	<key>github_token</key>
+	<string>6d3a7d61a928c7ec31629dc3ddd371cd65274ed4</string>
+	<key>company</key>
+	<string>NA</string>
+	<key>author</key>
+	<string>Shalom Friss</string>
+	<key>version</key>
+	<string>1.0</string>
+</dict>
+</plist>

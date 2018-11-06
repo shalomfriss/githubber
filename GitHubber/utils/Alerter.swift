@@ -8,33 +8,66 @@
 
 import Foundation
 import UIKit
+import SwiftKeychainWrapper
 
 class Alerter {
     static var preloaderShowing:Bool = false
+    static var alert:UIAlertController!
     
-    static public func getGithubToken() {
+    static public func getGithubToken(complete: @escaping () -> Void, strictModel:Bool = false) {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
             
-            let alert = UIAlertController(title: "Github token", message: "Please paste your github personal token", preferredStyle: .alert)
-            alert.addTextField { (textField) in textField.text = "" }
+            if(Alerter.alert != nil) {
+                Alerter.alert.dismiss(animated: false, completion: nil)
+                Alerter.alert = nil
+            }
             
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-                let textField = alert?.textFields?[0]
+            Alerter.alert = UIAlertController(title: "Github token", message: "Please paste your github personal token", preferredStyle: .alert)
+            
+            Alerter.alert.addTextField { (textField) in textField.text = "" }
+            
+            if(strictModel == false) {
+                Alerter.alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+                    Alerter.alert.dismiss(animated: true, completion: nil)
+                    Alerter.alert = nil
+                }))
+            }
+            
+            
+            Alerter.alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                let textField = Alerter.alert.textFields?[0]
                 let token = textField?.text
+                
+                print("Got token")
+                print(token!)
+                
+                let saveSuccessful: Bool = KeychainWrapper.standard.set(token!, forKey: "token")
+                
+                if(saveSuccessful == false) {
+                    Alerter.alert(title: "Error", msg: "Could not save your token locally")
+                    return
+                }
+                
                 if(token != nil) {
                     Config.GITHUB_TOKEN = token!
+                    print(Config.GITHUB_TOKEN)
                 }
                 else {
                     Alerter.alert(title: "Error", msg: "An error occured please try again")
                 }
                 
+                DataManager.instance.reconfigure()
                 
+                Alerter.alert.dismiss(animated: true, completion: nil)
+                Alerter.alert = nil
+                
+                complete()
             }))
             
-            topController.present(alert, animated: true, completion: nil)
+            topController.present(Alerter.alert, animated: true, completion: nil)
         }
         
         
@@ -42,16 +75,31 @@ class Alerter {
     }
     static public func alert(title:String, msg:String) {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
             
-            let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-            topController.present(alert, animated: false, completion: nil)
+            if(Alerter.alert != nil){
+                Alerter.alert.dismiss(animated: false, completion: nil)
+                Alerter.alert = nil
+            }
+            
+            Alerter.alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
+            
+            Alerter.alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: { _ in
+                Alerter.alert.dismiss(animated: true, completion: nil)
+                Alerter.alert = nil
+            }))
+            
+            topController.present(Alerter.alert, animated: false, completion: nil)
         }
     }
     
+    
+    /******************************************************************/
+    //PRELOADER
+    /******************************************************************/
     static public func showPreloader() {
         if(Alerter.preloaderShowing == true) {
             return

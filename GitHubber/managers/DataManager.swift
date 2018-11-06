@@ -13,7 +13,7 @@ import RxCocoa
 import RealmSwift
 
 /**
-    DataManager handles retrieving data from Github
+ DataManager handles retrieving data from Github
  */
 class DataManager {
     
@@ -37,6 +37,7 @@ class DataManager {
     }
     
     private var currentOwner:String = ""
+    private var tokenIsValid = true
     
     //MARK:- Initialization
     init() {
@@ -54,12 +55,34 @@ class DataManager {
             let url = URL(string: Config.GITHUB_URL)!
             return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
         }()
+        
+        print("CONFIG: \(Config.GITHUB_TOKEN)")
+        
+    }
+    
+    public func setTokenIsValid(val:Bool) {
+        self.tokenIsValid = val
+    }
+    
+    public func reconfigure() {
+        print("Reconfiguring")
+        print(Config.GITHUB_TOKEN)
+        
+        self.apollo = {
+            let configuration = URLSessionConfiguration.default
+            configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Config.GITHUB_TOKEN)"]
+            let url = URL(string: Config.GITHUB_URL)!
+            return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+        }()
+        
+        self.reset()
+        
     }
     
     //MARK:- API
     /**
-        Reset everything
-    */
+     Reset everything
+     */
     func reset() {
         self.tempRepos = [String:[RepoVO]]()
         self.repositories.value.removeAll()
@@ -67,7 +90,8 @@ class DataManager {
     
     /**
      Get the total number of repos
-    */
+     @param owner:String - The owner who's repos to search
+     */
     func getRepoCount(owner:String) {
         
         Alerter.showPreloader()
@@ -76,17 +100,23 @@ class DataManager {
             
             if(error != nil)
             {
-                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                self?.tokenError()
                 return
             }
             
             let _ = self
+            self?.tokenSuccess()
+            
             let count = result?.data?.repositoryOwner?.repositories.totalCount ?? 0
             self?.totalRepos = count
             Alerter.hidePreloader()
         }
     }
     
+    /**
+     Restore the owners repos from the cache (realm)
+     @param owner:String - The owner of the repos to restore
+     */
     func restoreFromCache(owner:String) {
         let realm = try! Realm()
         let reps = realm.objects(RepoEntryList.self).filter({$0.username == owner})
@@ -99,14 +129,17 @@ class DataManager {
             }
             
         }
+        
+        NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
     }
     
     
     /**
-        Get the repos of the mentioned owner
-        @param owner:String - A string describing the owner
-    */
+     Get the repos of the mentioned owner
+     @param owner:String - A string describing the owner
+     */
     func getRepos(owner:String) {
+        
         let connected = NetTest.isConnectedToNetwork()
         print("CONNECTED: \(connected)")
         if(connected == false) {
@@ -118,23 +151,25 @@ class DataManager {
         print("Get repos")
         self.currentOwner = owner
         
-        Alerter.showPreloader()
-       self.apollo?.fetch(query:  ReposQuery(user: owner)) { [weak self] result, error
-            in
+        if(self.tokenIsValid == false) {
+            self.restoreFromCache(owner: owner)
+            return
+        }
         
+        Alerter.showPreloader()
+        self.apollo?.fetch(query:  ReposQuery(user: owner)) { [weak self] result, error
+            in
+            
             if(error != nil)
             {
                 Alerter.hidePreloader()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
-                })
-                
+                self?.tokenError()
                 return
             }
             
-        
             let _ = self
+            self?.tokenSuccess()
+            
             result?.data?.repositoryOwner?.repositories.edges?.forEach { edge in
                 guard let repo = edge?.node else { return }
                 
@@ -156,7 +191,7 @@ class DataManager {
                 
                 self?.tempRepos[repovo.primaryLanguage]?.append(repovo)
             }
-        
+            
             let hasNext = result?.data?.repositoryOwner?.repositories.pageInfo.hasNextPage
             if(hasNext == true) {
                 if let cursor = result?.data?.repositoryOwner?.repositories.pageInfo.endCursor {
@@ -173,7 +208,7 @@ class DataManager {
                 self?.sortRepos()
                 NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
             }
-        
+            
         }
         
     }
@@ -193,11 +228,13 @@ class DataManager {
             if(error != nil)
             {
                 Alerter.hidePreloader()
-                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                self?.tokenError()
                 return
             }
             
             let _ = self
+            self?.tokenSuccess()
+            
             result?.data?.repositoryOwner?.repositories.edges?.forEach { edge in
                 guard let repo = edge?.node else { return }
                 
@@ -236,14 +273,12 @@ class DataManager {
                 self?.sortRepos()
                 NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
             }
-            
         }
-        
     }
     
     /**
-        Sort and prep the repository data
-    */
+     Sort and prep the repository data
+     */
     func sortRepos() {
         
         //Sort by stargazers
@@ -272,7 +307,7 @@ class DataManager {
         let reps = realm.objects(RepoEntryList.self).filter({$0.username == self.currentOwner})
         if(reps.count > 0) {
             let entries = reps.first
-
+            
             try! realm.write {
                 entries!.repoEntries = repoEntries.repoEntries
             }
@@ -283,9 +318,11 @@ class DataManager {
             }
         }
         
-        
     }
     
+    /**
+     Get a single name suggestion
+     */
     func getUsernameSuggestion(substring:String, complete:@escaping (String?) -> Void) {
         //Had to be created this way according to Github
         let qString = "type:user \(substring) in:login"
@@ -295,15 +332,103 @@ class DataManager {
             
             if(error != nil)
             {
+                
                 Alerter.hidePreloader()
-                Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+                self?.tokenError()
                 return
             }
             
             let _ = self
+            self?.tokenSuccess()
+            
+            var theNames = [String]()
+            if let items = result?.data?.search.edges {
+                for var x in  items{
+                    if let aName = x?.node?.asUser?.login {
+                        theNames.append(aName)
+                    }
+                }
+            }
+            
             
             let name = result?.data?.search.edges?.first??.node?.asUser?.login
             complete(name)
+        }
+    }
+    
+    /**
+     Get multiple name suggestions (first 100)
+     */
+    func getUsernameSuggestions(substring:String, complete:@escaping ([String]) -> Void) {
+        //Had to be created this way according to Github
+        let qString = "type:user \(substring) in:login"
+        
+        self.apollo?.fetch(query:  UserNameQuery(queryString: qString)) { [weak self] result, error
+            in
+            
+            if(error != nil)
+            {
+                Alerter.hidePreloader()
+                
+                let err = error! as! GraphQLHTTPResponseError
+                //print(err.errorDescription)
+                //print(err.response.statusCode)
+                if(err.response.statusCode == 401) {
+                    self?.tokenError()
+                }
+                return
+            }
+            
+            let _ = self
+            self?.tokenSuccess()
+            
+            var theNames = [String]()
+            if let items = result?.data?.search.edges {
+                for var x in  items{
+                    if let aName = x?.node?.asUser?.login {
+                        theNames.append(aName)
+                    }
+                }
+            }
+            
+            complete(theNames)
+        }
+    }
+    
+    private func tokenError() {
+        if(self.tokenIsValid == false){
+            return
+        }
+        
+        self.setTokenIsValid(val: false)
+        Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
+    }
+    
+    private func tokenSuccess() {
+        self.setTokenIsValid(val: true)
+    }
+    
+    
+    
+    /*******/
+    /**
+     Get multiple name suggestions (first 100)
+     */
+    func checkToken(complete:@escaping (Bool) -> Void) {
+        //Had to be created this way according to Github
+        let qString = "type:user facebook in:login"
+        
+        self.apollo?.fetch(query:  UserNameQuery(queryString: qString)) { [weak self] result, error
+            in
+            print(result)
+            print(error)
+            if(error != nil)
+            {
+                complete(false)
+                return
+            }
+            
+            complete(true)
         }
     }
     

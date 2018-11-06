@@ -10,128 +10,326 @@ import Foundation
 import UIKit
 
 /**
-    ACTextField or Auto Complete text field is just that, a text field that autocompletes.
-*/
+ ACTextField or Auto Complete text field is just that, a text field that autocompletes.
+ https://medium.com/@aestusLabs/inline-autocomplete-textfields-swift-3-tutorial-for-ios-a88395ca2635
+ */
 class ACTextField:NSObject, UITextFieldDelegate {
     
-    var textField: UITextField!
-    
-    private var autoCompletionPossibilities = ["Shalomfriss", "Facebook", "Apple"]//[String]()
-    public var suggestions:[String] {
+    //MARK:- Properties
+    //The text field
+    private var _textField: UITextField!
+    public var textField:UITextField! {
         get {
-            return autoCompletionPossibilities
+            return _textField
         }
         set {
-            autoCompletionPossibilities = newValue
+            if(_textField != nil) {
+                _textField.gestureRecognizers?.forEach(_textField.removeGestureRecognizer)
+            }
+            _textField = newValue
+            
+            //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+            //_textField.addGestureRecognizer(tapGestureRecognizer)
+            
+            //let longTapGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+            //_textField.addGestureRecognizer(longTapGestureRecognizer)
+        }
+    }
+    //The number of characters that were added
+    private var autoCompleteCharacterCount = 0
+    
+    //the current text, used to help async functionality
+    private var currentText:String = ""
+    
+    var timer = Timer()
+    
+    //The autocomplete possibilities (get/set)
+    private var autocompletePossibilities = [String]()
+    public var suggestions:[String] {
+        get {
+            return autocompletePossibilities
+        }
+        set {
+            autocompletePossibilities = newValue
         }
     }
     
-    private var autoCompleteCharacterCount = 0
-    private var timer = Timer()
+    override init() {
+        super.init()
+    }
+    
+    @objc func tapped(sender: UITapGestureRecognizer)
+    {
+        if(self.autoCompleteCharacterCount > 0){
+            textField.typingAttributes = [String:Any]()
+            let tx = textField.text
+            textField.text = tx
+            self.currentText = tx ?? ""
+            
+        }
+    }
+    
+    @objc func longPressed(sender: UILongPressGestureRecognizer)
+    {
+        
+    }
+    
+    private func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    public func getSearchTerm() -> String {
+        return self.currentText
+    }
+    /************************************************************************/
+    /************************************************************************/
+    //MARK:- TextField
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.typingAttributes = [String:Any]()
+        let tx = textField.text
+        textField.text = tx
+        self.currentText = tx ?? ""
+        self.resetAll()
+        return true
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        var subString = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string) // 2
-        subString = formatSubstring(subString: subString)
+        //Replace the characters that need replacing
+        let subString1 = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string)
         
+        //format the substring by dropping the autocomplete characters
+        let subString = formatSubstring(subString: subString1)  //what's actually typed
+        if(subString1 == "") {
+            textField.text = ""
+            return true
+        }
         
-        weak var _self = self
-        DataManager.instance.getUsernameSuggestion(substring: subString, complete: {(temp:String?) in
-            
-            let name:String = temp ?? ""
-            self.autoCompletionPossibilities = [name]
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "possibilitiesUpdated"), object: nil, userInfo: ["value": subString])
-            
+        self.currentText = subString
+        if(self.currentText.count == 0) {
+            self.resetAll()
+            textField.text = ""
+            return true
+        }
+        
+        weak var weakSelf = self
+        DataManager.instance.getUsernameSuggestions(substring: self.currentText, complete: {(temp:[String]) in
+            weakSelf?.autocompletePossibilities = temp
+            //weakSelf?.possibilitiesUpdated()
         })
         
-        /*
-        if subString.count == 0 {
+        
+        if self.currentText.count == 0 {
             self.resetValues()
         } else {
-            self.searchAutocompleteEntriesWIthSubstring(substring: subString)
+            self.searchForAutocomplete(userQuery: self.currentText)
         }
-        */
+        
         
         return true
     }
     
-    
-    public func possibilitiesUpdated(notfication: NSNotification) {
-        let subString = notfication.userInfo?["value"] as! String
-        if subString.count == 0 {
+    /************************************************************************/
+    /************************************************************************/
+    //MARK:- Callbacks
+    /**
+     A callback from
+     */
+    public func possibilitiesUpdated() {
+        //print("Updated possibilities with: ")
+        //print(self.autocompletePossibilities)
+        
+        if self.currentText.count == 0 {
             self.resetValues()
         } else {
-            self.searchAutocompleteEntriesWIthSubstring(substring: subString)
+            self.searchForAutocomplete(userQuery: self.currentText)
         }
+        
     }
     
     
+    /************************************************************************/
+    /************************************************************************/
+    //MARK:- Utils
+    /**
+     Format the string by dropping the last autoCompleteCharacterCount characters
+     */
     func formatSubstring(subString: String) -> String {
-        let formatted = String(subString.dropLast(autoCompleteCharacterCount)).lowercased().capitalized //5
+        let formatted = String(subString.dropLast(autoCompleteCharacterCount))//.lowercased().capitalized
         return formatted
     }
     
-    
+    /**
+     Reset the autocomplete characters and the textField text
+     */
     func resetValues() {
         autoCompleteCharacterCount = 0
-        textField.text = ""
     }
     
-    func searchAutocompleteEntriesWIthSubstring(substring: String) {
+    func resetAll() {
+        autoCompleteCharacterCount = 0
+        self.autocompletePossibilities = [String]()
+    }
+    
+    /************************************************************************/
+    /************************************************************************/
+    //MARK:- Search
+    /**
+     Search for autocomplete possibility
+     @param substring:String - The substring to search for
+     */
+    func searchForAutocomplete(userQuery: String) {
         
-        let userQuery = substring
-        //var suggestions = getAutocompleteSuggestions(userText: substring)
-        let suggestions = self.autoCompletionPossibilities
-        if suggestions.count > 0 {
-            timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in
+        let fieldString = self.textField?.text ?? ""
+        
+        //Redeclare to lowercase
+        let userQuery = userQuery.lowercased()
+        
+        if self.autocompletePossibilities.count > 0 {
+            
+            let result = self.autocompletePossibilities[0]
+            //print("Suggestion exists : \(suggestions[0])")
+            //print(fieldString)
+            
+            var remainderString = ""
+            if(result.hasPrefix(userQuery)) {
                 
-                let autocompleteResult = self.formatAutocompleteResult(substring: substring, possibleMatches: suggestions)
-                self.putColourFormattedTextInTextField(autocompleteResult: autocompleteResult, userQuery : userQuery)
-                self.moveCaretToEndOfUserQueryPosition(userQuery: userQuery)
+                //print("fieldString contains suggestion")
                 
-            })
+                if let substringRange = result.range(of: userQuery)
+                {
+                    remainderString = result
+                    remainderString.removeSubrange(substringRange)
+                    print("remainder: \(remainderString)")
+                }
+                
+                //print("fieldString \(fieldString)")
+                print("HIT userQuery \(userQuery)")
+                
+                timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in
+                    self.putColourFormattedTextInTextField(autocompleteResult: remainderString, userQuery: userQuery)
+                    self.moveCaretToEndOfUserQueryPosition(userQuery: userQuery)
+                })
+                
+                
+                
+            }
+            else {
+                
+                
+                //print(fieldString)
+                //let subString = formatSubstring(subString: fieldString)
+                let formatted = String(fieldString.dropLast(autoCompleteCharacterCount))
+                
+                
+                print("Miss \(formatted)")
+                self.textField.text = formatted
+                
+                timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in
+                    //self.moveCaretToEndOfUserQueryPosition(userQuery: formatted)
+                })
+                self.resetValues()
+            }
+            
+            
+            
+            //let index = autocompleteResult.index(autocompleteResult.startIndex, offsetBy: fieldString.count)..<autocompleteResult.endIndex
+            //let newString = autocompleteResult.removeSubrange(index)
+            //print(newString)
+            
+            //print("Closest match is: \(autocompleteResult)")
+            //print(autocompleteResult)
+            
+            autoCompleteCharacterCount = remainderString.count
+            
+            /*
+             timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in
+             
+             let autocompleteResult = self.formatAutocompleteResult(substring: substring, possibleMatches: suggestions)
+             self.putColourFormattedTextInTextField(autocompleteResult: autocompleteResult, userQuery : userQuery)
+             self.moveCaretToEndOfUserQueryPosition(userQuery: userQuery)
+             
+             })
+             */
         } else {
-            timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in //7
-                self.textField.text = substring
-            })
+            //timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in //7
+            //self.textField.text = substring
+            //})
+            //print("Nothing suggestions.count <= 0")
+            print("??")
+            putColourFormattedTextInTextField(autocompleteResult: "", userQuery: fieldString)
             autoCompleteCharacterCount = 0
         }
         
     }
     
+    /**
+     Get an autocomplete suggestion for the user provided text
+     @param userText:String - the text to auto complete
+     */
     func getAutocompleteSuggestions(userText: String) -> [String]{
         var possibleMatches: [String] = []
-        for item in autoCompletionPossibilities { //2
+        
+        for item in autocompletePossibilities {
+            
             let myString:NSString! = item as NSString
             let substringRange :NSRange! = myString.range(of: userText)
-            
             if (substringRange.location == 0)
             {
                 possibleMatches.append(item)
             }
+            
         }
         return possibleMatches
     }
     
+    
+    /************************************************************************/
+    /************************************************************************/
+    //MARK:- Colored text
+    /**
+     Create an attributed string, where the user text is black and the suggestion text is colored
+     */
     func putColourFormattedTextInTextField(autocompleteResult: String, userQuery : String) {
         let colouredString: NSMutableAttributedString = NSMutableAttributedString(string: userQuery + autocompleteResult)
-        colouredString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.cyan, range: NSRange(location: userQuery.count,length:autocompleteResult.count))
+        colouredString.addAttribute(NSAttributedStringKey.foregroundColor,
+                                    value: UIColor.cyan,
+                                    range: NSRange(location: userQuery.count,length:autocompleteResult.count))
         self.textField.attributedText = colouredString
     }
     
+    /**
+     Move the cursor to the end of where the user was typing
+     */
     func moveCaretToEndOfUserQueryPosition(userQuery : String) {
+        print("QUERY: \(userQuery)")
+        
         if let newPosition = self.textField.position(from: self.textField.beginningOfDocument, offset: userQuery.count) {
             self.textField.selectedTextRange = self.textField.textRange(from: newPosition, to: newPosition)
         }
+        
         let selectedRange: UITextRange? = textField.selectedTextRange
         textField.offset(from: textField.beginningOfDocument, to: (selectedRange?.start)!)
     }
     
+    
+    
+    /**
+     Get the first autocomplete result and remove the first substing.count letters
+     */
     func formatAutocompleteResult(substring: String, possibleMatches: [String]) -> String {
         var autoCompleteResult = possibleMatches[0]
-        autoCompleteResult.removeSubrange(autoCompleteResult.startIndex..<autoCompleteResult.index(autoCompleteResult.startIndex, offsetBy: substring.count))
+        //Make sure there are more characters in the result then the substring otherwise the program will crash
+        if(autoCompleteResult.count >= substring.count) {
+            let range = autoCompleteResult.startIndex..<autoCompleteResult.index(autoCompleteResult.startIndex, offsetBy: substring.count)
+            autoCompleteResult.removeSubrange(range)
+        }
         autoCompleteCharacterCount = autoCompleteResult.count
         return autoCompleteResult
     }
+    
+    
     
 }
