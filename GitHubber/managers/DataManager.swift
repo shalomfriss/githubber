@@ -55,9 +55,6 @@ class DataManager {
             let url = URL(string: Config.GITHUB_URL)!
             return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
         }()
-        
-        print("CONFIG: \(Config.GITHUB_TOKEN)")
-        
     }
     
     public func setTokenIsValid(val:Bool) {
@@ -65,9 +62,6 @@ class DataManager {
     }
     
     public func reconfigure() {
-        print("Reconfiguring")
-        print(Config.GITHUB_TOKEN)
-        
         self.apollo = {
             let configuration = URLSessionConfiguration.default
             configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Config.GITHUB_TOKEN)"]
@@ -76,7 +70,6 @@ class DataManager {
         }()
         
         self.reset()
-        
     }
     
     //MARK:- API
@@ -140,7 +133,7 @@ class DataManager {
      */
     func getRepos(owner:String) {
         
-        let connected = NetTest.isConnectedToNetwork()
+        let connected = NetworkManager.isConnectedToNetwork()
         print("CONNECTED: \(connected)")
         if(connected == false) {
             self.restoreFromCache(owner: owner)

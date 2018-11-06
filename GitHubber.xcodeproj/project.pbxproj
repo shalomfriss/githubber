@@ -67,6 +67,11 @@
 		CEFE5DB92191575700516ADC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE206749206344590083E825 /* ViewController.swift */; };
 		CEFE5DBE2191580700516ADC /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */; };
 		CEFE5DC12191584200516ADC /* GlobalConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEFE5DC02191584200516ADC /* GlobalConfig.plist */; };
+		CEFE5DC32191626600516ADC /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC22191626600516ADC /* LogManager.swift */; };
+		CEFE5DC72191633800516ADC /* JsonCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC62191633800516ADC /* JsonCodable.swift */; };
+		CEFE5DC92191636E00516ADC /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC82191636E00516ADC /* NetworkManagerProtocol.swift */; };
+		CEFE5DCB2191637E00516ADC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCA2191637E00516ADC /* NetworkManager.swift */; };
+		CEFE5DCD2191648F00516ADC /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCC2191648F00516ADC /* ServiceProtocol.swift */; };
 		FC988A03E6208E186B311AFA /* Pods_GitHubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DD769F407C83483F663EC7A /* Pods_GitHubber.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +133,11 @@
 		CE90C4EF2071DD7F002EF033 /* users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.graphql; sourceTree = "<group>"; };
 		CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = managers/ConfigurationManager.swift; sourceTree = "<group>"; };
 		CEFE5DC02191584200516ADC /* GlobalConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
+		CEFE5DC22191626600516ADC /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		CEFE5DC62191633800516ADC /* JsonCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonCodable.swift; path = protocols/JsonCodable.swift; sourceTree = "<group>"; };
+		CEFE5DC82191636E00516ADC /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		CEFE5DCA2191637E00516ADC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CEFE5DCC2191648F00516ADC /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		E4AB6FADA6447C4020DE90F9 /* Pods-GitHubberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.release.xcconfig"; sourceTree = "<group>"; };
 		EF30FDC28D542EA3305FA291 /* Pods-GitHubberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F423F51F0AEE147179C8C765 /* Pods-GitHubberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +221,7 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
+				CEFE5DC5219162E300516ADC /* protocols */,
 				CEFE5DBC219157F300516ADC /* managers */,
 				CEFE5DBB2191578400516ADC /* modules */,
 				CEFE5DBA2191575F00516ADC /* graphql */,
@@ -330,8 +341,20 @@
 			children = (
 				CE46674920692D1D00FB8BFC /* DataManager.swift */,
 				CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */,
+				CEFE5DC22191626600516ADC /* LogManager.swift */,
+				CEFE5DCA2191637E00516ADC /* NetworkManager.swift */,
 			);
 			path = managers;
+			sourceTree = "<group>";
+		};
+		CEFE5DC5219162E300516ADC /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE5DC62191633800516ADC /* JsonCodable.swift */,
+				CEFE5DC82191636E00516ADC /* NetworkManagerProtocol.swift */,
+				CEFE5DCC2191648F00516ADC /* ServiceProtocol.swift */,
+			);
+			path = protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,6 +529,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -517,6 +541,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -538,6 +563,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubber/Pods-GitHubber-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -548,6 +574,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -586,6 +613,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -597,6 +625,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -649,13 +678,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFE5DC72191633800516ADC /* JsonCodable.swift in Sources */,
 				CE4667652069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE20674A206344590083E825 /* ViewController.swift in Sources */,
 				CEFE5DBE2191580700516ADC /* ConfigurationManager.swift in Sources */,
+				CEFE5DCB2191637E00516ADC /* NetworkManager.swift in Sources */,
+				CEFE5DCD2191648F00516ADC /* ServiceProtocol.swift in Sources */,
 				CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */,
 				CE46677F206CA3C100FB8BFC /* NetTest.swift in Sources */,
 				CE46674A20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE2067CE206492B10083E825 /* API.swift in Sources */,
+				CEFE5DC32191626600516ADC /* LogManager.swift in Sources */,
 				CE46674F20692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE466771206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
 				CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */,
@@ -663,6 +696,7 @@
 				CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE4667692069ED4600FB8BFC /* RepoEntry.swift in Sources */,
 				CE206748206344590083E825 /* AppDelegate.swift in Sources */,
+				CEFE5DC92191636E00516ADC /* NetworkManagerProtocol.swift in Sources */,
 				CE46675520692D3C00FB8BFC /* Config.swift in Sources */,
 				CE466775206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */,
 				CE46676D2069F74700FB8BFC /* Alerter.swift in Sources */,

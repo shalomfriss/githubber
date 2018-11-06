@@ -61,7 +61,9 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
-        print("Getting token")
+        //print("Getting token")
+        
+        /*
         var theToken = ""
         if let aToken = KeychainWrapper.standard.string(forKey: "token")
         {
@@ -72,6 +74,7 @@ class ViewController: UIViewController {
         if(Config.GITHUB_TOKEN == "") {
             Config.GITHUB_TOKEN = theToken ?? ""
         }
+        */
         
         if(Config.GITHUB_TOKEN == "") {
             Alerter.getGithubToken(complete: {

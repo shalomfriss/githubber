@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        //Load config
         do {
             try ConfigurationManager.loadConfig(fileName: "GlobalConfig", configName: "global")
             guard let globalConfig = ConfigurationManager.getConfig(configName: "global") else {
@@ -25,11 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             Config.GITHUB_TOKEN = globalConfig["github_token"] as! String
             Config.GITHUB_URL = globalConfig["github_url"] as! String
-            
-            print("CONFIGS")
-            print(Config.GITHUB_TOKEN )
-            print(Config.GITHUB_URL)
-            
         } catch {
             fatalError("Could not load global config")
         }
