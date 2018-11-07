@@ -15,7 +15,7 @@ class RepoDetailsViewController:UIViewController {
     
     @IBOutlet weak var reposTable:UITableView?
     
-    let repoDetails = DataManager.instance.languageRepos.asObservable()
+    let viewModel:RepoDetailsViewModel = RepoDetailsViewModel()
     
     let disposeBag = DisposeBag()
     
@@ -31,14 +31,20 @@ class RepoDetailsViewController:UIViewController {
         
         guard self.reposTable != nil else { return }
         
-        self.repoDetails.bind(to: self.reposTable!.rx.items(cellIdentifier: RepoDetailsTableCell.Identifier, cellType: RepoDetailsTableCell.self))
+        viewModel.repoDetails.bind(to: self.reposTable!.rx.items(cellIdentifier: RepoDetailsTableCell.Identifier, cellType: RepoDetailsTableCell.self))
         {
             (row: Int, element: RepoVO, cell: RepoDetailsTableCell) in
             
             
             cell.config(name: element.name, desc: element.desc, stars: element.stargazers,
                         forks: element.forks, updated: element.updatedAt)
+            
+            cell.repo = element
         }.disposed(by: self.disposeBag)
+        
+    }
+    
+    private func setupTapHandler() {
         
     }
     
@@ -56,7 +62,14 @@ extension RepoDetailsViewController:UITableViewDelegate {
         let color = (CGFloat(indexPath.row) / CGFloat(itemCount)) * 0.5
         
         cell.backgroundColor = UIColor(red: 0.5, green: 0.5 + color, blue: 1, alpha: 0.5)
-       
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print(viewModel.repoDetails)
+        let cell:RepoDetailsTableCell = self.reposTable?.cellForRow(at: indexPath) as! RepoDetailsTableCell
+        print(cell.repo)
+        
     }
 }
 

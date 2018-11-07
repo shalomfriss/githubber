@@ -15,9 +15,10 @@ class RepoListingViewController:UIViewController {
     
     @IBOutlet weak var repoTable:UITableView?
     
-    let reps = DataManager.instance.repositories.asObservable()
+    //let reps = DataManager.instance.repositories.asObservable()
     let disposeBag = DisposeBag()
     
+    var viewModel:RepoListingViewModel = RepoListingViewModel(model: RepoListingModel())
     
     //MARK:- UIViewController methods
     override func viewDidLoad() {
@@ -36,7 +37,7 @@ class RepoListingViewController:UIViewController {
         
         guard self.repoTable != nil else { return }
         
-        self.reps.bind(to: self.repoTable!.rx.items(cellIdentifier: RepoTableCell.Identifier, cellType: RepoTableCell.self)) {
+        viewModel.reps.bind(to: self.repoTable!.rx.items(cellIdentifier: RepoTableCell.Identifier, cellType: RepoTableCell.self)) {
             (row: Int, element: RepoEntry, cell: RepoTableCell) in
             
             cell.config(name: element.language, cnt: element.count, data: element)
@@ -50,24 +51,20 @@ class RepoListingViewController:UIViewController {
     private func setupTapHandler() {
         guard self.repoTable != nil else { return }
         
-        
         self.repoTable!
             .rx
             .modelSelected(RepoEntry.self)
             .subscribe(onNext: {
                 repoEntry in
                 
-                //print(repoEntry.language)
-                //print(repoEntry.repos)
                 DataManager.instance.languageRepos.value.removeAll()
-                DataManager.instance.languageRepos.value.append(contentsOf: repoEntry.repos)// = repoEntry.repos
+                DataManager.instance.languageRepos.value.append(contentsOf: repoEntry.repos)
                 
                 if let selectedRowIndexPath = self.repoTable?.indexPathForSelectedRow {
                     self.repoTable?.deselectRow(at: selectedRowIndexPath, animated: true)
                 }
                 
                 self.performSegue(withIdentifier: "repoDetails", sender: nil)
-                
             })
             .disposed(by: self.disposeBag)
     }

@@ -42,9 +42,11 @@ class ViewController: UIViewController {
         self.searchField?.text = ""
         
         //Reset and get some repos
-        let dm = DataManager.instance
-        dm.reset()
-        dm.getRepos(owner: searchTerm)
+        DispatchQueue.global(qos: .userInitiated).async {
+            let dm = DataManager.instance
+            dm.reset()
+            dm.getRepos(owner: searchTerm)
+        }
         
     }
     
@@ -76,33 +78,60 @@ class ViewController: UIViewController {
         }
         */
         
-        if(Config.GITHUB_TOKEN == "") {
-            Alerter.getGithubToken(complete: {
-                weakSelf?.tokenSavedMessage()
-            }, strictModel: true)
+        //Check for token and ask
+        if(NetworkManager.isConnectedToNetwork())
+        {
+            if(Config.GITHUB_TOKEN == "") {
+                Alerter.getGithubToken(complete: {
+                    weakSelf?.tokenSavedMessage()
+                }, strictModel: true)
+            }
+            
+            DataManager.instance.checkToken(complete: {
+                success in
+                if(success == false) {
+                    self.blockAndGetToken()
+                }
+            })
         }
+        
         
         
         self.searchField?.delegate = self.searchFieldDelegate
         self.searchFieldDelegate.textField = self.searchField
         
-        
-        DataManager.instance.checkToken(complete: {
-            success in
-            if(success == false) {
-                self.blockAndGetToken()
+        let sampleClass = SampleClass()
+        sampleClass.test = "custom test"
+        PersistenceManager.archive(object: sampleClass, fileName: "test1", completion: { error in
+            print("DONE")
+            if(error == nil) {
+               print("ARCHIVE OK")
+            } else {
+                print(error)
             }
         })
+       
+        
+        if let newSampleClass:SampleClass =  PersistenceManager.unarchive(fileName: "test1") {
+            print("DONE")
+            print(newSampleClass)
+        } else {
+            print("FAIL")
+            
+        }
+        
+        
     }
     
     func blockAndGetToken() {
         weak var weakSelf = self
         
         Alerter.getGithubToken(complete: {
+            weak var weakSelf = weakSelf
             DataManager.instance.checkToken(complete: {
                 success in
                 if(success == false) {
-                    self.blockAndGetToken()
+                    weakSelf?.blockAndGetToken()
                 }
             })
         }, strictModel: true)
@@ -118,7 +147,6 @@ class ViewController: UIViewController {
     /******************************************************************/
     //MARK:- Utils
     func tokenSavedMessage() {
-        print("Token saved")
         let message = Message(title: "Token saved!", backgroundColor: UIColor(red: 121/255, green: 178/255, blue: 0/255, alpha: 1.0) /* #79b200 */)
         Whisper.show(whisper: message, to: navigationController!, action: .show)
     }

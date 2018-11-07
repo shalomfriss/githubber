@@ -120,7 +120,6 @@ class DataManager {
             for rep in entries!.repoEntries {
                 self.repositories.value.append(rep)
             }
-            
         }
         
         NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)

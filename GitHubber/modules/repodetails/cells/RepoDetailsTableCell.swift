@@ -19,6 +19,7 @@ class RepoDetailsTableCell:UITableViewCell
     @IBOutlet var forks:UILabel?
     @IBOutlet var updated:UILabel?
     
+    public var repo:RepoVO?
     
     func config(name:String, desc:String, stars:Int, forks:Int, updated:String) {
         self.repoName?.text         = name
