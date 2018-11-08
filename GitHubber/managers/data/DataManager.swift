@@ -175,9 +175,6 @@ class DataManager {
                 repovo.url = repo.url
                 repovo.readme = (repo.object?.snapshot["text"] ?? "" ) as! String
                 
-                print("----------------------------------------------")
-                print((repo.object?.snapshot["text"] ?? "" ) as! String)
-                
                 //Github has their own language detection so no need to massage the language name
                 if(self?.tempRepos[repovo.primaryLanguage] == nil) {
                     self?.tempRepos[repovo.primaryLanguage] = [RepoVO]()

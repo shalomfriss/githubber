@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class RepoDetailsViewController:UIViewController {
-    
     @IBOutlet weak var reposTable:UITableView?
     
     let viewModel:RepoDetailsViewModel = RepoDetailsViewModel()
@@ -23,7 +22,6 @@ class RepoDetailsViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.setupTableView()
         self.reposTable?.rx.setDelegate(self).disposed(by: self.disposeBag)
         
@@ -31,7 +29,6 @@ class RepoDetailsViewController:UIViewController {
     }
     
     private func setupTableView() {
-        
         guard self.reposTable != nil else { return }
         
         viewModel.repoDetails.bind(to: self.reposTable!.rx.items(cellIdentifier: RepoDetailsTableCell.Identifier, cellType: RepoDetailsTableCell.self))
@@ -44,13 +41,7 @@ class RepoDetailsViewController:UIViewController {
             
             cell.repo = element
         }.disposed(by: self.disposeBag)
-        
     }
-    
-    private func setupTapHandler() {
-        
-    }
-    
 }
 
 extension RepoDetailsViewController:UITableViewDelegate {
@@ -65,34 +56,20 @@ extension RepoDetailsViewController:UITableViewDelegate {
         let color = (CGFloat(indexPath.row) / CGFloat(itemCount)) * 0.5
         
         cell.backgroundColor = UIColor(red: 0.5, green: 0.5 + color, blue: 1, alpha: 0.5)
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(viewModel.repoDetails)
         let cell:RepoDetailsTableCell = self.reposTable?.cellForRow(at: indexPath) as! RepoDetailsTableCell
-        print(cell.repo)
         self.repo = cell.repo
         
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let controller = storyboard.instantiateViewController(withIdentifier: "singleRepo") as! SingleRepoDetailsViewController
-        self.present(controller, animated: true, completion: nil)
-        controller.repo = cell.repo
-        */
-        
-        
         performSegue(withIdentifier: "singleRepo", sender: nil)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as! SingleRepoDetailsViewController
         controller.repo = self.repo
+        self.repo = nil
     }
-    
-    
-    
 }
 

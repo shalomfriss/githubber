@@ -8,38 +8,36 @@
 
 import Foundation
 import UIKit
+import Down
 
 class SingleRepoDetailsViewController:UIViewController {
     public var repo:RepoVO!
     
-    @IBOutlet weak var readmeLabel: UILabel!
+    @IBOutlet weak var readme: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Repo details"
         
-        self.readmeLabel.translatesAutoresizingMaskIntoConstraints = false
-        //self.readmeLabel.
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        //self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.plain, target: self, action: #selector(closeButtonClicked))
         
-       // self.navigationItem.title = "Back"
-        //navigationItem.backBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
         
+        
+        let down = Down(markdownString: self.repo.readme)
         weak var weakself = self
         DispatchQueue.main.async {
-            let txt = NSAttributedString(string: weakself?.repo.readme ?? "")
-            weakself?.readmeLabel.attributedText = txt
-            weakself?.title = "Repo details"
+            do{
+                weakself?.readme.attributedText = try down.toAttributedString()
+            } catch {
+                print(error)
+            }
         }
-        
-        
-        
-        
     }
+    
     @objc private func closeButtonClicked() {
         self.dismiss(animated: true, completion: nil)
     }
