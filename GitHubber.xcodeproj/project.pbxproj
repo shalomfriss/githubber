@@ -36,9 +36,6 @@
 		CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */; };
 		CE46675D2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */; };
 		CE46675E2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */; };
-		CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675F2069C7E300FB8BFC /* AppModel.swift */; };
-		CE4667612069C7E300FB8BFC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675F2069C7E300FB8BFC /* AppModel.swift */; };
-		CE4667622069C7E300FB8BFC /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46675F2069C7E300FB8BFC /* AppModel.swift */; };
 		CE4667652069C87600FB8BFC /* RepoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4667642069C87600FB8BFC /* RepoTableCell.swift */; };
 		CE4667662069C87600FB8BFC /* RepoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4667642069C87600FB8BFC /* RepoTableCell.swift */; };
 		CE4667672069C87600FB8BFC /* RepoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4667642069C87600FB8BFC /* RepoTableCell.swift */; };
@@ -158,7 +155,6 @@
 		CE46674E20692D2B00FB8BFC /* RepoVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoVO.swift; path = GitHubber/vo/RepoVO.swift; sourceTree = SOURCE_ROOT; };
 		CE46675320692D3C00FB8BFC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = GitHubber/constants/Config.swift; sourceTree = SOURCE_ROOT; };
 		CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListingViewController.swift; sourceTree = "<group>"; };
-		CE46675F2069C7E300FB8BFC /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		CE4667642069C87600FB8BFC /* RepoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableCell.swift; sourceTree = "<group>"; };
 		CE4667682069ED4600FB8BFC /* RepoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntry.swift; path = GitHubber/views/RepoEntry.swift; sourceTree = SOURCE_ROOT; };
 		CE46676C2069F74700FB8BFC /* Alerter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alerter.swift; path = GitHubber/utils/Alerter.swift; sourceTree = SOURCE_ROOT; };
@@ -285,9 +281,8 @@
 				CE46674820692D0D00FB8BFC /* utils */,
 				CE2067CD206492B00083E825 /* API.swift */,
 				CE20677F206481930083E825 /* schema.json */,
-				CE206747206344590083E825 /* AppDelegate.swift */,
-				CE46675F2069C7E300FB8BFC /* AppModel.swift */,
 				CE206749206344590083E825 /* ViewController.swift */,
+				CE206747206344590083E825 /* AppDelegate.swift */,
 				CE206753206344590083E825 /* Info.plist */,
 				CEFE5DF821928FE400516ADC /* SampleClass.swift */,
 			);
@@ -824,7 +819,6 @@
 				CE74D0F72193705D0081E383 /* SingleRepoDetailsViewController.swift in Sources */,
 				CE466771206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
 				CE74D0F221936AC60081E383 /* RepoDetailsModel.swift in Sources */,
-				CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */,
 				CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */,
 				CE74D0FC21937DA00081E383 /* SingleRepoDetailsViewModel.swift in Sources */,
 				CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
@@ -859,7 +853,6 @@
 				CE46675620692D3C00FB8BFC /* Config.swift in Sources */,
 				CEFE5DE82191725E00516ADC /* NetworkManagerProtocol.swift in Sources */,
 				CEFE5DDD2191722500516ADC /* NetworkManager.swift in Sources */,
-				CE4667612069C7E300FB8BFC /* AppModel.swift in Sources */,
 				CE466783206DC87400FB8BFC /* Extensions.swift in Sources */,
 				CE46675D2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CEFE5DEF2191728300516ADC /* RepoListingModel.swift in Sources */,
@@ -894,7 +887,6 @@
 				CE46675720692D3C00FB8BFC /* Config.swift in Sources */,
 				CEFE5DEE2191726700516ADC /* BaseService.swift in Sources */,
 				CEFE5DE52191725900516ADC /* NetworkManager.swift in Sources */,
-				CE4667622069C7E300FB8BFC /* AppModel.swift in Sources */,
 				CEFE5DEC2191725F00516ADC /* ServiceProtocol.swift in Sources */,
 				CE466784206DC87400FB8BFC /* Extensions.swift in Sources */,
 				CE46675E2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,

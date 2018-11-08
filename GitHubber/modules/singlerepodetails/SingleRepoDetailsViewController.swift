@@ -24,9 +24,6 @@ class SingleRepoDetailsViewController:UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        
-        
-        
         let down = Down(markdownString: self.repo.readme)
         weak var weakself = self
         DispatchQueue.main.async {

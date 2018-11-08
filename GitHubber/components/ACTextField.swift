@@ -114,11 +114,14 @@ class ACTextField:NSObject, UITextFieldDelegate {
             return true
         }
         
-        weak var weakSelf = self
-        DataManager.instance.getUsernameSuggestions(substring: self.currentText, complete: {(temp:[String]) in
-            weakSelf?.autocompletePossibilities = temp
-            //weakSelf?.possibilitiesUpdated()
-        })
+        if(NetworkManager.isConnectedToNetwork() == true) {
+            weak var weakSelf = self
+            DataManager.instance.getUsernameSuggestions(substring: self.currentText, complete: {(temp:[String]) in
+                weakSelf?.autocompletePossibilities = temp
+                //weakSelf?.possibilitiesUpdated()
+            })
+        }
+        
         
         
         if self.currentText.count == 0 {

@@ -135,7 +135,6 @@ class DataManager {
         let connected = NetworkManager.isConnectedToNetwork()
         if(connected == false) {
             self.restoreFromCache(owner: owner)
-            NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
             return
         }
         
@@ -351,6 +350,7 @@ class DataManager {
      Get multiple name suggestions (first 100)
      */
     func getUsernameSuggestions(substring:String, complete:@escaping ([String]) -> Void) {
+        
         //Had to be created this way according to Github
         let qString = "type:user \(substring) in:login"
         

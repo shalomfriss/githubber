@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchButton:UIButton?
     @IBOutlet weak var settingsButton: UIButton!
     
+    //MARK:- Callbacks
     @IBAction func settingsClicked(_ sender: Any) {
         weak var weakSelf = self
         Alerter.getGithubToken(complete: {
@@ -27,27 +28,16 @@ class ViewController: UIViewController {
         })
     }
     
+    
     @IBAction func searchButtonClicked(sender:UIButton) {
-        
         //Get rid of the keyboard
         self.searchField?.resignFirstResponder()
-        
-        //Preloader should go here
-        
-        //Uh, the search field should be there
-        
         let searchTerm = self.searchFieldDelegate.getSearchTerm()
-        
-        
         self.searchField?.text = ""
         
-        //Reset and get some repos
-        DispatchQueue.global(qos: .userInitiated).async {
-            let dm = DataManager.instance
-            dm.reset()
-            dm.getRepos(owner: searchTerm)
-        }
-        
+        let dm = DataManager.instance
+        dm.reset()
+        dm.getRepos(owner: searchTerm)
     }
     
     
@@ -63,20 +53,6 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
-        //print("Getting token")
-        
-        /*
-        var theToken = ""
-        if let aToken = KeychainWrapper.standard.string(forKey: "token")
-        {
-            theToken = aToken
-        }
-        print("Token: \(theToken)")
-        
-        if(Config.GITHUB_TOKEN == "") {
-            Config.GITHUB_TOKEN = theToken ?? ""
-        }
-        */
         
         //Check for token and ask
         if(NetworkManager.isConnectedToNetwork())
@@ -95,11 +71,10 @@ class ViewController: UIViewController {
             })
         }
         
-        
-        
         self.searchField?.delegate = self.searchFieldDelegate
         self.searchFieldDelegate.textField = self.searchField
         
+        /*
         let sampleClass = SampleClass()
         sampleClass.test = "custom test"
         PersistenceManager.archive(object: sampleClass, fileName: "test1", completion: { error in
@@ -119,10 +94,14 @@ class ViewController: UIViewController {
             print("FAIL")
             
         }
-        
+        */
         
     }
     
+    
+    
+    
+    /// Get the Github token
     func blockAndGetToken() {
         weak var weakSelf = self
         
@@ -142,10 +121,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     /******************************************************************/
     //UTILS
     /******************************************************************/
     //MARK:- Utils
+    
     func tokenSavedMessage() {
         let message = Message(title: "Token saved!", backgroundColor: UIColor(red: 121/255, green: 178/255, blue: 0/255, alpha: 1.0) /* #79b200 */)
         Whisper.show(whisper: message, to: navigationController!, action: .show)

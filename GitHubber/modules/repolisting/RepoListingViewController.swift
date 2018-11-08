@@ -32,9 +32,9 @@ class RepoListingViewController:UIViewController {
     
     
     //MARK:- Setup methods
-    /**
-        Setup the table view using rx swift. This is a more succinct way of expressing how the table will function
-    */
+    
+    
+    /// Setup the table view using rx swift. This is a more succinct way of expressing how the table will function
     private func setupTableView() {
         
         guard self.repoTable != nil else { return }
@@ -47,9 +47,9 @@ class RepoListingViewController:UIViewController {
         
     }
     
-    /**
-        Setup the tap handlers of the table
-    */
+   
+    
+    /// Setup the tap handlers of the table
     private func setupTapHandler() {
         guard self.repoTable != nil else { return }
         
