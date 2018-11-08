@@ -177,6 +177,7 @@ public final class ReposQuery: GraphQLQuery {
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("object", arguments: ["expression": "master:README.md"], type: .object(Object.selections)),
               GraphQLField("name", type: .nonNull(.scalar(String.self))),
               GraphQLField("description", type: .scalar(String.self)),
               GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
@@ -192,8 +193,8 @@ public final class ReposQuery: GraphQLQuery {
               self.snapshot = snapshot
             }
 
-            public init(name: String, description: String? = nil, stargazers: Stargazer, forks: Fork, primaryLanguage: PrimaryLanguage? = nil, updatedAt: String, url: String) {
-              self.init(snapshot: ["__typename": "Repository", "name": name, "description": description, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "primaryLanguage": primaryLanguage.flatMap { (value: PrimaryLanguage) -> Snapshot in value.snapshot }, "updatedAt": updatedAt, "url": url])
+            public init(object: Object? = nil, name: String, description: String? = nil, stargazers: Stargazer, forks: Fork, primaryLanguage: PrimaryLanguage? = nil, updatedAt: String, url: String) {
+              self.init(snapshot: ["__typename": "Repository", "object": object.flatMap { (value: Object) -> Snapshot in value.snapshot }, "name": name, "description": description, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "primaryLanguage": primaryLanguage.flatMap { (value: PrimaryLanguage) -> Snapshot in value.snapshot }, "updatedAt": updatedAt, "url": url])
             }
 
             public var __typename: String {
@@ -202,6 +203,16 @@ public final class ReposQuery: GraphQLQuery {
               }
               set {
                 snapshot.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// A Git object in the repository
+            public var object: Object? {
+              get {
+                return (snapshot["object"] as? Snapshot).flatMap { Object(snapshot: $0) }
+              }
+              set {
+                snapshot.updateValue(newValue?.snapshot, forKey: "object")
               }
             }
 
@@ -294,6 +305,99 @@ public final class ReposQuery: GraphQLQuery {
                 }
                 set {
                   snapshot += newValue.snapshot
+                }
+              }
+            }
+
+            public struct Object: GraphQLSelectionSet {
+              public static let possibleTypes = ["Commit", "Tree", "Blob", "Tag"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLTypeCase(
+                  variants: ["Blob": AsBlob.selections],
+                  default: [
+                    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                  ]
+                )
+              ]
+
+              public var snapshot: Snapshot
+
+              public init(snapshot: Snapshot) {
+                self.snapshot = snapshot
+              }
+
+              public static func makeCommit() -> Object {
+                return Object(snapshot: ["__typename": "Commit"])
+              }
+
+              public static func makeTree() -> Object {
+                return Object(snapshot: ["__typename": "Tree"])
+              }
+
+              public static func makeTag() -> Object {
+                return Object(snapshot: ["__typename": "Tag"])
+              }
+
+              public static func makeBlob(text: String? = nil) -> Object {
+                return Object(snapshot: ["__typename": "Blob", "text": text])
+              }
+
+              public var __typename: String {
+                get {
+                  return snapshot["__typename"]! as! String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              public var asBlob: AsBlob? {
+                get {
+                  if !AsBlob.possibleTypes.contains(__typename) { return nil }
+                  return AsBlob(snapshot: snapshot)
+                }
+                set {
+                  guard let newValue = newValue else { return }
+                  snapshot = newValue.snapshot
+                }
+              }
+
+              public struct AsBlob: GraphQLSelectionSet {
+                public static let possibleTypes = ["Blob"]
+
+                public static let selections: [GraphQLSelection] = [
+                  GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                  GraphQLField("text", type: .scalar(String.self)),
+                ]
+
+                public var snapshot: Snapshot
+
+                public init(snapshot: Snapshot) {
+                  self.snapshot = snapshot
+                }
+
+                public init(text: String? = nil) {
+                  self.init(snapshot: ["__typename": "Blob", "text": text])
+                }
+
+                public var __typename: String {
+                  get {
+                    return snapshot["__typename"]! as! String
+                  }
+                  set {
+                    snapshot.updateValue(newValue, forKey: "__typename")
+                  }
+                }
+
+                /// UTF8 text data or null if the Blob is binary
+                public var text: String? {
+                  get {
+                    return snapshot["text"] as? String
+                  }
+                  set {
+                    snapshot.updateValue(newValue, forKey: "text")
+                  }
                 }
               }
             }
@@ -644,6 +748,7 @@ public final class ReposContinueQuery: GraphQLQuery {
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("object", arguments: ["expression": "master:README.md"], type: .object(Object.selections)),
               GraphQLField("name", type: .nonNull(.scalar(String.self))),
               GraphQLField("description", type: .scalar(String.self)),
               GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
@@ -659,8 +764,8 @@ public final class ReposContinueQuery: GraphQLQuery {
               self.snapshot = snapshot
             }
 
-            public init(name: String, description: String? = nil, stargazers: Stargazer, forks: Fork, primaryLanguage: PrimaryLanguage? = nil, updatedAt: String, url: String) {
-              self.init(snapshot: ["__typename": "Repository", "name": name, "description": description, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "primaryLanguage": primaryLanguage.flatMap { (value: PrimaryLanguage) -> Snapshot in value.snapshot }, "updatedAt": updatedAt, "url": url])
+            public init(object: Object? = nil, name: String, description: String? = nil, stargazers: Stargazer, forks: Fork, primaryLanguage: PrimaryLanguage? = nil, updatedAt: String, url: String) {
+              self.init(snapshot: ["__typename": "Repository", "object": object.flatMap { (value: Object) -> Snapshot in value.snapshot }, "name": name, "description": description, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "primaryLanguage": primaryLanguage.flatMap { (value: PrimaryLanguage) -> Snapshot in value.snapshot }, "updatedAt": updatedAt, "url": url])
             }
 
             public var __typename: String {
@@ -669,6 +774,16 @@ public final class ReposContinueQuery: GraphQLQuery {
               }
               set {
                 snapshot.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            /// A Git object in the repository
+            public var object: Object? {
+              get {
+                return (snapshot["object"] as? Snapshot).flatMap { Object(snapshot: $0) }
+              }
+              set {
+                snapshot.updateValue(newValue?.snapshot, forKey: "object")
               }
             }
 
@@ -761,6 +876,99 @@ public final class ReposContinueQuery: GraphQLQuery {
                 }
                 set {
                   snapshot += newValue.snapshot
+                }
+              }
+            }
+
+            public struct Object: GraphQLSelectionSet {
+              public static let possibleTypes = ["Commit", "Tree", "Blob", "Tag"]
+
+              public static let selections: [GraphQLSelection] = [
+                GraphQLTypeCase(
+                  variants: ["Blob": AsBlob.selections],
+                  default: [
+                    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                  ]
+                )
+              ]
+
+              public var snapshot: Snapshot
+
+              public init(snapshot: Snapshot) {
+                self.snapshot = snapshot
+              }
+
+              public static func makeCommit() -> Object {
+                return Object(snapshot: ["__typename": "Commit"])
+              }
+
+              public static func makeTree() -> Object {
+                return Object(snapshot: ["__typename": "Tree"])
+              }
+
+              public static func makeTag() -> Object {
+                return Object(snapshot: ["__typename": "Tag"])
+              }
+
+              public static func makeBlob(text: String? = nil) -> Object {
+                return Object(snapshot: ["__typename": "Blob", "text": text])
+              }
+
+              public var __typename: String {
+                get {
+                  return snapshot["__typename"]! as! String
+                }
+                set {
+                  snapshot.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              public var asBlob: AsBlob? {
+                get {
+                  if !AsBlob.possibleTypes.contains(__typename) { return nil }
+                  return AsBlob(snapshot: snapshot)
+                }
+                set {
+                  guard let newValue = newValue else { return }
+                  snapshot = newValue.snapshot
+                }
+              }
+
+              public struct AsBlob: GraphQLSelectionSet {
+                public static let possibleTypes = ["Blob"]
+
+                public static let selections: [GraphQLSelection] = [
+                  GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                  GraphQLField("text", type: .scalar(String.self)),
+                ]
+
+                public var snapshot: Snapshot
+
+                public init(snapshot: Snapshot) {
+                  self.snapshot = snapshot
+                }
+
+                public init(text: String? = nil) {
+                  self.init(snapshot: ["__typename": "Blob", "text": text])
+                }
+
+                public var __typename: String {
+                  get {
+                    return snapshot["__typename"]! as! String
+                  }
+                  set {
+                    snapshot.updateValue(newValue, forKey: "__typename")
+                  }
+                }
+
+                /// UTF8 text data or null if the Blob is binary
+                public var text: String? {
+                  get {
+                    return snapshot["text"] as? String
+                  }
+                  set {
+                    snapshot.updateValue(newValue, forKey: "text")
+                  }
                 }
               }
             }
@@ -1989,12 +2197,13 @@ public final class UserNamesQuery: GraphQLQuery {
 
 public struct RepoDetails: GraphQLFragment {
   public static let fragmentString =
-    "fragment RepoDetails on Repository {\n  __typename\n  name\n  description\n  stargazers {\n    __typename\n    totalCount\n  }\n  forks {\n    __typename\n    totalCount\n  }\n  primaryLanguage {\n    __typename\n    name\n  }\n  updatedAt\n  url\n}"
+    "fragment RepoDetails on Repository {\n  __typename\n  object(expression: \"master:README.md\") {\n    __typename\n    ... on Blob {\n      text\n    }\n  }\n  name\n  description\n  stargazers {\n    __typename\n    totalCount\n  }\n  forks {\n    __typename\n    totalCount\n  }\n  primaryLanguage {\n    __typename\n    name\n  }\n  updatedAt\n  url\n}"
 
   public static let possibleTypes = ["Repository"]
 
   public static let selections: [GraphQLSelection] = [
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+    GraphQLField("object", arguments: ["expression": "master:README.md"], type: .object(Object.selections)),
     GraphQLField("name", type: .nonNull(.scalar(String.self))),
     GraphQLField("description", type: .scalar(String.self)),
     GraphQLField("stargazers", type: .nonNull(.object(Stargazer.selections))),
@@ -2010,8 +2219,8 @@ public struct RepoDetails: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  public init(name: String, description: String? = nil, stargazers: Stargazer, forks: Fork, primaryLanguage: PrimaryLanguage? = nil, updatedAt: String, url: String) {
-    self.init(snapshot: ["__typename": "Repository", "name": name, "description": description, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "primaryLanguage": primaryLanguage.flatMap { (value: PrimaryLanguage) -> Snapshot in value.snapshot }, "updatedAt": updatedAt, "url": url])
+  public init(object: Object? = nil, name: String, description: String? = nil, stargazers: Stargazer, forks: Fork, primaryLanguage: PrimaryLanguage? = nil, updatedAt: String, url: String) {
+    self.init(snapshot: ["__typename": "Repository", "object": object.flatMap { (value: Object) -> Snapshot in value.snapshot }, "name": name, "description": description, "stargazers": stargazers.snapshot, "forks": forks.snapshot, "primaryLanguage": primaryLanguage.flatMap { (value: PrimaryLanguage) -> Snapshot in value.snapshot }, "updatedAt": updatedAt, "url": url])
   }
 
   public var __typename: String {
@@ -2020,6 +2229,16 @@ public struct RepoDetails: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  /// A Git object in the repository
+  public var object: Object? {
+    get {
+      return (snapshot["object"] as? Snapshot).flatMap { Object(snapshot: $0) }
+    }
+    set {
+      snapshot.updateValue(newValue?.snapshot, forKey: "object")
     }
   }
 
@@ -2091,6 +2310,99 @@ public struct RepoDetails: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue, forKey: "url")
+    }
+  }
+
+  public struct Object: GraphQLSelectionSet {
+    public static let possibleTypes = ["Commit", "Tree", "Blob", "Tag"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLTypeCase(
+        variants: ["Blob": AsBlob.selections],
+        default: [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        ]
+      )
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public static func makeCommit() -> Object {
+      return Object(snapshot: ["__typename": "Commit"])
+    }
+
+    public static func makeTree() -> Object {
+      return Object(snapshot: ["__typename": "Tree"])
+    }
+
+    public static func makeTag() -> Object {
+      return Object(snapshot: ["__typename": "Tag"])
+    }
+
+    public static func makeBlob(text: String? = nil) -> Object {
+      return Object(snapshot: ["__typename": "Blob", "text": text])
+    }
+
+    public var __typename: String {
+      get {
+        return snapshot["__typename"]! as! String
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "__typename")
+      }
+    }
+
+    public var asBlob: AsBlob? {
+      get {
+        if !AsBlob.possibleTypes.contains(__typename) { return nil }
+        return AsBlob(snapshot: snapshot)
+      }
+      set {
+        guard let newValue = newValue else { return }
+        snapshot = newValue.snapshot
+      }
+    }
+
+    public struct AsBlob: GraphQLSelectionSet {
+      public static let possibleTypes = ["Blob"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text", type: .scalar(String.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(text: String? = nil) {
+        self.init(snapshot: ["__typename": "Blob", "text": text])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// UTF8 text data or null if the Blob is binary
+      public var text: String? {
+        get {
+          return snapshot["text"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text")
+        }
+      }
     }
   }
 

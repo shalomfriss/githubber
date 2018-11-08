@@ -1,4 +1,9 @@
 fragment RepoDetails on Repository {
+    object(expression: "master:README.md") {
+        ... on Blob {
+            text
+        }
+    }
     name
     description
     stargazers {
@@ -81,8 +86,10 @@ query RepoComments($repoName:String!, $owner:String!) {
                             }
                         }
                     }
+
                 }
             }
         }
     }
 }
+

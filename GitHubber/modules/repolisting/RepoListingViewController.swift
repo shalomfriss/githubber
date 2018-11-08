@@ -24,10 +24,12 @@ class RepoListingViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Repo listing"
         
         self.setupTableView()
         self.setupTapHandler()
     }
+    
     
     //MARK:- Setup methods
     /**

@@ -19,4 +19,5 @@ class RepoVO:Object {
     @objc dynamic var forks:Int                = 0
     @objc dynamic var stargazers:Int           = 0
     @objc dynamic var updatedAt:String         = ""
+    @objc dynamic var readme:String             = ""
 }

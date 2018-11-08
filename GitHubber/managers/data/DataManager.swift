@@ -133,14 +133,12 @@ class DataManager {
     func getRepos(owner:String) {
         
         let connected = NetworkManager.isConnectedToNetwork()
-        print("CONNECTED: \(connected)")
         if(connected == false) {
             self.restoreFromCache(owner: owner)
             NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
             return
         }
         
-        print("Get repos")
         self.currentOwner = owner
         
         if(self.tokenIsValid == false) {
@@ -175,6 +173,10 @@ class DataManager {
                 repovo.stargazers = repo.stargazers.totalCount
                 repovo.updatedAt = repo.updatedAt
                 repovo.url = repo.url
+                repovo.readme = (repo.object?.snapshot["text"] ?? "" ) as! String
+                
+                print("----------------------------------------------")
+                print((repo.object?.snapshot["text"] ?? "" ) as! String)
                 
                 //Github has their own language detection so no need to massage the language name
                 if(self?.tempRepos[repovo.primaryLanguage] == nil) {

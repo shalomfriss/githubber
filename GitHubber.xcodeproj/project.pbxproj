@@ -61,6 +61,9 @@
 		CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE466785206DD0C800FB8BFC /* RepoEntryList.swift */; };
 		CE74D0F0219366CF0081E383 /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0EF219366CF0081E383 /* RepoDetailsViewModel.swift */; };
 		CE74D0F221936AC60081E383 /* RepoDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0F121936AC60081E383 /* RepoDetailsModel.swift */; };
+		CE74D0F72193705D0081E383 /* SingleRepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0F62193705D0081E383 /* SingleRepoDetailsViewController.swift */; };
+		CE74D0FC21937DA00081E383 /* SingleRepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0FB21937DA00081E383 /* SingleRepoDetailsViewModel.swift */; };
+		CE74D0FE21937DB40081E383 /* SingleRepoDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */; };
 		CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90C4ED20701C4E002EF033 /* ACTextField.swift */; };
 		CE90C4F02071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
 		CE90C4F12071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
@@ -151,7 +154,7 @@
 		CE20677F206481930083E825 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		CE2067CD206492B00083E825 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CE2067FD20692C870083E825 /* Repos.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Repos.graphql; sourceTree = "<group>"; };
-		CE46674920692D1D00FB8BFC /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = GitHubber/managers/DataManager.swift; sourceTree = SOURCE_ROOT; };
+		CE46674920692D1D00FB8BFC /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = GitHubber/managers/data/DataManager.swift; sourceTree = SOURCE_ROOT; };
 		CE46674E20692D2B00FB8BFC /* RepoVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoVO.swift; path = GitHubber/vo/RepoVO.swift; sourceTree = SOURCE_ROOT; };
 		CE46675320692D3C00FB8BFC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = GitHubber/constants/Config.swift; sourceTree = SOURCE_ROOT; };
 		CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListingViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +169,9 @@
 		CE466785206DD0C800FB8BFC /* RepoEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntryList.swift; path = GitHubber/utils/RepoEntryList.swift; sourceTree = SOURCE_ROOT; };
 		CE74D0EF219366CF0081E383 /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
 		CE74D0F121936AC60081E383 /* RepoDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsModel.swift; sourceTree = "<group>"; };
+		CE74D0F62193705D0081E383 /* SingleRepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoDetailsViewController.swift; sourceTree = "<group>"; };
+		CE74D0FB21937DA00081E383 /* SingleRepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoDetailsViewModel.swift; sourceTree = "<group>"; };
+		CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoDetailsModel.swift; sourceTree = "<group>"; };
 		CE90C4ED20701C4E002EF033 /* ACTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACTextField.swift; sourceTree = "<group>"; };
 		CE90C4EF2071DD7F002EF033 /* users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.graphql; sourceTree = "<group>"; };
 		CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = managers/ConfigurationManager.swift; sourceTree = "<group>"; };
@@ -269,25 +275,20 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
+				CE74D0FA219371580081E383 /* storyboards */,
+				CE74D0F9219371470081E383 /* configurations */,
 				CEFE5DC5219162E300516ADC /* protocols */,
 				CEFE5DBC219157F300516ADC /* managers */,
 				CEFE5DBB2191578400516ADC /* modules */,
-				CEFE5DBA2191575F00516ADC /* graphql */,
-				CEFE5DB72191574600516ADC /* controllers */,
 				CE90C4EC20701C41002EF033 /* components */,
-				CE4667632069C85400FB8BFC /* views */,
 				CE46675220692D3100FB8BFC /* constants */,
-				CE46674D20692D2000FB8BFC /* vo */,
 				CE46674820692D0D00FB8BFC /* utils */,
 				CE2067CD206492B00083E825 /* API.swift */,
 				CE20677F206481930083E825 /* schema.json */,
 				CE206747206344590083E825 /* AppDelegate.swift */,
-				CE20674B206344590083E825 /* Main.storyboard */,
-				CE20674E206344590083E825 /* Assets.xcassets */,
-				CE206750206344590083E825 /* LaunchScreen.storyboard */,
-				CE206753206344590083E825 /* Info.plist */,
 				CE46675F2069C7E300FB8BFC /* AppModel.swift */,
-				CEFE5DC02191584200516ADC /* GlobalConfig.plist */,
+				CE206749206344590083E825 /* ViewController.swift */,
+				CE206753206344590083E825 /* Info.plist */,
 				CEFE5DF821928FE400516ADC /* SampleClass.swift */,
 			);
 			path = GitHubber;
@@ -331,7 +332,7 @@
 				CE466785206DD0C800FB8BFC /* RepoEntryList.swift */,
 			);
 			name = vo;
-			path = "New Group1";
+			path = "../../New Group1";
 			sourceTree = "<group>";
 		};
 		CE46675220692D3100FB8BFC /* constants */ = {
@@ -342,13 +343,6 @@
 			);
 			name = constants;
 			path = "New Group2";
-			sourceTree = "<group>";
-		};
-		CE4667632069C85400FB8BFC /* views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = views;
 			sourceTree = "<group>";
 		};
 		CE74D0EE219366A60081E383 /* repodetails */ = {
@@ -378,20 +372,50 @@
 			path = cells;
 			sourceTree = "<group>";
 		};
+		CE74D0F5219370470081E383 /* singlerepodetails */ = {
+			isa = PBXGroup;
+			children = (
+				CE74D0F62193705D0081E383 /* SingleRepoDetailsViewController.swift */,
+				CE74D0FB21937DA00081E383 /* SingleRepoDetailsViewModel.swift */,
+				CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */,
+			);
+			path = singlerepodetails;
+			sourceTree = "<group>";
+		};
+		CE74D0F8219371350081E383 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE5DBA2191575F00516ADC /* graphql */,
+				CE46674D20692D2000FB8BFC /* vo */,
+				CE46674920692D1D00FB8BFC /* DataManager.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		CE74D0F9219371470081E383 /* configurations */ = {
+			isa = PBXGroup;
+			children = (
+				CEFE5DC02191584200516ADC /* GlobalConfig.plist */,
+			);
+			path = configurations;
+			sourceTree = "<group>";
+		};
+		CE74D0FA219371580081E383 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CE20674B206344590083E825 /* Main.storyboard */,
+				CE20674E206344590083E825 /* Assets.xcassets */,
+				CE206750206344590083E825 /* LaunchScreen.storyboard */,
+			);
+			path = storyboards;
+			sourceTree = "<group>";
+		};
 		CE90C4EC20701C41002EF033 /* components */ = {
 			isa = PBXGroup;
 			children = (
 				CE90C4ED20701C4E002EF033 /* ACTextField.swift */,
 			);
 			path = components;
-			sourceTree = "<group>";
-		};
-		CEFE5DB72191574600516ADC /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				CE206749206344590083E825 /* ViewController.swift */,
-			);
-			path = controllers;
 			sourceTree = "<group>";
 		};
 		CEFE5DBA2191575F00516ADC /* graphql */ = {
@@ -406,6 +430,7 @@
 		CEFE5DBB2191578400516ADC /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE74D0F5219370470081E383 /* singlerepodetails */,
 				CE74D0EE219366A60081E383 /* repodetails */,
 				CEFE5DD121916A9800516ADC /* repolisting */,
 			);
@@ -415,7 +440,7 @@
 		CEFE5DBC219157F300516ADC /* managers */ = {
 			isa = PBXGroup;
 			children = (
-				CE46674920692D1D00FB8BFC /* DataManager.swift */,
+				CE74D0F8219371350081E383 /* data */,
 				CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */,
 				CEFE5DC22191626600516ADC /* LogManager.swift */,
 				CEFE5DCA2191637E00516ADC /* NetworkManager.swift */,
@@ -780,6 +805,7 @@
 				CEFE5DBE2191580700516ADC /* ConfigurationManager.swift in Sources */,
 				CEFE5DD021916A4400516ADC /* BaseService.swift in Sources */,
 				CEFE5DD72191710100516ADC /* PersistenceManager.swift in Sources */,
+				CE74D0FE21937DB40081E383 /* SingleRepoDetailsModel.swift in Sources */,
 				CEFE5DCB2191637E00516ADC /* NetworkManager.swift in Sources */,
 				CEFE5DF921928FE400516ADC /* SampleClass.swift in Sources */,
 				CEFE5DCD2191648F00516ADC /* ServiceProtocol.swift in Sources */,
@@ -789,10 +815,12 @@
 				CEFE5DD321916AB600516ADC /* RepoListingModel.swift in Sources */,
 				CEFE5DC32191626600516ADC /* LogManager.swift in Sources */,
 				CE46674F20692D2B00FB8BFC /* RepoVO.swift in Sources */,
+				CE74D0F72193705D0081E383 /* SingleRepoDetailsViewController.swift in Sources */,
 				CE466771206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
 				CE74D0F221936AC60081E383 /* RepoDetailsModel.swift in Sources */,
 				CE4667602069C7E300FB8BFC /* AppModel.swift in Sources */,
 				CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */,
+				CE74D0FC21937DA00081E383 /* SingleRepoDetailsViewModel.swift in Sources */,
 				CE46675C2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE4667692069ED4600FB8BFC /* RepoEntry.swift in Sources */,
 				CE206748206344590083E825 /* AppDelegate.swift in Sources */,

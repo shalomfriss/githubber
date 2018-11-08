@@ -18,6 +18,7 @@ class RepoDetailsViewController:UIViewController {
     let viewModel:RepoDetailsViewModel = RepoDetailsViewModel()
     
     let disposeBag = DisposeBag()
+    var repo:RepoVO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,8 @@ class RepoDetailsViewController:UIViewController {
         
         self.setupTableView()
         self.reposTable?.rx.setDelegate(self).disposed(by: self.disposeBag)
+        
+        self.title = "Repos by language"
     }
     
     private func setupTableView() {
@@ -69,7 +72,27 @@ extension RepoDetailsViewController:UITableViewDelegate {
         //print(viewModel.repoDetails)
         let cell:RepoDetailsTableCell = self.reposTable?.cellForRow(at: indexPath) as! RepoDetailsTableCell
         print(cell.repo)
+        self.repo = cell.repo
+        
+        /*
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let controller = storyboard.instantiateViewController(withIdentifier: "singleRepo") as! SingleRepoDetailsViewController
+        self.present(controller, animated: true, completion: nil)
+        controller.repo = cell.repo
+        */
+        
+        
+        performSegue(withIdentifier: "singleRepo", sender: nil)
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! SingleRepoDetailsViewController
+        controller.repo = self.repo
+    }
+    
+    
+    
 }
 
