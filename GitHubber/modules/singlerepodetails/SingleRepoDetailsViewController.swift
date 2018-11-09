@@ -11,9 +11,12 @@ import UIKit
 import Down
 
 class SingleRepoDetailsViewController:UIViewController {
-    public var repo:RepoVO!
     
+    public var repo:RepoVO!
     @IBOutlet weak var readme: UITextView!
+    
+    public var viewModel:SingleRepoDetailsViewModel = SingleRepoDetailsViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

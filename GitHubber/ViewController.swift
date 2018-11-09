@@ -20,27 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchButton:UIButton?
     @IBOutlet weak var settingsButton: UIButton!
     
-    //MARK:- Callbacks
-    @IBAction func settingsClicked(_ sender: Any) {
-        weak var weakSelf = self
-        Alerter.getGithubToken(complete: {
-            weakSelf?.tokenSavedMessage()
-        })
-    }
-    
-    
-    @IBAction func searchButtonClicked(sender:UIButton) {
-        //Get rid of the keyboard
-        self.searchField?.resignFirstResponder()
-        let searchTerm = self.searchFieldDelegate.getSearchTerm()
-        self.searchField?.text = ""
-        
-        let dm = DataManager.instance
-        dm.reset()
-        dm.getRepos(owner: searchTerm)
-    }
-    
-    
     
     /******************************************************************/
     //VIEWCONTROLLER METHODS
@@ -48,14 +27,15 @@ class ViewController: UIViewController {
     //MARK:- UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.title = "Githubber"
+        
         weak var weakSelf = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
         
         //Check for token and ask
-        if(NetworkManager.isConnectedToNetwork())
+        if(DataManager.isConnectedToNetwork())
         {
             if(Config.GITHUB_TOKEN == "") {
                 Alerter.getGithubToken(complete: {
@@ -71,6 +51,7 @@ class ViewController: UIViewController {
             })
         }
         
+        //setup delegates for ACTextField
         self.searchField?.delegate = self.searchFieldDelegate
         self.searchFieldDelegate.textField = self.searchField
         
@@ -85,7 +66,6 @@ class ViewController: UIViewController {
                 print(error)
             }
         })
-       
         
         if let newSampleClass:SampleClass =  PersistenceManager.unarchive(fileName: "test1") {
             print("DONE")
@@ -98,8 +78,42 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated:Bool) {
+        //Whisper.show(whisper: "Welcome", to: self.navigationController, action: .show)
+    }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
+    /******************************************************************/
+    //EVENT HANDLERS / CALLBACKS
+    /******************************************************************/
+    @IBAction func searchButtonClicked(sender:UIButton) {
+        //Get rid of the keyboard
+        self.searchField?.resignFirstResponder()
+        let searchTerm = self.searchFieldDelegate.getSearchTerm()
+        DispatchQueue.main.async {
+            self.searchField?.text = ""
+        }
+        
+        let dm = DataManager.instance
+        dm.reset()
+        dm.getRepos(owner: searchTerm)
+    }
+    
+    //MARK:- Callbacks
+    @IBAction func settingsClicked(_ sender: Any) {
+        weak var weakSelf = self
+        Alerter.getGithubToken(complete: {
+            weakSelf?.tokenSavedMessage()
+        })
+    }
+    
+    /******************************************************************/
+    //UTILS
+    /******************************************************************/
+    //MARK:- Utils
     
     /// Get the Github token
     func blockAndGetToken() {
@@ -115,17 +129,6 @@ class ViewController: UIViewController {
             })
         }, strictModel: true)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /******************************************************************/
-    //UTILS
-    /******************************************************************/
-    //MARK:- Utils
     
     func tokenSavedMessage() {
         let message = Message(title: "Token saved!", backgroundColor: UIColor(red: 121/255, green: 178/255, blue: 0/255, alpha: 1.0) /* #79b200 */)

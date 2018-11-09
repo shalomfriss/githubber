@@ -10,6 +10,23 @@
 		18D87068F2A01682057A326D /* Pods_GitHubberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190810D04457F33BB7CC4D93 /* Pods_GitHubberUITests.framework */; };
 		1A9789E70DDA960D33F472FA /* Pods_GitHubberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74DDFF51455B62D7282BB5F4 /* Pods_GitHubberTests.framework */; };
 		3E1EAA04BF5E20E104AB3B7E /* Pods_GitHubber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFE5DF5219270E200516ADC /* Pods_GitHubber.framework */; };
+		CE052EC42194DEA200F2017C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052EC32194DEA200F2017C /* DataManager.swift */; };
+		CE052EC52194DEA900F2017C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052EC32194DEA200F2017C /* DataManager.swift */; };
+		CE052EC62194DEA900F2017C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052EC32194DEA200F2017C /* DataManager.swift */; };
+		CE052EC82194DFCC00F2017C /* JsonCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052EC72194DFCC00F2017C /* JsonCodableTests.swift */; };
+		CE052ECE21950D3E00F2017C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052ECD21950D3D00F2017C /* CoreDataManager.swift */; };
+		CE052ECF21950DDF00F2017C /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0EF219366CF0081E383 /* RepoDetailsViewModel.swift */; };
+		CE052ED021950DDF00F2017C /* RepoDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0F121936AC60081E383 /* RepoDetailsModel.swift */; };
+		CE052ED121950DDF00F2017C /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0EF219366CF0081E383 /* RepoDetailsViewModel.swift */; };
+		CE052ED221950DDF00F2017C /* RepoDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0F121936AC60081E383 /* RepoDetailsModel.swift */; };
+		CE052ED321950DE400F2017C /* SingleRepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0F62193705D0081E383 /* SingleRepoDetailsViewController.swift */; };
+		CE052ED421950DE400F2017C /* SingleRepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0FB21937DA00081E383 /* SingleRepoDetailsViewModel.swift */; };
+		CE052ED521950DE400F2017C /* SingleRepoDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */; };
+		CE052ED621950DE500F2017C /* SingleRepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0F62193705D0081E383 /* SingleRepoDetailsViewController.swift */; };
+		CE052ED721950DE500F2017C /* SingleRepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0FB21937DA00081E383 /* SingleRepoDetailsViewModel.swift */; };
+		CE052ED821950DE500F2017C /* SingleRepoDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */; };
+		CE052EDA21950E8F00F2017C /* ConfigurationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052ED921950E8F00F2017C /* ConfigurationManagerTests.swift */; };
+		CE052EDE2195287F00F2017C /* DataManager+GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052EDD2195287F00F2017C /* DataManager+GraphQL.swift */; };
 		CE206748206344590083E825 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE206747206344590083E825 /* AppDelegate.swift */; };
 		CE20674A206344590083E825 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE206749206344590083E825 /* ViewController.swift */; };
 		CE20674D206344590083E825 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE20674B206344590083E825 /* Main.storyboard */; };
@@ -26,7 +43,6 @@
 		CE2067FE20692C870083E825 /* Repos.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067FD20692C870083E825 /* Repos.graphql */; };
 		CE2067FF20692C870083E825 /* Repos.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067FD20692C870083E825 /* Repos.graphql */; };
 		CE20680020692C870083E825 /* Repos.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2067FD20692C870083E825 /* Repos.graphql */; };
-		CE46674A20692D1D00FB8BFC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46674920692D1D00FB8BFC /* DataManager.swift */; };
 		CE46674F20692D2B00FB8BFC /* RepoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46674E20692D2B00FB8BFC /* RepoVO.swift */; };
 		CE46675020692D2B00FB8BFC /* RepoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46674E20692D2B00FB8BFC /* RepoVO.swift */; };
 		CE46675120692D2B00FB8BFC /* RepoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46674E20692D2B00FB8BFC /* RepoVO.swift */; };
@@ -72,24 +88,18 @@
 		CEFE5DC32191626600516ADC /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC22191626600516ADC /* LogManager.swift */; };
 		CEFE5DC72191633800516ADC /* JsonCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC62191633800516ADC /* JsonCodable.swift */; };
 		CEFE5DC92191636E00516ADC /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC82191636E00516ADC /* NetworkManagerProtocol.swift */; };
-		CEFE5DCB2191637E00516ADC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCA2191637E00516ADC /* NetworkManager.swift */; };
 		CEFE5DCD2191648F00516ADC /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCC2191648F00516ADC /* ServiceProtocol.swift */; };
-		CEFE5DD021916A4400516ADC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCF21916A4400516ADC /* BaseService.swift */; };
 		CEFE5DD321916AB600516ADC /* RepoListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD221916AB600516ADC /* RepoListingModel.swift */; };
 		CEFE5DD521916ACD00516ADC /* RepoListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD421916ACD00516ADC /* RepoListingViewModel.swift */; };
 		CEFE5DD72191710100516ADC /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD62191710100516ADC /* PersistenceManager.swift */; };
 		CEFE5DD92191718A00516ADC /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD82191718A00516ADC /* PersistenceManagerTests.swift */; };
 		CEFE5DDB219171D500516ADC /* SampleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DDA219171D500516ADC /* SampleClass.swift */; };
-		CEFE5DDC2191722200516ADC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46674920692D1D00FB8BFC /* DataManager.swift */; };
-		CEFE5DDD2191722500516ADC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCA2191637E00516ADC /* NetworkManager.swift */; };
 		CEFE5DDE2191722D00516ADC /* ACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE90C4ED20701C4E002EF033 /* ACTextField.swift */; };
-		CEFE5DDF2191725000516ADC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46674920692D1D00FB8BFC /* DataManager.swift */; };
 		CEFE5DE02191725300516ADC /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */; };
 		CEFE5DE12191725400516ADC /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */; };
 		CEFE5DE22191725800516ADC /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC22191626600516ADC /* LogManager.swift */; };
 		CEFE5DE32191725800516ADC /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD62191710100516ADC /* PersistenceManager.swift */; };
 		CEFE5DE42191725900516ADC /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC22191626600516ADC /* LogManager.swift */; };
-		CEFE5DE52191725900516ADC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCA2191637E00516ADC /* NetworkManager.swift */; };
 		CEFE5DE62191725900516ADC /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD62191710100516ADC /* PersistenceManager.swift */; };
 		CEFE5DE72191725E00516ADC /* JsonCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC62191633800516ADC /* JsonCodable.swift */; };
 		CEFE5DE82191725E00516ADC /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC82191636E00516ADC /* NetworkManagerProtocol.swift */; };
@@ -97,8 +107,6 @@
 		CEFE5DEA2191725F00516ADC /* JsonCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC62191633800516ADC /* JsonCodable.swift */; };
 		CEFE5DEB2191725F00516ADC /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DC82191636E00516ADC /* NetworkManagerProtocol.swift */; };
 		CEFE5DEC2191725F00516ADC /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCC2191648F00516ADC /* ServiceProtocol.swift */; };
-		CEFE5DED2191726600516ADC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCF21916A4400516ADC /* BaseService.swift */; };
-		CEFE5DEE2191726700516ADC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DCF21916A4400516ADC /* BaseService.swift */; };
 		CEFE5DEF2191728300516ADC /* RepoListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD221916AB600516ADC /* RepoListingModel.swift */; };
 		CEFE5DF02191728300516ADC /* RepoListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD421916ACD00516ADC /* RepoListingViewModel.swift */; };
 		CEFE5DF12191728400516ADC /* RepoListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DD221916AB600516ADC /* RepoListingModel.swift */; };
@@ -135,6 +143,11 @@
 		7DD769F407C83483F663EC7A /* Pods_GitHubber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6BEDAC478864C19B59FC81 /* Pods-GitHubberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubberUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A36D580E262D4F9E5F847FB8 /* Pods-GitHubber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubber.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubber/Pods-GitHubber.debug.xcconfig"; sourceTree = "<group>"; };
+		CE052EC32194DEA200F2017C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = GitHubber/general/managers/DataManager.swift; sourceTree = SOURCE_ROOT; };
+		CE052EC72194DFCC00F2017C /* JsonCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCodableTests.swift; sourceTree = "<group>"; };
+		CE052ECD21950D3D00F2017C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CE052ED921950E8F00F2017C /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManagerTests.swift; sourceTree = "<group>"; };
+		CE052EDD2195287F00F2017C /* DataManager+GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+GraphQL.swift"; sourceTree = "<group>"; };
 		CE206744206344590083E825 /* GitHubber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE206747206344590083E825 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE206749206344590083E825 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +164,6 @@
 		CE20677F206481930083E825 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		CE2067CD206492B00083E825 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CE2067FD20692C870083E825 /* Repos.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Repos.graphql; sourceTree = "<group>"; };
-		CE46674920692D1D00FB8BFC /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = GitHubber/managers/data/DataManager.swift; sourceTree = SOURCE_ROOT; };
 		CE46674E20692D2B00FB8BFC /* RepoVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoVO.swift; path = GitHubber/vo/RepoVO.swift; sourceTree = SOURCE_ROOT; };
 		CE46675320692D3C00FB8BFC /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = GitHubber/constants/Config.swift; sourceTree = SOURCE_ROOT; };
 		CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoListingViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +172,7 @@
 		CE46676C2069F74700FB8BFC /* Alerter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alerter.swift; path = GitHubber/utils/Alerter.swift; sourceTree = SOURCE_ROOT; };
 		CE466770206A00F800FB8BFC /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		CE466774206AAC9500FB8BFC /* RepoDetailsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsTableCell.swift; sourceTree = "<group>"; };
-		CE46677A206C8C7E00FB8BFC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "GitHubber/New Group2/Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		CE46677A206C8C7E00FB8BFC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = GitHubber/general/extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		CE466780206CA69500FB8BFC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE466785206DD0C800FB8BFC /* RepoEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoEntryList.swift; path = GitHubber/utils/RepoEntryList.swift; sourceTree = SOURCE_ROOT; };
 		CE74D0EF219366CF0081E383 /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -175,9 +187,7 @@
 		CEFE5DC22191626600516ADC /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		CEFE5DC62191633800516ADC /* JsonCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonCodable.swift; path = protocols/JsonCodable.swift; sourceTree = "<group>"; };
 		CEFE5DC82191636E00516ADC /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
-		CEFE5DCA2191637E00516ADC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CEFE5DCC2191648F00516ADC /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
-		CEFE5DCF21916A4400516ADC /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		CEFE5DD221916AB600516ADC /* RepoListingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListingModel.swift; sourceTree = "<group>"; };
 		CEFE5DD421916ACD00516ADC /* RepoListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListingViewModel.swift; sourceTree = "<group>"; };
 		CEFE5DD62191710100516ADC /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -246,6 +256,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE052EC22194DD8700F2017C /* general */ = {
+			isa = PBXGroup;
+			children = (
+				CE052EC92194E6CD00F2017C /* extensions */,
+				CE90C4EC20701C41002EF033 /* components */,
+				CE46675220692D3100FB8BFC /* constants */,
+				CEFE5DBA2191575F00516ADC /* graphql */,
+				CEFE5DBC219157F300516ADC /* managers */,
+				CEFE5DC5219162E300516ADC /* protocols */,
+				CE46674820692D0D00FB8BFC /* utils */,
+				CE46674D20692D2000FB8BFC /* vo */,
+			);
+			path = general;
+			sourceTree = "<group>";
+		};
+		CE052EC92194E6CD00F2017C /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE46677A206C8C7E00FB8BFC /* Extensions.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		CE20673B206344590083E825 = {
 			isa = PBXGroup;
 			children = (
@@ -271,14 +304,10 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
-				CE74D0FA219371580081E383 /* storyboards */,
+				CE052EC22194DD8700F2017C /* general */,
 				CE74D0F9219371470081E383 /* configurations */,
-				CEFE5DC5219162E300516ADC /* protocols */,
-				CEFE5DBC219157F300516ADC /* managers */,
 				CEFE5DBB2191578400516ADC /* modules */,
-				CE90C4EC20701C41002EF033 /* components */,
-				CE46675220692D3100FB8BFC /* constants */,
-				CE46674820692D0D00FB8BFC /* utils */,
+				CE74D0FA219371580081E383 /* storyboards */,
 				CE2067CD206492B00083E825 /* API.swift */,
 				CE20677F206481930083E825 /* schema.json */,
 				CE206749206344590083E825 /* ViewController.swift */,
@@ -294,8 +323,10 @@
 			children = (
 				CE20675C206344590083E825 /* GitHubberTests.swift */,
 				CE20675E206344590083E825 /* Info.plist */,
+				CE052EC72194DFCC00F2017C /* JsonCodableTests.swift */,
 				CEFE5DD82191718A00516ADC /* PersistenceManagerTests.swift */,
 				CEFE5DDA219171D500516ADC /* SampleClass.swift */,
+				CE052ED921950E8F00F2017C /* ConfigurationManagerTests.swift */,
 			);
 			path = GitHubberTests;
 			sourceTree = "<group>";
@@ -312,7 +343,6 @@
 		CE46674820692D0D00FB8BFC /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				CEFE5DCE21916A3700516ADC /* network */,
 				CE46676C2069F74700FB8BFC /* Alerter.swift */,
 			);
 			name = utils;
@@ -327,13 +357,12 @@
 				CE466785206DD0C800FB8BFC /* RepoEntryList.swift */,
 			);
 			name = vo;
-			path = "../../New Group1";
+			path = "New Group1";
 			sourceTree = "<group>";
 		};
 		CE46675220692D3100FB8BFC /* constants */ = {
 			isa = PBXGroup;
 			children = (
-				CE46677A206C8C7E00FB8BFC /* Extensions.swift */,
 				CE46675320692D3C00FB8BFC /* Config.swift */,
 			);
 			name = constants;
@@ -375,16 +404,6 @@
 				CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */,
 			);
 			path = singlerepodetails;
-			sourceTree = "<group>";
-		};
-		CE74D0F8219371350081E383 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				CEFE5DBA2191575F00516ADC /* graphql */,
-				CE46674D20692D2000FB8BFC /* vo */,
-				CE46674920692D1D00FB8BFC /* DataManager.swift */,
-			);
-			path = data;
 			sourceTree = "<group>";
 		};
 		CE74D0F9219371470081E383 /* configurations */ = {
@@ -435,10 +454,11 @@
 		CEFE5DBC219157F300516ADC /* managers */ = {
 			isa = PBXGroup;
 			children = (
-				CE74D0F8219371350081E383 /* data */,
+				CE052EC32194DEA200F2017C /* DataManager.swift */,
+				CE052EDD2195287F00F2017C /* DataManager+GraphQL.swift */,
 				CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */,
 				CEFE5DC22191626600516ADC /* LogManager.swift */,
-				CEFE5DCA2191637E00516ADC /* NetworkManager.swift */,
+				CE052ECD21950D3D00F2017C /* CoreDataManager.swift */,
 				CEFE5DD62191710100516ADC /* PersistenceManager.swift */,
 			);
 			path = managers;
@@ -452,14 +472,6 @@
 				CEFE5DCC2191648F00516ADC /* ServiceProtocol.swift */,
 			);
 			path = protocols;
-			sourceTree = "<group>";
-		};
-		CEFE5DCE21916A3700516ADC /* network */ = {
-			isa = PBXGroup;
-			children = (
-				CEFE5DCF21916A4400516ADC /* BaseService.swift */,
-			);
-			path = network;
 			sourceTree = "<group>";
 		};
 		CEFE5DD121916A9800516ADC /* repolisting */ = {
@@ -804,20 +816,19 @@
 				CE4667652069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE20674A206344590083E825 /* ViewController.swift in Sources */,
 				CEFE5DBE2191580700516ADC /* ConfigurationManager.swift in Sources */,
-				CEFE5DD021916A4400516ADC /* BaseService.swift in Sources */,
 				CEFE5DD72191710100516ADC /* PersistenceManager.swift in Sources */,
 				CE74D0FE21937DB40081E383 /* SingleRepoDetailsModel.swift in Sources */,
-				CEFE5DCB2191637E00516ADC /* NetworkManager.swift in Sources */,
+				CE052ECE21950D3E00F2017C /* CoreDataManager.swift in Sources */,
 				CEFE5DF921928FE400516ADC /* SampleClass.swift in Sources */,
 				CEFE5DCD2191648F00516ADC /* ServiceProtocol.swift in Sources */,
 				CE466786206DD0C800FB8BFC /* RepoEntryList.swift in Sources */,
-				CE46674A20692D1D00FB8BFC /* DataManager.swift in Sources */,
 				CE2067CE206492B10083E825 /* API.swift in Sources */,
 				CEFE5DD321916AB600516ADC /* RepoListingModel.swift in Sources */,
 				CEFE5DC32191626600516ADC /* LogManager.swift in Sources */,
 				CE46674F20692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CE74D0F72193705D0081E383 /* SingleRepoDetailsViewController.swift in Sources */,
 				CE466771206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
+				CE052EC42194DEA200F2017C /* DataManager.swift in Sources */,
 				CE74D0F221936AC60081E383 /* RepoDetailsModel.swift in Sources */,
 				CE90C4EE20701C4E002EF033 /* ACTextField.swift in Sources */,
 				CE74D0FC21937DA00081E383 /* SingleRepoDetailsViewModel.swift in Sources */,
@@ -828,6 +839,7 @@
 				CE46675520692D3C00FB8BFC /* Config.swift in Sources */,
 				CE466775206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */,
 				CE46676D2069F74700FB8BFC /* Alerter.swift in Sources */,
+				CE052EDE2195287F00F2017C /* DataManager+GraphQL.swift in Sources */,
 				CE74D0F0219366CF0081E383 /* RepoDetailsViewModel.swift in Sources */,
 				CE46677B206C8C7E00FB8BFC /* Extensions.swift in Sources */,
 				CEFE5DD521916ACD00516ADC /* RepoListingViewModel.swift in Sources */,
@@ -838,8 +850,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE052EDA21950E8F00F2017C /* ConfigurationManagerTests.swift in Sources */,
 				CE466772206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
-				CEFE5DDC2191722200516ADC /* DataManager.swift in Sources */,
 				CEFE5DE72191725E00516ADC /* JsonCodable.swift in Sources */,
 				CEFE5DE92191725E00516ADC /* ServiceProtocol.swift in Sources */,
 				CE466776206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */,
@@ -849,13 +861,15 @@
 				CEFE5DDB219171D500516ADC /* SampleClass.swift in Sources */,
 				CEFE5DB92191575700516ADC /* ViewController.swift in Sources */,
 				CEFE5DD92191718A00516ADC /* PersistenceManagerTests.swift in Sources */,
+				CE052ED421950DE400F2017C /* SingleRepoDetailsViewModel.swift in Sources */,
 				CE4667662069C87600FB8BFC /* RepoTableCell.swift in Sources */,
 				CE46675620692D3C00FB8BFC /* Config.swift in Sources */,
 				CEFE5DE82191725E00516ADC /* NetworkManagerProtocol.swift in Sources */,
-				CEFE5DDD2191722500516ADC /* NetworkManager.swift in Sources */,
 				CE466783206DC87400FB8BFC /* Extensions.swift in Sources */,
+				CE052ED521950DE400F2017C /* SingleRepoDetailsModel.swift in Sources */,
 				CE46675D2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CEFE5DEF2191728300516ADC /* RepoListingModel.swift in Sources */,
+				CE052ED321950DE400F2017C /* SingleRepoDetailsViewController.swift in Sources */,
 				CEFE5DE32191725800516ADC /* PersistenceManager.swift in Sources */,
 				CE46675020692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CEFE5DE22191725800516ADC /* LogManager.swift in Sources */,
@@ -863,7 +877,10 @@
 				CE46676E2069F74700FB8BFC /* Alerter.swift in Sources */,
 				CE20675D206344590083E825 /* GitHubberTests.swift in Sources */,
 				CEFE5DF02191728300516ADC /* RepoListingViewModel.swift in Sources */,
-				CEFE5DED2191726600516ADC /* BaseService.swift in Sources */,
+				CE052EC82194DFCC00F2017C /* JsonCodableTests.swift in Sources */,
+				CE052ED021950DDF00F2017C /* RepoDetailsModel.swift in Sources */,
+				CE052EC52194DEA900F2017C /* DataManager.swift in Sources */,
+				CE052ECF21950DDF00F2017C /* RepoDetailsViewModel.swift in Sources */,
 				CEFE5DE02191725300516ADC /* ConfigurationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -875,9 +892,9 @@
 				CE466773206A00F800FB8BFC /* RepoDetailsViewController.swift in Sources */,
 				CEFE5DF12191728400516ADC /* RepoListingModel.swift in Sources */,
 				CE466777206AAC9500FB8BFC /* RepoDetailsTableCell.swift in Sources */,
+				CE052ED121950DDF00F2017C /* RepoDetailsViewModel.swift in Sources */,
 				CEFE5DF72192715B00516ADC /* ACTextField.swift in Sources */,
 				CE46676B2069ED4600FB8BFC /* RepoEntry.swift in Sources */,
-				CEFE5DDF2191725000516ADC /* DataManager.swift in Sources */,
 				CE2067D0206492B10083E825 /* API.swift in Sources */,
 				CEFE5DE12191725400516ADC /* ConfigurationManager.swift in Sources */,
 				CEFE5DB82191575700516ADC /* ViewController.swift in Sources */,
@@ -885,15 +902,18 @@
 				CEFE5DF22191728400516ADC /* RepoListingViewModel.swift in Sources */,
 				CEFE5DE42191725900516ADC /* LogManager.swift in Sources */,
 				CE46675720692D3C00FB8BFC /* Config.swift in Sources */,
-				CEFE5DEE2191726700516ADC /* BaseService.swift in Sources */,
-				CEFE5DE52191725900516ADC /* NetworkManager.swift in Sources */,
+				CE052ED221950DDF00F2017C /* RepoDetailsModel.swift in Sources */,
 				CEFE5DEC2191725F00516ADC /* ServiceProtocol.swift in Sources */,
+				CE052ED621950DE500F2017C /* SingleRepoDetailsViewController.swift in Sources */,
 				CE466784206DC87400FB8BFC /* Extensions.swift in Sources */,
 				CE46675E2069C6B900FB8BFC /* RepoListingViewController.swift in Sources */,
 				CE46675120692D2B00FB8BFC /* RepoVO.swift in Sources */,
 				CEFE5DE62191725900516ADC /* PersistenceManager.swift in Sources */,
+				CE052ED821950DE500F2017C /* SingleRepoDetailsModel.swift in Sources */,
 				CEFE5DF4219270CA00516ADC /* RepoEntryList.swift in Sources */,
+				CE052ED721950DE500F2017C /* SingleRepoDetailsViewModel.swift in Sources */,
 				CEFE5DEA2191725F00516ADC /* JsonCodable.swift in Sources */,
+				CE052EC62194DEA900F2017C /* DataManager.swift in Sources */,
 				CE46676F2069F74700FB8BFC /* Alerter.swift in Sources */,
 				CEFE5DEB2191725F00516ADC /* NetworkManagerProtocol.swift in Sources */,
 				CE206768206344590083E825 /* GitHubberUITests.swift in Sources */,

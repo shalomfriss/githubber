@@ -9,8 +9,6 @@
 import Foundation
 
 class Config {
-    
     public static var GITHUB_TOKEN = ""
     public static var GITHUB_URL = "https://api.github.com/graphql"
-    
 }

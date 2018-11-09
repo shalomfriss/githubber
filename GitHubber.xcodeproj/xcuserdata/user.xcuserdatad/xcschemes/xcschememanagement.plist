@@ -14,6 +14,29 @@
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
+		<key>GitHubberUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>CE206743206344590083E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE206757206344590083E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE206762206344590083E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

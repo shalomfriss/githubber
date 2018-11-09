@@ -61,11 +61,13 @@ class ACTextField:NSObject, UITextFieldDelegate {
     @objc func tapped(sender: UITapGestureRecognizer)
     {
         if(self.autoCompleteCharacterCount > 0){
-            textField.typingAttributes = [String:Any]()
-            let tx = textField.text
-            textField.text = tx
-            self.currentText = tx ?? ""
-            
+            weak var weakself = self
+            DispatchQueue.main.async {
+                weakself?.textField.typingAttributes = [String:Any]()
+                let tx = weakself?.textField.text
+                weakself?.textField.text = tx
+                weakself?.currentText = tx ?? ""
+            }
         }
     }
     
@@ -75,7 +77,11 @@ class ACTextField:NSObject, UITextFieldDelegate {
     }
     
     private func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        weak var weakself = self
+        DispatchQueue.main.async {
+            weakself?.textField.resignFirstResponder()
+        }
+        
         return false
     }
     
@@ -87,11 +93,15 @@ class ACTextField:NSObject, UITextFieldDelegate {
     //MARK:- TextField
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.typingAttributes = [String:Any]()
-        let tx = textField.text
-        textField.text = tx
-        self.currentText = tx ?? ""
-        self.resetAll()
+        weak var weakself = self
+        DispatchQueue.main.async {
+            weakself?.textField.typingAttributes = [String:Any]()
+            let tx = weakself?.textField.text
+            weakself?.textField.text = tx
+            weakself?.currentText = tx ?? ""
+            weakself?.resetAll()
+        }
+        
         return true
     }
     
@@ -103,18 +113,23 @@ class ACTextField:NSObject, UITextFieldDelegate {
         //format the substring by dropping the autocomplete characters
         let subString = formatSubstring(subString: subString1)  //what's actually typed
         if(subString1 == "") {
-            textField.text = ""
+            DispatchQueue.main.async {
+                textField.text = ""
+            }
+            
             return true
         }
         
         self.currentText = subString
         if(self.currentText.count == 0) {
             self.resetAll()
-            textField.text = ""
+            DispatchQueue.main.async {
+                textField.text = ""
+            }
             return true
         }
         
-        if(NetworkManager.isConnectedToNetwork() == true) {
+        if(DataManager.isConnectedToNetwork() == true) {
             weak var weakSelf = self
             DataManager.instance.getUsernameSuggestions(substring: self.currentText, complete: {(temp:[String]) in
                 weakSelf?.autocompletePossibilities = temp
@@ -228,7 +243,11 @@ class ACTextField:NSObject, UITextFieldDelegate {
                 
                 
                 print("Miss \(formatted)")
-                self.textField.text = formatted
+                
+                weak var weakself = self
+                DispatchQueue.main.async {
+                    weakself?.textField.text = formatted
+                }
                 
                 timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in
                     //self.moveCaretToEndOfUserQueryPosition(userQuery: formatted)

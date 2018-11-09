@@ -104,14 +104,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-K5-cNV">
-                                                    <rect key="frame" x="318" y="12" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-K5-cNV">
+                                                    <rect key="frame" x="315.5" y="11.5" width="44.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IWU-K5-cNV" firstAttribute="centerY" secondItem="uYb-jy-b8s" secondAttribute="centerY" id="05V-s6-hjD"/>
+                                                <constraint firstAttribute="trailing" secondItem="IWU-K5-cNV" secondAttribute="trailing" constant="15" id="nVi-Px-4cA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="repoCount" destination="IWU-K5-cNV" id="5Au-VE-PN6"/>
@@ -139,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFw-eD-uyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="124"/>
+            <point key="canvasLocation" x="1792.8" y="123.68815592203899"/>
         </scene>
         <!--Repo Details View Controller-->
         <scene sceneID="417-17-0do">

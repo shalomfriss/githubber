@@ -1,8 +1,8 @@
 //
-//  DataManager.swift
+//  DataManager+GraphQL.swift
 //  GitHubber
 //
-//  Created by user on 3/24/18.
+//  Created by user on 11/8/18.
 //  Copyright © 2018 Shalom Friss. All rights reserved.
 //
 
@@ -12,75 +12,7 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 
-/**
- DataManager handles retrieving data from Github
- */
-class DataManager {
-    
-    //MARK:- Apollo related
-    private var apollo: ApolloClient?   //The Apollo client
-    private let disposeBag = DisposeBag()   //RXSwift dispose bag
-    public var repositories:Variable<[RepoEntry]> = Variable([])    //the main repo container
-    public var languageRepos:Variable<[RepoVO]> = Variable([])      //One of the arrays in repositories
-    
-    private var totalRepos:Int = 0
-    
-    //A temporary store for the repos
-    private var tempRepos = [String:[RepoVO]]()
-    
-    //MARK:- Singleton related
-    private static var _instance:DataManager = DataManager(123) //the instance
-    public static var instance:DataManager {
-        get {
-            return _instance
-        }
-    }
-    
-    private var currentOwner:String = ""
-    private var tokenIsValid = true
-    
-    //MARK:- Initialization
-    init() {
-        assertionFailure("Cannot instantiate DataManager directly use DataManager.instance")
-    }
-    
-    init(_ check:Int) {
-        if(check != 123) {
-            assertionFailure("Cannot instantiate DataManager directly use DataManager.instance")
-        }
-        
-        self.apollo = {
-            let configuration = URLSessionConfiguration.default
-            configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Config.GITHUB_TOKEN)"]
-            let url = URL(string: Config.GITHUB_URL)!
-            return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
-        }()
-    }
-    
-    public func setTokenIsValid(val:Bool) {
-        self.tokenIsValid = val
-    }
-    
-    public func reconfigure() {
-        self.apollo = {
-            let configuration = URLSessionConfiguration.default
-            configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Config.GITHUB_TOKEN)"]
-            let url = URL(string: Config.GITHUB_URL)!
-            return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
-        }()
-        
-        self.reset()
-    }
-    
-    //MARK:- API
-    /**
-     Reset everything
-     */
-    func reset() {
-        self.tempRepos = [String:[RepoVO]]()
-        self.repositories.value.removeAll()
-    }
-    
+extension DataManager {
     /**
      Get the total number of repos
      @param owner:String - The owner who's repos to search
@@ -106,24 +38,7 @@ class DataManager {
         }
     }
     
-    /**
-     Restore the owners repos from the cache (realm)
-     @param owner:String - The owner of the repos to restore
-     */
-    func restoreFromCache(owner:String) {
-        let realm = try! Realm()
-        let reps = realm.objects(RepoEntryList.self).filter({$0.username == owner})
-        if(reps.count > 0) {
-            let entries = reps.first
-            
-            self.repositories.value.removeAll()
-            for rep in entries!.repoEntries {
-                self.repositories.value.append(rep)
-            }
-        }
-        
-        NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
-    }
+    
     
     
     /**
@@ -132,7 +47,7 @@ class DataManager {
      */
     func getRepos(owner:String) {
         
-        let connected = NetworkManager.isConnectedToNetwork()
+        let connected = DataManager.isConnectedToNetwork()
         if(connected == false) {
             self.restoreFromCache(owner: owner)
             return
@@ -322,7 +237,6 @@ class DataManager {
             
             if(error != nil)
             {
-                
                 Alerter.hidePreloader()
                 self?.tokenError()
                 return
@@ -383,43 +297,6 @@ class DataManager {
             }
             
             complete(theNames)
-        }
-    }
-    
-    private func tokenError() {
-        if(self.tokenIsValid == false){
-            return
-        }
-        
-        self.setTokenIsValid(val: false)
-        Alerter.alert(title: "Error", msg: "Could not fetch github data.  Please make sure your token is set correctly, or try again later")
-    }
-    
-    private func tokenSuccess() {
-        self.setTokenIsValid(val: true)
-    }
-    
-    
-    
-    /*******/
-    /**
-     Get multiple name suggestions (first 100)
-     */
-    func checkToken(complete:@escaping (Bool) -> Void) {
-        //Had to be created this way according to Github
-        let qString = "type:user facebook in:login"
-        
-        self.apollo?.fetch(query:  UserNameQuery(queryString: qString)) { [weak self] result, error
-            in
-            print(result)
-            print(error)
-            if(error != nil)
-            {
-                complete(false)
-                return
-            }
-            
-            complete(true)
         }
     }
     
