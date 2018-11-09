@@ -444,9 +444,9 @@
 		CEFE5DBB2191578400516ADC /* modules */ = {
 			isa = PBXGroup;
 			children = (
-				CE74D0F5219370470081E383 /* singlerepodetails */,
-				CE74D0EE219366A60081E383 /* repodetails */,
 				CEFE5DD121916A9800516ADC /* repolisting */,
+				CE74D0EE219366A60081E383 /* repodetails */,
+				CE74D0F5219370470081E383 /* singlerepodetails */,
 			);
 			path = modules;
 			sourceTree = "<group>";
@@ -478,9 +478,9 @@
 			isa = PBXGroup;
 			children = (
 				CE74D0F421936DD90081E383 /* cells */,
-				CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */,
 				CEFE5DD221916AB600516ADC /* RepoListingModel.swift */,
 				CEFE5DD421916ACD00516ADC /* RepoListingViewModel.swift */,
+				CE46675B2069C6B900FB8BFC /* RepoListingViewController.swift */,
 			);
 			path = repolisting;
 			sourceTree = "<group>";
