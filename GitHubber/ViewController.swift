@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadingError), name: .LOADING_ERROR, object: nil)
         
         //Check for token and ask
         if(DataManager.isConnectedToNetwork())
@@ -77,6 +78,8 @@ class ViewController: UIViewController {
             self.searchField?.text = ""
         }
         
+        Alerter.showPreloader()
+        
         let dm = DataManager.instance
         dm.reset()
         dm.getRepos(owner: searchTerm)
@@ -115,7 +118,12 @@ class ViewController: UIViewController {
         Whisper.show(whisper: message, to: navigationController!, action: .show)
     }
     
+    @objc func loadingError() {
+        Alerter.hidePreloader()
+    }
+    
     @objc func loadingComplete() {
+        Alerter.hidePreloader()
         performSegue(withIdentifier: "repoListing", sender: nil)
     }
     

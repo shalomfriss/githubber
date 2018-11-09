@@ -23,8 +23,11 @@ platform :ios do
   
   lane :tests do
     ensure_swift_version(version: "Apple Swift version 4.1")
-    run_tests(workspace: "GitHubber.xcworkspace",
-              devices: ["iPhone 6s"])
+    run_tests(workspace: "GitHubber.xcworkspace", 
+    			devices: ["iPhone 6s"], 
+    			toolchain: "com.apple.dt.toolchain.Swift_4_1",
+    			use_legacy_build_api: false)
+    
   end
   
 end

@@ -9,7 +9,6 @@
 import Foundation
 
 class LogManager {
-    
     class func log(message:String) {
         print("LOG: \(message)")
     }

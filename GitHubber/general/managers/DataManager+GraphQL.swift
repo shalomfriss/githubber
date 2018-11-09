@@ -60,13 +60,13 @@ extension DataManager {
             return
         }
         
-        Alerter.showPreloader()
+        
         self.apollo?.fetch(query:  ReposQuery(user: owner)) { [weak self] result, error
             in
             
             if(error != nil)
             {
-                Alerter.hidePreloader()
+                NotificationCenter.default.post(name: .LOADING_ERROR, object: nil)
                 self?.tokenError()
                 return
             }
@@ -103,13 +103,13 @@ extension DataManager {
                     self?.getReposContinued(owner: owner, cursor: cursor)
                 }
                 else {
-                    Alerter.hidePreloader()
+                    
                     self?.sortRepos()
                     NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
                 }
             }
             else {
-                Alerter.hidePreloader()
+                
                 self?.sortRepos()
                 NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
             }
@@ -132,7 +132,7 @@ extension DataManager {
             
             if(error != nil)
             {
-                Alerter.hidePreloader()
+                NotificationCenter.default.post(name: .LOADING_ERROR, object: nil)
                 self?.tokenError()
                 return
             }
@@ -168,13 +168,11 @@ extension DataManager {
                     self?.getReposContinued(owner: owner, cursor: cursor)
                 }
                 else {
-                    Alerter.hidePreloader()
                     self?.sortRepos()
                     NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
                 }
             }
             else {
-                Alerter.hidePreloader()
                 self?.sortRepos()
                 NotificationCenter.default.post(name: .LOADING_COMPLETE, object: nil)
             }

@@ -12,6 +12,7 @@ import UIKit
 
 extension Notification.Name {
     static let LOADING_COMPLETE = Notification.Name("loadingComplete")
+    static let LOADING_ERROR = Notification.Name("loadingError")
 }
 
 extension String {
@@ -33,7 +34,10 @@ extension NSAttributedString {
         let text = NSMutableAttributedString(attributedString: self)
         text.enumerateAttribute(NSAttributedStringKey.attachment, in: NSMakeRange(0, text.length), options: .init(rawValue: 0), using: { (value, range, stop) in
             if let attachement = value as? NSTextAttachment {
-                let image = attachement.image(forBounds: attachement.bounds, textContainer: NSTextContainer(), characterIndex: range.location)!
+                guard let image = attachement.image(forBounds: attachement.bounds, textContainer: NSTextContainer(), characterIndex: range.location) else {
+                    return
+                }
+                
                 if image.size.width > maxWidth {
                     let newImage = image.resizeImage(scale: maxWidth/image.size.width)
                     let newAttribut = NSTextAttachment()
