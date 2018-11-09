@@ -32,19 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE206757206344590083E825"
-               BuildableName = "GitHubberTests.xctest"
-               BlueprintName = "GitHubberTests"
-               ReferencedContainer = "container:GitHubber.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE206762206344590083E825"
-               BuildableName = "GitHubberUITests.xctest"
-               BlueprintName = "GitHubberUITests"
+               BlueprintIdentifier = "CE052EE2219545CA00F2017C"
+               BuildableName = "GitHubberUITests1.xctest"
+               BlueprintName = "GitHubberUITests1"
                ReferencedContainer = "container:GitHubber.xcodeproj">
             </BuildableReference>
          </TestableReference>

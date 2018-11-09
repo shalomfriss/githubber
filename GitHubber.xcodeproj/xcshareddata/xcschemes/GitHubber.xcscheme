@@ -48,6 +48,16 @@
                ReferencedContainer = "container:GitHubber.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE052EE2219545CA00F2017C"
+               BuildableName = "GitHubberUITests1.xctest"
+               BlueprintName = "GitHubberUITests1"
+               ReferencedContainer = "container:GitHubber.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -27,6 +27,7 @@
 		CE052ED821950DE500F2017C /* SingleRepoDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */; };
 		CE052EDA21950E8F00F2017C /* ConfigurationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052ED921950E8F00F2017C /* ConfigurationManagerTests.swift */; };
 		CE052EDE2195287F00F2017C /* DataManager+GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052EDD2195287F00F2017C /* DataManager+GraphQL.swift */; };
+		CE052EE6219545CA00F2017C /* GitHubberUITests1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE052EE5219545CA00F2017C /* GitHubberUITests1.swift */; };
 		CE206748206344590083E825 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE206747206344590083E825 /* AppDelegate.swift */; };
 		CE20674A206344590083E825 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE206749206344590083E825 /* ViewController.swift */; };
 		CE20674D206344590083E825 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE20674B206344590083E825 /* Main.storyboard */; };
@@ -120,6 +121,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CE052EE8219545CA00F2017C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE20673C206344590083E825 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE206743206344590083E825;
+			remoteInfo = GitHubber;
+		};
 		CE206759206344590083E825 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE20673C206344590083E825 /* Project object */;
@@ -148,6 +156,9 @@
 		CE052ECD21950D3D00F2017C /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE052ED921950E8F00F2017C /* ConfigurationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManagerTests.swift; sourceTree = "<group>"; };
 		CE052EDD2195287F00F2017C /* DataManager+GraphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+GraphQL.swift"; sourceTree = "<group>"; };
+		CE052EE3219545CA00F2017C /* GitHubberUITests1.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubberUITests1.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE052EE5219545CA00F2017C /* GitHubberUITests1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubberUITests1.swift; sourceTree = "<group>"; };
+		CE052EE7219545CA00F2017C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE206744206344590083E825 /* GitHubber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE206747206344590083E825 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE206749206344590083E825 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +212,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE052EE0219545CA00F2017C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE206741206344590083E825 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,12 +297,22 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		CE052EE4219545CA00F2017C /* GitHubberUITests1 */ = {
+			isa = PBXGroup;
+			children = (
+				CE052EE5219545CA00F2017C /* GitHubberUITests1.swift */,
+				CE052EE7219545CA00F2017C /* Info.plist */,
+			);
+			path = GitHubberUITests1;
+			sourceTree = "<group>";
+		};
 		CE20673B206344590083E825 = {
 			isa = PBXGroup;
 			children = (
 				CE206746206344590083E825 /* GitHubber */,
 				CE20675B206344590083E825 /* GitHubberTests */,
 				CE206766206344590083E825 /* GitHubberUITests */,
+				CE052EE4219545CA00F2017C /* GitHubberUITests1 */,
 				CE206745206344590083E825 /* Products */,
 				ADA8A7C389C621EFD6764C08 /* Pods */,
 				5354FD120015C98D17F95AD8 /* Frameworks */,
@@ -297,6 +325,7 @@
 				CE206744206344590083E825 /* GitHubber.app */,
 				CE206758206344590083E825 /* GitHubberTests.xctest */,
 				CE206763206344590083E825 /* GitHubberUITests.xctest */,
+				CE052EE3219545CA00F2017C /* GitHubberUITests1.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -488,6 +517,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CE052EE2219545CA00F2017C /* GitHubberUITests1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE052EEA219545CA00F2017C /* Build configuration list for PBXNativeTarget "GitHubberUITests1" */;
+			buildPhases = (
+				CE052EDF219545CA00F2017C /* Sources */,
+				CE052EE0219545CA00F2017C /* Frameworks */,
+				CE052EE1219545CA00F2017C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE052EE9219545CA00F2017C /* PBXTargetDependency */,
+			);
+			name = GitHubberUITests1;
+			productName = GitHubberUITests1;
+			productReference = CE052EE3219545CA00F2017C /* GitHubberUITests1.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CE206743206344590083E825 /* GitHubber */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE20676C206344590083E825 /* Build configuration list for PBXNativeTarget "GitHubber" */;
@@ -554,10 +601,15 @@
 		CE20673C206344590083E825 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Shalom Friss";
 				TargetAttributes = {
+					CE052EE2219545CA00F2017C = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CE206743206344590083E825;
+					};
 					CE206743206344590083E825 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -590,11 +642,19 @@
 				CE206743206344590083E825 /* GitHubber */,
 				CE206757206344590083E825 /* GitHubberTests */,
 				CE206762206344590083E825 /* GitHubberUITests */,
+				CE052EE2219545CA00F2017C /* GitHubberUITests1 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CE052EE1219545CA00F2017C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE206742206344590083E825 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -808,6 +868,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE052EDF219545CA00F2017C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE052EE6219545CA00F2017C /* GitHubberUITests1.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE206740206344590083E825 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -923,6 +991,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CE052EE9219545CA00F2017C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE206743206344590083E825 /* GitHubber */;
+			targetProxy = CE052EE8219545CA00F2017C /* PBXContainerItemProxy */;
+		};
 		CE20675A206344590083E825 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CE206743206344590083E825 /* GitHubber */;
@@ -955,6 +1028,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CE052EEB219545CA00F2017C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8NN27Z7TQR;
+				INFOPLIST_FILE = GitHubberUITests1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shalomfriss.GitHubberUITests1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GitHubber;
+			};
+			name = Debug;
+		};
+		CE052EEC219545CA00F2017C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8NN27Z7TQR;
+				INFOPLIST_FILE = GitHubberUITests1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shalomfriss.GitHubberUITests1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GitHubber;
+			};
+			name = Release;
+		};
 		CE20676A206344590083E825 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1169,6 +1283,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE052EEA219545CA00F2017C /* Build configuration list for PBXNativeTarget "GitHubberUITests1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE052EEB219545CA00F2017C /* Debug */,
+				CE052EEC219545CA00F2017C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE20673F206344590083E825 /* Build configuration list for PBXProject "GitHubber" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

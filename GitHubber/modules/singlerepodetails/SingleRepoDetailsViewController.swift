@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Down
 
+
 class SingleRepoDetailsViewController:UIViewController {
     
     public var repo:RepoVO!
@@ -21,8 +22,6 @@ class SingleRepoDetailsViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Repo details"
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,7 +30,11 @@ class SingleRepoDetailsViewController:UIViewController {
         weak var weakself = self
         DispatchQueue.main.async {
             do{
-                weakself?.readme.attributedText = try down.toAttributedString()
+                //let str:String = try down.toHTML()
+                //weakself?.readme.attributedText = str.htmlToAttributedString
+                var attribString = try down.toAttributedString()
+                attribString = attribString.attributedStringWithResizedImages(with: UIScreen.main.bounds.width)
+                weakself?.readme.attributedText = attribString
             } catch {
                 print(error)
             }

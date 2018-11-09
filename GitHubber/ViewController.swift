@@ -55,26 +55,6 @@ class ViewController: UIViewController {
         self.searchField?.delegate = self.searchFieldDelegate
         self.searchFieldDelegate.textField = self.searchField
         
-        /*
-        let sampleClass = SampleClass()
-        sampleClass.test = "custom test"
-        PersistenceManager.archive(object: sampleClass, fileName: "test1", completion: { error in
-            print("DONE")
-            if(error == nil) {
-               print("ARCHIVE OK")
-            } else {
-                print(error)
-            }
-        })
-        
-        if let newSampleClass:SampleClass =  PersistenceManager.unarchive(fileName: "test1") {
-            print("DONE")
-            print(newSampleClass)
-        } else {
-            print("FAIL")
-            
-        }
-        */
         
     }
     
