@@ -56,7 +56,6 @@ class ViewController: UIViewController {
         self.searchField?.delegate = self.searchFieldDelegate
         self.searchFieldDelegate.textField = self.searchField
         
-        
     }
     
     override func viewDidAppear(_ animated:Bool) {
@@ -120,11 +119,22 @@ class ViewController: UIViewController {
     
     @objc func loadingError() {
         Alerter.hidePreloader()
+        let message = Message(title: "An error occured, please try again", backgroundColor: UIColor(red: 121/255, green: 178/255, blue: 0/255, alpha: 1.0) /* #79b200 */)
+        
+        Whisper.show(whisper: message, to: navigationController!, action: .show)
     }
     
     @objc func loadingComplete() {
         Alerter.hidePreloader()
-        performSegue(withIdentifier: "repoListing", sender: nil)
+        
+        if(DataManager.instance.repositories.value.count == 0) {
+            let message = Message(title: "No repos were found", backgroundColor: UIColor(red: 121/255, green: 178/255, blue: 0/255, alpha: 1.0) /* #79b200 */)
+            
+            Whisper.show(whisper: message, to: navigationController!, action: .show)
+        } else {
+            performSegue(withIdentifier: "repoListing", sender: nil)
+        }
+        
     }
     
     

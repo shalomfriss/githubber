@@ -13,7 +13,8 @@ import RxCocoa
 
 class RepoListingViewController:UIViewController {
     
-    @IBOutlet weak var repoTable:UITableView?
+    
+    @IBOutlet weak var repoCollection: UICollectionView!
     
     //let reps = DataManager.instance.repositories.asObservable()
     let disposeBag = DisposeBag()
@@ -37,10 +38,11 @@ class RepoListingViewController:UIViewController {
     /// Setup the table view using rx swift. This is a more succinct way of expressing how the table will function
     private func setupTableView() {
         
-        guard self.repoTable != nil else { return }
+        guard self.repoCollection != nil else { return }
         
-        viewModel.reps.bind(to: self.repoTable!.rx.items(cellIdentifier: RepoTableCell.Identifier, cellType: RepoTableCell.self)) {
-            (row: Int, element: RepoEntry, cell: RepoTableCell) in
+        
+        viewModel.reps.bind(to: self.repoCollection!.rx.items(cellIdentifier: RepoCollectionCell.Identifier, cellType: RepoCollectionCell.self)) {
+            (row: Int, element: RepoEntry, cell: RepoCollectionCell) in
             
             cell.config(name: element.language, cnt: element.count, data: element)
         }.disposed(by: self.disposeBag)
@@ -51,9 +53,9 @@ class RepoListingViewController:UIViewController {
     
     /// Setup the tap handlers of the table
     private func setupTapHandler() {
-        guard self.repoTable != nil else { return }
+        guard self.repoCollection != nil else { return }
         
-        self.repoTable!
+        self.repoCollection!
             .rx
             .modelSelected(RepoEntry.self)
             .subscribe(onNext: {
@@ -62,8 +64,8 @@ class RepoListingViewController:UIViewController {
                 DataManager.instance.languageRepos.value.removeAll()
                 DataManager.instance.languageRepos.value.append(contentsOf: repoEntry.repos)
                 
-                if let selectedRowIndexPath = self.repoTable?.indexPathForSelectedRow {
-                    self.repoTable?.deselectRow(at: selectedRowIndexPath, animated: true)
+                if let selectedRowIndexPath = self.repoCollection?.indexPathsForSelectedItems {
+                    self.repoCollection?.deselectItem(at: selectedRowIndexPath[0], animated: true)
                 }
                 
                 self.performSegue(withIdentifier: "repoDetails", sender: nil)

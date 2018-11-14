@@ -41,8 +41,7 @@ class Alerter {
                 let textField = Alerter.alert.textFields?[0]
                 let token = textField?.text
                 
-                print("Got token")
-                print(token!)
+                
                 
                 let saveSuccessful: Bool = KeychainWrapper.standard.set(token!, forKey: "token")
                 
@@ -53,7 +52,6 @@ class Alerter {
                 
                 if(token != nil) {
                     Config.GITHUB_TOKEN = token!
-                    print(Config.GITHUB_TOKEN)
                 }
                 else {
                     Alerter.alert(title: "Error", msg: "An error occured please try again")

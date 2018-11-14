@@ -35,6 +35,7 @@ class ACTextField:NSObject, UITextFieldDelegate {
             //_textField.addGestureRecognizer(longTapGestureRecognizer)
         }
     }
+    
     //The number of characters that were added
     private var autoCompleteCharacterCount = 0
     
@@ -109,6 +110,7 @@ class ACTextField:NSObject, UITextFieldDelegate {
         
         //Replace the characters that need replacing
         let subString1 = (textField.text!.capitalized as NSString).replacingCharacters(in: range, with: string)
+        print("Substring: \(subString1)")
         
         //format the substring by dropping the autocomplete characters
         let subString = formatSubstring(subString: subString1)  //what's actually typed
@@ -132,11 +134,11 @@ class ACTextField:NSObject, UITextFieldDelegate {
         if(DataManager.isConnectedToNetwork() == true) {
             weak var weakSelf = self
             DataManager.instance.getUsernameSuggestions(substring: self.currentText, complete: {(temp:[String]) in
+                Alerter.hidePreloader()
                 weakSelf?.autocompletePossibilities = temp
                 //weakSelf?.possibilitiesUpdated()
             })
         }
-        
         
         
         if self.currentText.count == 0 {
@@ -156,8 +158,6 @@ class ACTextField:NSObject, UITextFieldDelegate {
      A callback from
      */
     public func possibilitiesUpdated() {
-        //print("Updated possibilities with: ")
-        //print(self.autocompletePossibilities)
         
         if self.currentText.count == 0 {
             self.resetValues()
@@ -176,6 +176,7 @@ class ACTextField:NSObject, UITextFieldDelegate {
      */
     func formatSubstring(subString: String) -> String {
         let formatted = String(subString.dropLast(autoCompleteCharacterCount))//.lowercased().capitalized
+        print("Formatted: \(formatted)")
         return formatted
     }
     
@@ -208,23 +209,19 @@ class ACTextField:NSObject, UITextFieldDelegate {
         if self.autocompletePossibilities.count > 0 {
             
             let result = self.autocompletePossibilities[0]
-            //print("Suggestion exists : \(suggestions[0])")
-            //print(fieldString)
+            
             
             var remainderString = ""
             if(result.hasPrefix(userQuery)) {
                 
-                //print("fieldString contains suggestion")
                 
                 if let substringRange = result.range(of: userQuery)
                 {
                     remainderString = result
                     remainderString.removeSubrange(substringRange)
-                    print("remainder: \(remainderString)")
                 }
                 
-                //print("fieldString \(fieldString)")
-                print("HIT userQuery \(userQuery)")
+                
                 
                 timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in
                     self.putColourFormattedTextInTextField(autocompleteResult: remainderString, userQuery: userQuery)
@@ -237,12 +234,11 @@ class ACTextField:NSObject, UITextFieldDelegate {
             else {
                 
                 
-                //print(fieldString)
+                
                 //let subString = formatSubstring(subString: fieldString)
                 let formatted = String(fieldString.dropLast(autoCompleteCharacterCount))
                 
                 
-                print("Miss \(formatted)")
                 
                 weak var weakself = self
                 DispatchQueue.main.async {
@@ -259,10 +255,8 @@ class ACTextField:NSObject, UITextFieldDelegate {
             
             //let index = autocompleteResult.index(autocompleteResult.startIndex, offsetBy: fieldString.count)..<autocompleteResult.endIndex
             //let newString = autocompleteResult.removeSubrange(index)
-            //print(newString)
             
-            //print("Closest match is: \(autocompleteResult)")
-            //print(autocompleteResult)
+           
             
             autoCompleteCharacterCount = remainderString.count
             
@@ -279,8 +273,8 @@ class ACTextField:NSObject, UITextFieldDelegate {
             //timer = .scheduledTimer(withTimeInterval: 0.01, repeats: false, block: { (timer) in //7
             //self.textField.text = substring
             //})
-            //print("Nothing suggestions.count <= 0")
-            print("??")
+            
+            
             putColourFormattedTextInTextField(autocompleteResult: "", userQuery: fieldString)
             autoCompleteCharacterCount = 0
         }
@@ -326,7 +320,7 @@ class ACTextField:NSObject, UITextFieldDelegate {
      Move the cursor to the end of where the user was typing
      */
     func moveCaretToEndOfUserQueryPosition(userQuery : String) {
-        print("QUERY: \(userQuery)")
+        
         
         if let newPosition = self.textField.position(from: self.textField.beginningOfDocument, offset: userQuery.count) {
             self.textField.selectedTextRange = self.textField.textRange(from: newPosition, to: newPosition)

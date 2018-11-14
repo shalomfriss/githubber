@@ -91,57 +91,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-n4-Zaa">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7RW-BO-8zo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repoTableCell" id="pX4-VF-jrB" customClass="RepoTableCell" customModule="GitHubber" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pX4-VF-jrB" id="uYb-jy-b8s">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qde-3d-ws6">
+                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="repoListingCollectionCell" id="pRi-qI-GMU" customClass="RepoCollectionCell" customModule="GitHubber" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3e-Qy-APA">
-                                                    <rect key="frame" x="15" y="12" width="273" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cf-HY-Knu">
+                                                    <rect key="frame" x="0.0" y="20" width="120" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                                    <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-K5-cNV">
-                                                    <rect key="frame" x="315.5" y="11.5" width="44.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bs2-H9-iAt">
+                                                    <rect key="frame" x="0.0" y="63" width="120" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
+                                                    <color key="textColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="IWU-K5-cNV" firstAttribute="centerY" secondItem="uYb-jy-b8s" secondAttribute="centerY" id="05V-s6-hjD"/>
-                                                <constraint firstAttribute="trailing" secondItem="IWU-K5-cNV" secondAttribute="trailing" constant="15" id="nVi-Px-4cA"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                                        </view>
+                                        <color key="backgroundColor" red="0.96149270304568524" green="0.96149270304568524" blue="0.96149270304568524" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="120" height="120"/>
                                         <connections>
-                                            <outlet property="repoCount" destination="IWU-K5-cNV" id="5Au-VE-PN6"/>
-                                            <outlet property="repoName" destination="m3e-Qy-APA" id="zAY-Vf-My6"/>
+                                            <outlet property="repoCount" destination="Bs2-H9-iAt" id="Q8O-mD-21z"/>
+                                            <outlet property="repoName" destination="6cf-HY-Knu" id="eNW-rT-xyC"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ty6-n4-Zaa" firstAttribute="trailing" secondItem="cDj-3U-VTM" secondAttribute="trailing" id="1N3-xZ-GF5"/>
-                            <constraint firstItem="ty6-n4-Zaa" firstAttribute="top" secondItem="cDj-3U-VTM" secondAttribute="top" id="3Fz-Ma-9su"/>
-                            <constraint firstItem="ty6-n4-Zaa" firstAttribute="bottom" secondItem="cDj-3U-VTM" secondAttribute="bottom" id="GFb-aj-hIU"/>
-                            <constraint firstItem="ty6-n4-Zaa" firstAttribute="top" secondItem="N4q-qw-6mH" secondAttribute="topMargin" constant="20" id="Ina-mI-6y6"/>
-                            <constraint firstItem="ty6-n4-Zaa" firstAttribute="leading" secondItem="cDj-3U-VTM" secondAttribute="leading" id="ZNq-Kd-4SK"/>
+                            <constraint firstItem="7RW-BO-8zo" firstAttribute="leading" secondItem="cDj-3U-VTM" secondAttribute="leading" id="Auc-Si-I7T"/>
+                            <constraint firstItem="7RW-BO-8zo" firstAttribute="trailing" secondItem="cDj-3U-VTM" secondAttribute="trailing" id="IIP-Aw-ZmG"/>
+                            <constraint firstItem="7RW-BO-8zo" firstAttribute="bottom" secondItem="cDj-3U-VTM" secondAttribute="bottom" id="MUw-D5-4eG"/>
+                            <constraint firstItem="7RW-BO-8zo" firstAttribute="top" secondItem="cDj-3U-VTM" secondAttribute="top" id="sSs-x8-vzD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cDj-3U-VTM"/>
                     </view>
                     <navigationItem key="navigationItem" id="hAj-Kp-qgB"/>
                     <connections>
-                        <outlet property="repoTable" destination="ty6-n4-Zaa" id="Whq-uy-LZ6"/>
+                        <outlet property="repoCollection" destination="7RW-BO-8zo" id="YNy-dX-C3B"/>
                         <segue destination="IuV-xj-dMS" kind="show" identifier="repoDetails" id="vMS-fP-AQT"/>
                     </connections>
                 </viewController>

@@ -59,8 +59,11 @@ extension RepoDetailsViewController:UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(viewModel.repoDetails)
         let cell:RepoDetailsTableCell = self.reposTable?.cellForRow(at: indexPath) as! RepoDetailsTableCell
+        //
+        //
+        
+        
         self.repo = cell.repo
         
         performSegue(withIdentifier: "singleRepo", sender: nil)

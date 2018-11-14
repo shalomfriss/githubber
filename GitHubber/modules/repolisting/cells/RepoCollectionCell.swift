@@ -9,12 +9,15 @@
 import Foundation
 import UIKit
 
-class RepoTableCell:UITableViewCell
+class RepoCollectionCell:UICollectionViewCell
 {
-    public static let Identifier:String = "repoTableCell"
+    public static let Identifier:String = "repoListingCollectionCell"
     
-    @IBOutlet var repoName:UILabel?
-    @IBOutlet var repoCount:UILabel?
+    @IBOutlet weak var repoName: UILabel!
+    @IBOutlet weak var repoCount: UILabel!
+    
+    //@IBOutlet var repoName:UILabel?
+    //@IBOutlet var repoCount:UILabel?
     
     private var data:RepoEntry?
     
@@ -22,5 +25,8 @@ class RepoTableCell:UITableViewCell
         self.repoName?.text = name
         self.repoCount?.text = "\(cnt)"
         self.data = data
+        
+        
+        
     }
 }

@@ -30,8 +30,6 @@ class SingleRepoDetailsViewController:UIViewController {
         weak var weakself = self
         DispatchQueue.main.async {
             do{
-                //let str:String = try down.toHTML()
-                //weakself?.readme.attributedText = str.htmlToAttributedString
                 var attribString = try down.toAttributedString()
                 attribString = attribString.attributedStringWithResizedImages(with: UIScreen.main.bounds.width)
                 weakself?.readme.attributedText = attribString

@@ -19,7 +19,7 @@ extension DataManager {
      */
     func getRepoCount(owner:String) {
         
-        Alerter.showPreloader()
+        
         self.apollo?.fetch(query: RepoCountQuery(user: owner)){ [weak self] result, error
             in
             
@@ -34,7 +34,7 @@ extension DataManager {
             
             let count = result?.data?.repositoryOwner?.repositories.totalCount ?? 0
             self?.totalRepos = count
-            Alerter.hidePreloader()
+            
         }
     }
     
@@ -125,8 +125,7 @@ extension DataManager {
      */
     func getReposContinued(owner:String, cursor:String) {
         
-        print("Get more repos")
-        Alerter.showPreloader()
+        print("Getting more repos...")
         self.apollo?.fetch(query:  ReposContinueQuery(user: owner, cursor: cursor)) { [weak self] result, error
             in
             
@@ -235,7 +234,7 @@ extension DataManager {
             
             if(error != nil)
             {
-                Alerter.hidePreloader()
+                complete("")
                 self?.tokenError()
                 return
             }
@@ -271,11 +270,9 @@ extension DataManager {
             
             if(error != nil)
             {
-                Alerter.hidePreloader()
+                complete([])
                 
                 let err = error! as! GraphQLHTTPResponseError
-                //print(err.errorDescription)
-                //print(err.response.statusCode)
                 if(err.response.statusCode == 401) {
                     self?.tokenError()
                 }
