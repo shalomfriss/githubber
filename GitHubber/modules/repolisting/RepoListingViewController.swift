@@ -49,7 +49,7 @@ class RepoListingViewController:UIViewController {
         
     }
     
-   
+    
     
     /// Setup the tap handlers of the table
     private func setupTapHandler() {

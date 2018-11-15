@@ -13,8 +13,10 @@ class RepoCollectionCell:UICollectionViewCell
 {
     public static let Identifier:String = "repoListingCollectionCell"
     
+    
     @IBOutlet weak var repoName: UILabel!
     @IBOutlet weak var repoCount: UILabel!
+    @IBOutlet weak var repoImage: UIImageView!
     
     //@IBOutlet var repoName:UILabel?
     //@IBOutlet var repoCount:UILabel?
@@ -22,11 +24,27 @@ class RepoCollectionCell:UICollectionViewCell
     private var data:RepoEntry?
     
     func config(name:String, cnt:Int, data:RepoEntry) {
-        //let namSvgImgVar: SVGKImage = SVGKImage(named: "NamSvgImj")
         
+        var fileName = name.lowercased()
+        if(fileName == "html") {
+            fileName = "html5"
+        }
         
+        if(fileName == "css") {
+            fileName = "css3"
+        }
+        
+        var image = UIImage(named: "\(fileName)-plain")
+        image = image?.maskWithColor(color: UIColor.magenta)
+        self.repoImage.image = image
+        self.insertSubview(self.repoImage, at: 0)
         self.repoName?.text = name
         self.repoCount?.text = "\(cnt)"
         self.data = data
+        
+        //self.repoImage.alpha = 0.3
+        
+        
+        
     }
 }
