@@ -14,7 +14,6 @@ target 'GitHubber' do
 	pod 'Whisper'
 	pod 'Alamofire', '~> 4.7'
 	pod 'Down'
-	pod 'SVGKit'
 	
   target 'GitHubberTests' do
     inherit! :search_paths
@@ -27,7 +26,6 @@ target 'GitHubber' do
 	pod 'Whisper'
 	pod 'Alamofire', '~> 4.7'
 	pod 'Down'
-	pod 'SVGKit'
   end
 
   target 'GitHubberUITests' do
@@ -41,7 +39,6 @@ target 'GitHubber' do
 	pod 'Whisper'
 	pod 'Alamofire', '~> 4.7'
 	pod 'Down'
-	pod 'SVGKit'
   end
 
 end

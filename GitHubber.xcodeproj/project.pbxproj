@@ -84,6 +84,7 @@
 		CE90C4F02071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
 		CE90C4F12071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
 		CE90C4F22071DD80002EF033 /* users.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE90C4EF2071DD7F002EF033 /* users.graphql */; };
+		CEB7699F219DEB180042282F /* pngIcons in Resources */ = {isa = PBXBuildFile; fileRef = CEB7699E219DEB180042282F /* pngIcons */; };
 		CEFE5DB82191575700516ADC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE206749206344590083E825 /* ViewController.swift */; };
 		CEFE5DB92191575700516ADC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE206749206344590083E825 /* ViewController.swift */; };
 		CEFE5DBE2191580700516ADC /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */; };
@@ -197,6 +198,7 @@
 		CE74D0FD21937DB40081E383 /* SingleRepoDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoDetailsModel.swift; sourceTree = "<group>"; };
 		CE90C4ED20701C4E002EF033 /* ACTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACTextField.swift; sourceTree = "<group>"; };
 		CE90C4EF2071DD7F002EF033 /* users.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users.graphql; sourceTree = "<group>"; };
+		CEB7699E219DEB180042282F /* pngIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pngIcons; sourceTree = "<group>"; };
 		CEFE5DBD2191580700516ADC /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigurationManager.swift; path = managers/ConfigurationManager.swift; sourceTree = "<group>"; };
 		CEFE5DC02191584200516ADC /* GlobalConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GlobalConfig.plist; sourceTree = "<group>"; };
 		CEFE5DC22191626600516ADC /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 		CE206746206344590083E825 /* GitHubber */ = {
 			isa = PBXGroup;
 			children = (
+				CEB7699D219DEB0E0042282F /* images */,
 				CE052EC22194DD8700F2017C /* general */,
 				CE74D0F9219371470081E383 /* configurations */,
 				CEFE5DBB2191578400516ADC /* modules */,
@@ -465,6 +468,14 @@
 				CE052EEF219738CC00F2017C /* InlineTextField.swift */,
 			);
 			path = components;
+			sourceTree = "<group>";
+		};
+		CEB7699D219DEB0E0042282F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7699E219DEB180042282F /* pngIcons */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		CEFE5DBA2191575F00516ADC /* graphql */ = {
@@ -666,6 +677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE90C4F02071DD80002EF033 /* users.graphql in Resources */,
+				CEB7699F219DEB180042282F /* pngIcons in Resources */,
 				CE206780206481930083E825 /* schema.json in Resources */,
 				CE206752206344590083E825 /* LaunchScreen.storyboard in Resources */,
 				CEFE5DC12191584200516ADC /* GlobalConfig.plist in Resources */,
@@ -725,12 +737,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubberUITests/Pods-GitHubberUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
@@ -740,12 +750,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
@@ -765,13 +773,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubber/Pods-GitHubber-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
 			);
@@ -779,13 +785,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
 			);
@@ -821,12 +825,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GitHubberTests/Pods-GitHubberTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Whisper/Whisper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
@@ -836,12 +838,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Whisper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",

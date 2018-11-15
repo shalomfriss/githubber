@@ -22,11 +22,11 @@ class RepoCollectionCell:UICollectionViewCell
     private var data:RepoEntry?
     
     func config(name:String, cnt:Int, data:RepoEntry) {
+        //let namSvgImgVar: SVGKImage = SVGKImage(named: "NamSvgImj")
+        
+        
         self.repoName?.text = name
         self.repoCount?.text = "\(cnt)"
         self.data = data
-        
-        
-        
     }
 }

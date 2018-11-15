@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         weak var weakSelf = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingComplete), name: .LOADING_COMPLETE, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadingError), name: .LOADING_ERROR, object: nil)
         
         //Check for token and ask
