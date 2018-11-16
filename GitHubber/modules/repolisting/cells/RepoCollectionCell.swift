@@ -14,8 +14,8 @@ class RepoCollectionCell:UICollectionViewCell
     public static let Identifier:String = "repoListingCollectionCell"
     
     
-    @IBOutlet weak var repoName: UILabel!
-    @IBOutlet weak var repoCount: UILabel!
+    @IBOutlet weak var repoName: UILabelPadded!
+    @IBOutlet weak var repoCount: UILabelPadded!
     @IBOutlet weak var repoImage: UIImageView!
     
     //@IBOutlet var repoName:UILabel?
@@ -35,16 +35,26 @@ class RepoCollectionCell:UICollectionViewCell
         }
         
         var image = UIImage(named: "\(fileName)-plain")
-        image = image?.maskWithColor(color: UIColor.magenta)
+        print("image")
+        print(image)
+        //rgb(150, 175, 103)
+        //rgb(88, 235, 207)
+        image = image?.maskWithColor(color: UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 1))
+        
         self.repoImage.image = image
         self.insertSubview(self.repoImage, at: 0)
         self.repoName?.text = name
         self.repoCount?.text = "\(cnt)"
         self.data = data
         
-        //self.repoImage.alpha = 0.3
+        //#33CAFD
+        //rgb(51, 202, 253)
+        self.backgroundColor = UIColor(displayP3Red: 150/255, green: 175/255, blue: 103/255, alpha: 0.5)
+        self.repoCount.textColor = UIColor.white
         
-        
+        self.repoName.insets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 5)
+        self.repoCount.insets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 5)
+        self.repoImage.alpha = 0.6
         
     }
 }

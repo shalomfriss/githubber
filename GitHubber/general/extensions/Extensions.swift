@@ -76,7 +76,7 @@ extension UIImage {
         color.setFill()
         self.draw(in: rect)
         
-        context.setBlendMode(.sourceIn)
+        context.setBlendMode(.sourceAtop)
         context.fill(rect)
         
         let resultImage = UIGraphicsGetImageFromCurrentImageContext()!
