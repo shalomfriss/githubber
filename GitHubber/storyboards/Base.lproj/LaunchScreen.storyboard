@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,21 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="IrH-Wu-eCH">
-                                <rect key="frame" x="-13" y="167" width="400" height="332"/>
+                                <rect key="frame" x="111.5" y="270.5" width="152" height="126"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="3Zy-zP-6qE"/>
+                                    <constraint firstAttribute="height" constant="126" id="t1J-JW-Heb"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GITHUBBER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-Ra-5km">
-                                <rect key="frame" x="139.5" y="507" width="96.5" height="21"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Cfu-Ra-5km" firstAttribute="top" secondItem="IrH-Wu-eCH" secondAttribute="bottom" constant="8" id="3FG-J5-M40"/>
-                            <constraint firstItem="IrH-Wu-eCH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3GW-9k-5rK"/>
-                            <constraint firstItem="IrH-Wu-eCH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4Yj-9L-8tG"/>
-                            <constraint firstItem="Cfu-Ra-5km" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8Sc-uL-riK"/>
+                            <constraint firstItem="IrH-Wu-eCH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LlG-48-z0l"/>
+                            <constraint firstItem="IrH-Wu-eCH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="g71-BQ-aLk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -44,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="github" width="400" height="332"/>
+        <image name="github" width="800" height="665"/>
     </resources>
 </document>

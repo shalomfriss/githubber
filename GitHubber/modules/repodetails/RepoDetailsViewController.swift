@@ -55,17 +55,16 @@ extension RepoDetailsViewController:UITableViewDelegate {
         let itemCount = DataManager.instance.languageRepos.value.count - 1
         let color = (CGFloat(indexPath.row) / CGFloat(itemCount)) * 0.5
         
-        cell.backgroundColor = UIColor(red: 0.5, green: 0.5 + color, blue: 1, alpha: 0.5)
+        cell.backgroundColor = UIColor(displayP3Red: 150/255, green: 175/255, blue: 103/255, alpha: 0.5)
+        cell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderWidth = 1
+        //cell.backgroundColor = UIColor(red: 0.5, green: 0.5 , blue: 1, alpha: 0.5)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell:RepoDetailsTableCell = self.reposTable?.cellForRow(at: indexPath) as! RepoDetailsTableCell
-        //
-        //
-        
         
         self.repo = cell.repo
-        
         performSegue(withIdentifier: "singleRepo", sender: nil)
     }
     

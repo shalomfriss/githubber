@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchButton:UIButton?
     @IBOutlet weak var settingsButton: UIButton!
     
+    @IBOutlet weak var logo: UIImageView!
     
     /******************************************************************/
     //VIEWCONTROLLER METHODS
@@ -59,6 +60,12 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated:Bool) {
         //Whisper.show(whisper: "Welcome", to: self.navigationController, action: .show)
+        
+        self.logo.alpha = 0.0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.logo.alpha = 1.0
+        })
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,6 +82,7 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.searchField?.text = ""
         }
+        
         
         Alerter.showPreloader()
         
